@@ -8,7 +8,7 @@ public class PatriciaTrieMain {
 //		String text = "A quel genial professeur de dactylographie sommes nous redevables de la superbe phrase ci dessous, un\r\n"
 //				+ " modele du genre, que toute dactylo connait par coeur puisque elle fait appel a chacune des touches du\r\n"
 //				+ " clavier de la machine a ecrire?";
-		String text="ma vie est belle";
+		String text="la vie est belle";
 		String text1 = "cat cart car cartyy cartyya dog bat ";
 		String[] parts = text.split("(?<=\\W)|(?=\\W)");
 		String[] parts1 = text1.split("(?<=\\W)|(?=\\W)");
