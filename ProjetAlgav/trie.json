@@ -1,0 +1,26 @@
+{
+  "label": "",
+  "is_end_of_word": false,
+  "children": {
+    "b":     {
+      "label": "belle",
+      "is_end_of_word": true,
+      "children": {}
+    },
+    "e":     {
+      "label": "est",
+      "is_end_of_word": true,
+      "children": {}
+    },
+    "v":     {
+      "label": "vie",
+      "is_end_of_word": true,
+      "children": {}
+    },
+    "m":     {
+      "label": "ma",
+      "is_end_of_word": true,
+      "children": {}
+    }
+  }
+}

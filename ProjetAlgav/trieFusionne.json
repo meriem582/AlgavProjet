@@ -1,0 +1,76 @@
+{
+  "label": "",
+  "is_end_of_word": false,
+  "children": {
+    "b":     {
+      "label": "b",
+      "is_end_of_word": false,
+      "children": {
+        "a":     {
+          "label": "at",
+          "is_end_of_word": true,
+          "children": {}
+        },
+        "e":     {
+          "label": "elle",
+          "is_end_of_word": true,
+          "children": {}
+        }
+      }
+    },
+    "c":     {
+      "label": "ca",
+      "is_end_of_word": false,
+      "children": {
+        "r":     {
+          "label": "r",
+          "is_end_of_word": true,
+          "children": {
+            "t":     {
+              "label": "t",
+              "is_end_of_word": true,
+              "children": {
+                "y":     {
+                  "label": "yy",
+                  "is_end_of_word": true,
+                  "children": {
+                    "a":     {
+                      "label": "a",
+                      "is_end_of_word": true,
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "t":     {
+          "label": "t",
+          "is_end_of_word": true,
+          "children": {}
+        }
+      }
+    },
+    "d":     {
+      "label": "dog",
+      "is_end_of_word": true,
+      "children": {}
+    },
+    "e":     {
+      "label": "est",
+      "is_end_of_word": true,
+      "children": {}
+    },
+    "v":     {
+      "label": "vie",
+      "is_end_of_word": true,
+      "children": {}
+    },
+    "m":     {
+      "label": "ma",
+      "is_end_of_word": true,
+      "children": {}
+    }
+  }
+}
