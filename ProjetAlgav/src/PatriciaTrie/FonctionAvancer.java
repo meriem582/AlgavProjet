@@ -21,7 +21,7 @@ public class FonctionAvancer {
 			}
 			PatriciaTrieNode child = pc.children.get(ch);
 			String prefix = child.key; 
-			if (!mot.startsWith(prefix, index)) {
+			if (!mot.startsWith(prefix, index)) {  
 				return false;
 			}
 			index += prefix.length();
