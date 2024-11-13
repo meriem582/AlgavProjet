@@ -1,5 +1,8 @@
 package PatriciaTrie;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +23,8 @@ public class FonctionAvancer {
 				return false;
 			}
 			PatriciaTrieNode child = pc.children.get(ch);
-			String prefix = child.key; 
-			if (!mot.startsWith(prefix, index)) {  
+			String prefix = child.key;
+			if (!mot.startsWith(prefix, index)) {
 				return false;
 			}
 			index += prefix.length();
@@ -145,6 +148,21 @@ public class FonctionAvancer {
 		return suppression(node, mot, 0);
 	}
 
+	public static void supressionDuMotDufichier(PatriciaTrieNode node,String filename) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { // on crée un bufferReader qui lit
+																						// le fichier.txt
+			String mot;
+			while ((mot = reader.readLine()) != null) { // la on recupere les mots qui sont dans le fichier un par un en
+														// les ajoutant dans l'arbre
+				mot = mot.trim();// Nettoyer le mot en enlevant les espaces superflus
+				if (!mot.isEmpty()) { // on insere le mot si il n'est pas vide
+					suppression(node,mot); // Insérer le mot dans l'arbre Patricia
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	private static boolean suppression(PatriciaTrieNode p, String mot, int index) {
 		if (index == mot.length()) {
 			// Nous avons atteint la fin du mot dans l'arbre
@@ -202,8 +220,8 @@ public class FonctionAvancer {
 			if (cible.children.containsKey(charCle)) {
 				// Le nœud existe déjà, fusionner les enfants
 				PatriciaTrieNode noeudCible = cible.children.get(charCle);
-				String commonPrefix;
-				commonPrefix = getPrefixeCommun(noeudCible.key, noeudSource.key);
+				String commonPrefix = getPrefixeCommun(noeudCible.key, noeudSource.key);
+
 				if (commonPrefix.equals(noeudSource.key)) {
 					// Le préfixe source est identique au préfixe cible
 					fusionnerNoeuds(noeudCible, noeudSource);
@@ -216,8 +234,13 @@ public class FonctionAvancer {
 					noeudSource.key = noeudSource.key.substring(commonPrefix.length());
 					noeudCible.key = noeudCible.key.substring(commonPrefix.length());
 
-					splitNode.children.put(noeudSource.key.charAt(0), noeudSource);
-					splitNode.children.put(noeudCible.key.charAt(0), noeudCible);
+					// Vérifier que les clés ne sont pas vides avant d'accéder à charAt(0)
+					if (!noeudSource.key.isEmpty()) {
+						splitNode.children.put(noeudSource.key.charAt(0), noeudSource);
+					}
+					if (!noeudCible.key.isEmpty()) {
+						splitNode.children.put(noeudCible.key.charAt(0), noeudCible);
+					}
 				}
 			} else {
 				// Ajouter le nœud source dans l'arbre cible
@@ -225,4 +248,5 @@ public class FonctionAvancer {
 			}
 		}
 	}
+
 }

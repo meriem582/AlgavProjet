@@ -18,36 +18,44 @@
         }
       }
     },
+    "b":     {
+      "label": "bat",
+      "is_end_of_word": true,
+      "children": {}
+    },
     "c":     {
       "label": "c",
       "is_end_of_word": false,
       "children": {
-        "h":     {
-          "label": "hacune",
-          "is_end_of_word": true,
-          "children": {}
-        },
-        "i":     {
-          "label": "i",
-          "is_end_of_word": true,
-          "children": {}
-        },
-        "l":     {
-          "label": "lavier",
-          "is_end_of_word": true,
-          "children": {}
-        },
-        "o":     {
-          "label": "o",
+        "a":     {
+          "label": "a",
           "is_end_of_word": false,
           "children": {
-            "e":     {
-              "label": "eur",
+            "r":     {
+              "label": "r",
               "is_end_of_word": true,
-              "children": {}
+              "children": {
+                "t":     {
+                  "label": "t",
+                  "is_end_of_word": true,
+                  "children": {
+                    "y":     {
+                      "label": "yy",
+                      "is_end_of_word": true,
+                      "children": {
+                        "a":     {
+                          "label": "a",
+                          "is_end_of_word": true,
+                          "children": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             },
-            "n":     {
-              "label": "nnait",
+            "t":     {
+              "label": "t",
               "is_end_of_word": true,
               "children": {}
             }
@@ -59,36 +67,8 @@
       "label": "d",
       "is_end_of_word": false,
       "children": {
-        "a":     {
-          "label": "actylo",
-          "is_end_of_word": true,
-          "children": {
-            "g":     {
-              "label": "graphie",
-              "is_end_of_word": true,
-              "children": {}
-            }
-          }
-        },
-        "e":     {
-          "label": "e",
-          "is_end_of_word": true,
-          "children": {
-            "s":     {
-              "label": "s",
-              "is_end_of_word": true,
-              "children": {
-                "s":     {
-                  "label": "sous",
-                  "is_end_of_word": true,
-                  "children": {}
-                }
-              }
-            }
-          }
-        },
-        "u":     {
-          "label": "u",
+        "o":     {
+          "label": "og",
           "is_end_of_word": true,
           "children": {}
         }
