@@ -18,29 +18,30 @@ public class PatriciaTrieNode {
 		this.children = new HashMap<>();
 	}
 
-	public void insert(String word) {
+//	O(k) tq k est la longeur du mots
+	public void inserer(String mot) {
 		PatriciaTrieNode noeud = this; // l'arbre ou on va ajouter
 		int index = 0; // premiere lettre
 
-		while (index < word.length()) { // si on a pas atteint la fin du mot
-			char ch = word.charAt(index); // on recupere la premiere lettre ( du mot ou partie du mot)
+		while (index < mot.length()) { // si on a pas atteint la fin du mot
+			char ch = mot.charAt(index); // on recupere la premiere lettre ( du mot ou partie du mot)
 			if (noeud.children.containsKey(ch)) { // si on trouve la premiere lettre dans l'arbre de patricia
 				PatriciaTrieNode child = noeud.children.get(ch); // on recupere le noeud ou y a la premiere lettre
-				String prefixeCommun = getPrefixeCommun(word.substring(index), child.key); // on récuper prefixe commun
+				String prefixeCommun = getPrefixeCommun(mot.substring(index), child.key); // on récuper prefixe commun
 																							// entre le mot et l'enfant
 
 				if (prefixeCommun.length() == child.key.length()) { // si le mot trouver et le meme que le prefixe
 					noeud = child;
 					index += prefixeCommun.length();
 				} else {
-					splitNode(noeud, child, prefixeCommun, word.substring(index + prefixeCommun.length()));
+					splitNode(noeud, child, prefixeCommun, mot.substring(index + prefixeCommun.length()));
 					// sinon on decortique en qlq sort le noeud en deux fils ou on ajoute le suffixe
 					// du mot a ajouter et le reste de celui trouver dans l'arbre
 					return;
 				}
 
 			} else { // sinon on ajoute cette lettre et son mot
-				noeud.children.put(ch, new PatriciaTrieNode(word.substring(index)));
+				noeud.children.put(ch, new PatriciaTrieNode(mot.substring(index)));
 				noeud.children.get(ch).isEndOfWord = true;
 				return;
 			}
@@ -48,6 +49,7 @@ public class PatriciaTrieNode {
 		noeud.isEndOfWord = true; // à la fin on dit qu'on a finit d'inserer en disant que c'est la fin du mot
 	}
 
+//	O(n * k). tq n est le nombre de mots et k est la longueur moyenne des mots.
 	public void insertMotduFichier(String filename) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { // on crée un bufferReader qui lit
 																						// le fichier.txt
@@ -56,7 +58,7 @@ public class PatriciaTrieNode {
 														// les ajoutant dans l'arbre
 				mot = mot.trim();// Nettoyer le mot en enlevant les espaces superflus
 				if (!mot.isEmpty()) { // on insere le mot si il n'est pas vide
-					insert(mot); // Insérer le mot dans l'arbre Patricia
+					inserer(mot); // Insérer le mot dans l'arbre Patricia
 				}
 			}
 		} catch (IOException e) {
@@ -64,6 +66,7 @@ public class PatriciaTrieNode {
 		}
 	}
 
+//	O(k) tq k est la longeure de prefixe
 	private String getPrefixeCommun(String s1, String s2) {
 		int l = Math.min(s1.length(), s2.length()); // on utilise la class Math pour utiliser la fonction min pour
 													// récupere la taille minimal des deux mots " car le prefixe ne
@@ -75,6 +78,8 @@ public class PatriciaTrieNode {
 		}
 		return s1.substring(0, i); // a la fin on recupere d'un des mots le préfixe commun
 	}
+
+//	O(m + n), tq m est la longueur de prifixe commun et n est la longueur du suffixe
 
 	private void splitNode(PatriciaTrieNode parent, PatriciaTrieNode child, String prefixeCommun, String suffix) {
 		PatriciaTrieNode splitNode = new PatriciaTrieNode(prefixeCommun); // on crée un nouveau noeud qui aura le
@@ -90,8 +95,10 @@ public class PatriciaTrieNode {
 
 		parent.children.put(prefixeCommun.charAt(0), splitNode);
 	}
+//	La complexité totale de la fonction toJson est O(n * T)
 
 	// Conversion de PatriciaTrieNode en chaîne de caractère
+	// sa complexité est de O(n), tq n est le nombre de noeuds
 	public String toJson() {
 		String json = "{\n  \"label\": \"" + key + "\",\n  \"is_end_of_word\": " + (isEndOfWord) + ",\n";
 
@@ -127,85 +134,4 @@ public class PatriciaTrieNode {
 			e.printStackTrace();
 		}
 	}
-
-	// Charge un fichier JSON et crée un PatriciaTrieNode
-	public static PatriciaTrieNode loadFromFile(String filename) {
-		StringBuilder jsonBuilder = new StringBuilder();
-
-		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-			String line;
-			while ((line = br.readLine()) != null) {
-				jsonBuilder.append(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-
-		// Appeler jsonToArbre pour transformer la chaîne en arbre
-		return jsonToArbre(jsonBuilder.toString());
-	}
-
-	private static PatriciaTrieNode jsonToArbre(String json) {
-	    json = json.trim().replaceAll("[{}\"]", ""); // Supprime les {, }, et " pour faciliter le parsing
-	    String[] lines = json.split(",\n?"); // Divise chaque ligne sur des virgules, en ignorant le formatage
-	    String key = null;
-	    boolean isEndOfWord = false;
-	    Map<Character, PatriciaTrieNode> childrenMap = new HashMap<>();
-
-	    for (String line : lines) {
-	        if (!line.contains(":")) {
-	            continue; // Ignore les lignes sans ":"
-	        }
-	        
-	        String[] entry = line.split(":");
-	        if (entry.length < 2) {
-	            continue; // Ignore les lignes qui ne suivent pas le format clé:valeur
-	        }
-	        
-	        String attribute = entry[0].trim();
-	        String value = entry[1].trim();
-
-	        if (attribute.equals("label")) {
-	            key = value; // Récupère la clé du nœud
-	        } else if (attribute.equals("is_end_of_word")) {
-	            isEndOfWord = Boolean.parseBoolean(value); // Récupère l'information sur si c'est un mot complet
-	        } else if (attribute.startsWith("children")) {
-	            // Vérification si le champ "children" contient bien des accolades
-	            int startIdx = value.indexOf("{");
-	            int endIdx = value.lastIndexOf("}");
-	            
-	            if (startIdx != -1 && endIdx != -1 && startIdx < endIdx) {
-	                String childrenJson = value.substring(startIdx + 1, endIdx); // On extrait seulement la partie entre les accolades
-	                if (!childrenJson.trim().isEmpty()) {
-	                    String[] childNodes = childrenJson.split(",\n?");
-	                    for (String childNode : childNodes) {
-	                        String[] childEntry = childNode.split(":");
-	                        if (childEntry.length < 2) continue;
-
-	                        String childKeyString = childEntry[0].trim().replaceAll("\"", "");
-	                        String childJson = childEntry[1].trim();
-	                        char childKey = childKeyString.charAt(0); // On suppose que childKey est un caractère
-
-	                        PatriciaTrieNode childNodeInstance = jsonToArbre(childJson);
-	                        childrenMap.put(childKey, childNodeInstance);
-	                    }
-	                }
-	            }
-	        }
-	    }
-
-	    // Création du nœud avec la clé, et ajout de l'information si c'est un mot complet
-	    PatriciaTrieNode node = new PatriciaTrieNode(key);
-	    node.isEndOfWord = isEndOfWord;
-	    
-	    // Ajout des enfants au nœud
-	    for (Map.Entry<Character, PatriciaTrieNode> entry : childrenMap.entrySet()) {
-	        node.children.put(entry.getKey(), entry.getValue());
-	    }
-
-	    return node;
-	}
-
-
 }

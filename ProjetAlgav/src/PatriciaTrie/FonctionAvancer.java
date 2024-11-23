@@ -10,6 +10,8 @@ import java.util.TreeMap;
 
 public class FonctionAvancer {
 
+//	 complexite est de O(m*p) tq : m est la longueur du mot à rechercher
+//	, p est la longueur du préfixe de chaque nœud dans le Patricia Trie (qui peut varier).
 	public static boolean Recherche(PatriciaTrieNode p, String mot) { // fonction qui retourne True si le mot est
 																		// retrouver dans l'arbre de patricia
 		PatriciaTrieNode pc = p; // on recupere l'arbre dans pc
@@ -33,7 +35,7 @@ public class FonctionAvancer {
 		return pc.isEndOfWord; // si à la fin on trouve que le mot figure dans l'arbre alors on retourne true
 								// sinon false
 	}
-
+//	la  complexité est de O(n) " n par rapport au nombre de nœuds dans l'arbre" 
 	public static int comptageMots(PatriciaTrieNode node) { // on compte les fois où isEndOfWord est true
 		int nbr = 0;
 		if (node.isEndOfWord) {
@@ -44,13 +46,15 @@ public class FonctionAvancer {
 		}
 		return nbr;
 	}
-
+//	est la complexité de listeMotsRec
 	public static List<String> listeMots(PatriciaTrieNode node) { //
 		List<String> mots = new ArrayList<>();
 		listeMotsRec(node, "", mots);
 		return mots;
 	}
-
+	
+//	la complexité est de O(n⋅k), tq : n est le nombre de nœuds dans l'arbre.
+//  k est la longueur moyenne des mots (ou des clés des nœuds dans le Patricia Trie).
 	private static void listeMotsRec(PatriciaTrieNode node, String prefix, List<String> mots) {
 		if (node.isEndOfWord) {
 			mots.add(prefix);
@@ -61,11 +65,12 @@ public class FonctionAvancer {
 			listeMotsRec(entry.getValue(), prefix + entry.getValue().key, mots);
 		}
 	}
-
+//	la même avec comptageNilRecursif
 	public static int comptageNil(PatriciaTrieNode node) {
 		return comptageNilRecursif(node);
 	}
-
+//	la complexité est de O(n) "n est le nombre total des noeuds"
+	
 	private static int comptageNilRecursif(PatriciaTrieNode node) {
 		int count = 0;
 		// Si le noeud a des enfants
@@ -81,7 +86,7 @@ public class FonctionAvancer {
 
 		return count;
 	}
-
+//	O(n)
 	public static int hauteur(PatriciaTrieNode node) {
 		if (node.children.isEmpty()) {
 			return 0;
@@ -92,13 +97,13 @@ public class FonctionAvancer {
 		}
 		return maxHeight + 1;
 	}
-
+//	O(n)
 	public static int profondeurMoyenne(PatriciaTrieNode node) {
 		int[] result = new int[2]; // result[0] : somme des profondeurs, result[1] : nombre de feuilles
 		calculerProfondeurMoyenne(node, 0, result);
 		return (int) (result[1] == 0 ? 0 : (double) result[0] / result[1]);
 	}
-
+//	O(n)
 	private static void calculerProfondeurMoyenne(PatriciaTrieNode node, int profondeurActuelle, int[] result) {
 		if (node.children.isEmpty()) { // Si le nœud est une feuille
 			result[0] += profondeurActuelle;
@@ -109,7 +114,9 @@ public class FonctionAvancer {
 			}
 		}
 	}
-
+//	la complexité est O(n+m) tq: m est la longueur du préfixe donné en paramètre.
+//	n est le nombre de nœuds descendants à partir du nœud correspondant au préfixe (inclus).
+	
 	public static int prefixe(PatriciaTrieNode p, String prefix) {
 		PatriciaTrieNode pc = p;
 		int index = 0;
@@ -135,6 +142,8 @@ public class FonctionAvancer {
 		// Une fois le préfixe trouvé, compter les mots descendants de ce nœud
 		return compterMotsDescendants(pc);
 	}
+	
+//	complexite O(n)
 
 	private static int compterMotsDescendants(PatriciaTrieNode node) {
 		int count = node.isEndOfWord ? 1 : 0; // Compter le nœud actuel s'il représente un mot
@@ -143,12 +152,13 @@ public class FonctionAvancer {
 		}
 		return count;
 	}
-
-	public static boolean suppression(PatriciaTrieNode node, String mot) {
-		return suppression(node, mot, 0);
+//	 le même avec suppression parceque c'est juste un appel à la fonction supression.
+	public static PatriciaTrieNode suppression(PatriciaTrieNode node, String mot) {
+		suppression(node, mot, 0);
+		return node;
 	}
-
-	public static void supressionDuMotDufichier(PatriciaTrieNode node,String filename) {
+//	O(n⋅m) tq : n est le nombre de mots dans le fichier. m est la longueur moyenne des mots dans le fichier.
+	public static PatriciaTrieNode supressionDuMotDufichier(PatriciaTrieNode node, String filename) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { // on crée un bufferReader qui lit
 																						// le fichier.txt
 			String mot;
@@ -156,13 +166,15 @@ public class FonctionAvancer {
 														// les ajoutant dans l'arbre
 				mot = mot.trim();// Nettoyer le mot en enlevant les espaces superflus
 				if (!mot.isEmpty()) { // on insere le mot si il n'est pas vide
-					suppression(node,mot); // Insérer le mot dans l'arbre Patricia
+					suppression(node, mot); // Insérer le mot dans l'arbre Patricia
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return node;
 	}
+//	La complexité au pire cas de la fonction suppression est O(n), où n est la longueur du mot à supprimer.
 	private static boolean suppression(PatriciaTrieNode p, String mot, int index) {
 		if (index == mot.length()) {
 			// Nous avons atteint la fin du mot dans l'arbre
@@ -195,7 +207,7 @@ public class FonctionAvancer {
 		}
 		return false;
 	}
-
+//	O(min(m,n)) tq: m est la longueur de la chaîne s1. n est la longueur de la chaîne s2.
 	private static String getPrefixeCommun(String s1, String s2) {
 		int l = Math.min(s1.length(), s2.length());
 		int i = 0;
@@ -204,7 +216,7 @@ public class FonctionAvancer {
 		}
 		return s1.substring(0, i);
 	}
-
+//	O((n+m)⋅k)
 	public static PatriciaTrieNode fusionner(PatriciaTrieNode trie1, PatriciaTrieNode trie2) {
 		PatriciaTrieNode resultat = new PatriciaTrieNode("");
 		fusionnerNoeuds(resultat, trie1);
@@ -212,6 +224,9 @@ public class FonctionAvancer {
 		return resultat;
 	}
 
+//	La complexité au pire cas de la fonction fusionnerNoeuds est O(n⋅k):
+//		n est le nombre d'enfants dans le nœud source.
+//		k est la longueur moyenne des clés des nœuds (en termes de préfixe).
 	private static void fusionnerNoeuds(PatriciaTrieNode cible, PatriciaTrieNode source) {
 		for (Map.Entry<Character, PatriciaTrieNode> entry : source.children.entrySet()) {
 			char charCle = entry.getKey();
@@ -220,19 +235,19 @@ public class FonctionAvancer {
 			if (cible.children.containsKey(charCle)) {
 				// Le nœud existe déjà, fusionner les enfants
 				PatriciaTrieNode noeudCible = cible.children.get(charCle);
-				String commonPrefix = getPrefixeCommun(noeudCible.key, noeudSource.key);
+				String prefixCommun = getPrefixeCommun(noeudCible.key, noeudSource.key);
 
-				if (commonPrefix.equals(noeudSource.key)) {
+				if (prefixCommun.equals(noeudSource.key)) {
 					// Le préfixe source est identique au préfixe cible
 					fusionnerNoeuds(noeudCible, noeudSource);
 				} else {
 					// Diviser le nœud et fusionner
-					PatriciaTrieNode splitNode = new PatriciaTrieNode(commonPrefix);
+					PatriciaTrieNode splitNode = new PatriciaTrieNode(prefixCommun);
 					cible.children.put(charCle, splitNode);
 
 					// Ajuster les enfants pour le nœud source et le nœud cible
-					noeudSource.key = noeudSource.key.substring(commonPrefix.length());
-					noeudCible.key = noeudCible.key.substring(commonPrefix.length());
+					noeudSource.key = noeudSource.key.substring(prefixCommun.length());
+					noeudCible.key = noeudCible.key.substring(prefixCommun.length());
 
 					// Vérifier que les clés ne sont pas vides avant d'accéder à charAt(0)
 					if (!noeudSource.key.isEmpty()) {
