@@ -19,8 +19,11 @@ public class PatriciaTrieNode {
 		this.isEndOfWord = false;
 		this.children = new HashMap<>();
 	}
+
 	public PatriciaTrieNode() {
-	    // Constructeur par défaut requis pour la désérialisation
+		// Constructeur par défaut requis pour la désérialisation
+		this.isEndOfWord = false;
+		this.children = new HashMap<>();
 	}
 
 	public String getKey() {
@@ -46,6 +49,7 @@ public class PatriciaTrieNode {
 	public void setChildren(Map<Character, PatriciaTrieNode> children) {
 		this.children = children;
 	}
+
 	// O(k) tq k est la longeur du mots
 	public void inserer(String mot) {
 		PatriciaTrieNode noeud = this; // l'arbre ou on va ajouter
@@ -93,6 +97,33 @@ public class PatriciaTrieNode {
 			e.printStackTrace();
 		}
 	}
+	
+	public void insertMotsDuRepertoire(String repertoirePath) throws IOException {
+	    File repertoire = new File(repertoirePath);
+
+	    if (!repertoire.exists() || !repertoire.isDirectory()) {
+	        System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
+	        return;
+	    }
+
+	    File[] fichiers = repertoire.listFiles();
+	    if (fichiers == null) {
+	        System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
+	        return;
+	    }
+
+	    for (File fichier : fichiers) {
+	        if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+	            try {
+	                this.insertMotduFichier(fichier.getAbsolutePath());
+	            } catch (NullPointerException e) {
+	                System.err.println("Erreur interne : Vérifiez que 'children' est bien initialisé.");
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	}
+
 
 //	O(k) tq k est la longeure de prefixe
 	private String getPrefixeCommun(String s1, String s2) {
@@ -126,7 +157,8 @@ public class PatriciaTrieNode {
 //	La complexité totale de la fonction toJson est O(n * T)
 
 	// Conversion de PatriciaTrieNode en chaîne de caractère
-	// sa complexité est de O(n), tq n est le nombre de noeuds
+	// sa complexité est de O(n+S), tq n est le nombre de noeuds, S S est la taille
+	// totale des données sérialisées (nombre de caractères du JSON).
 	public String toJson() {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -147,14 +179,15 @@ public class PatriciaTrieNode {
 			e.printStackTrace();
 		}
 	}
+
 	public static PatriciaTrieNode loadFromFile(String filename) {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.readValue(new File(filename), PatriciaTrieNode.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null; // Retourne null en cas d'erreur
-        }
-    }
-	
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			return mapper.readValue(new File(filename), PatriciaTrieNode.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null; // Retourne null en cas d'erreur
+		}
+	}
+
 }

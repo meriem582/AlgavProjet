@@ -1,0 +1,38 @@
+{
+  "key" : "",
+  "children" : {
+    "b" : {
+      "key" : "bat",
+      "children" : { },
+      "endOfWord" : true
+    },
+    "c" : {
+      "key" : "ca",
+      "children" : {
+        "r" : {
+          "key" : "r",
+          "children" : {
+            "t" : {
+              "key" : "t",
+              "children" : { },
+              "endOfWord" : true
+            }
+          },
+          "endOfWord" : true
+        },
+        "t" : {
+          "key" : "t",
+          "children" : { },
+          "endOfWord" : true
+        }
+      },
+      "endOfWord" : false
+    },
+    "d" : {
+      "key" : "dog",
+      "children" : { },
+      "endOfWord" : true
+    }
+  },
+  "endOfWord" : false
+}

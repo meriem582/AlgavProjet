@@ -1,7 +1,5 @@
 car
-carty
-carayib
-sara
-sissa
-meriem
-mar
+cat
+cart
+dog
+bat

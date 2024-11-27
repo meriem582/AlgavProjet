@@ -67,7 +67,7 @@ public class Main {
 		    case "profondeurMoyennePatricia":
 		    	PatriciaTrieNode pp=PatriciaTrieNode.loadFromFile(args[1]);
 		    	int p=FonctionAvancer.profondeurMoyenne(pp);
-		    	try (FileWriter file = new FileWriter("profondeur.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+		    	try (FileWriter file = new FileWriter("profondeur.txt")) {
 					file.write(p+"");
 					file.flush();
 				} catch (IOException e) {
@@ -84,7 +84,7 @@ public class Main {
 		    	
 		    	PatriciaTrieNode ppref=PatriciaTrieNode.loadFromFile(args[1]);
 		    	int pref=FonctionAvancer.prefixe(ppref, args[2]+"");
-		    	try (FileWriter file = new FileWriter("prefixe.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+		    	try (FileWriter file = new FileWriter("prefixe.txt")) { 
 					file.write(pref+"");
 					file.flush();
 				} catch (IOException e) {
