@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+//import org.json.JSONObject;
+//import org.json.JSONException;
 
 public class PatriciaTrieNode {
 	String key;
@@ -134,4 +136,48 @@ public class PatriciaTrieNode {
 			e.printStackTrace();
 		}
 	}
+	
+//	public static PatriciaTrieNode fromJson(JSONObject jsonObject) {
+//	    try {
+//	        // Récupérer les propriétés de la racine
+//	        String label = jsonObject.getString("label");
+//	        boolean isEndOfWord = jsonObject.getBoolean("is_end_of_word");
+//
+//	        // Créer le noeud racine
+//	        PatriciaTrieNode node = new PatriciaTrieNode(label);
+//	        node.isEndOfWord=isEndOfWord;
+//
+//	        // Charger les enfants récursivement
+//	        JSONObject childrenObject = jsonObject.getJSONObject("children");
+//	        for (String key : childrenObject.keySet()) {
+//	            JSONObject childJson = childrenObject.getJSONObject(key);
+//	            PatriciaTrieNode childNode = fromJson(childJson);
+//	            node.children.put(key.charAt(0), childNode);
+//	        }
+//
+//	        return node;
+//
+//	    } catch (JSONException e) {
+//	        throw new RuntimeException("Erreur de parsing JSON: " + e.getMessage(), e);
+//	    }
+//	}
+//
+//	public static PatriciaTrieNode loadFromFile(String filename) {
+//	    StringBuilder jsonContent = new StringBuilder();
+//
+//	    // Lire le contenu du fichier JSON
+//	    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+//	        String line;
+//	        while ((line = reader.readLine()) != null) {
+//	            jsonContent.append(line);
+//	        }
+//	    } catch (IOException e) {
+//	        e.printStackTrace();
+//	        throw new RuntimeException("Erreur lors de la lecture du fichier: " + filename);
+//	    }
+//
+//	    // Convertir le JSON en objet PatriciaTrieNode
+//	    JSONObject jsonObject = new JSONObject(jsonContent.toString());
+//	    return fromJson(jsonObject);
+//	}
 }

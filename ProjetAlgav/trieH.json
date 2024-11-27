@@ -1,0 +1,55 @@
+{
+  "caractere": " ",
+  "valeur": -1,
+  "inferieur": {},
+  "egal": {},
+  "superieur":     {
+      "caractere": "l",
+      "valeur": -1,
+      "inferieur":     {
+          "caractere": "e",
+          "valeur": -1,
+          "inferieur": {},
+          "egal":     {
+              "caractere": "s",
+              "valeur": -1,
+              "inferieur": {},
+              "egal":     {
+                  "caractere": "t",
+                  "valeur": 1,
+                  "inferieur": {},
+                  "egal": {},
+                  "superieur": {}
+                },
+              "superieur": {}
+            },
+          "superieur": {}
+        },
+      "egal":     {
+          "caractere": "a",
+          "valeur": 1,
+          "inferieur": {},
+          "egal": {},
+          "superieur": {}
+        },
+      "superieur":     {
+          "caractere": "v",
+          "valeur": -1,
+          "inferieur": {},
+          "egal":     {
+              "caractere": "i",
+              "valeur": -1,
+              "inferieur": {},
+              "egal":     {
+                  "caractere": "e",
+                  "valeur": 1,
+                  "inferieur": {},
+                  "egal": {},
+                  "superieur": {}
+                },
+              "superieur": {}
+            },
+          "superieur": {}
+        }
+    }
+}
