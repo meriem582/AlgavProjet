@@ -17,42 +17,9 @@
       },
       "endOfWord" : true
     },
-    "b" : {
-      "key" : "bat",
-      "children" : { },
-      "endOfWord" : true
-    },
     "c" : {
       "key" : "c",
       "children" : {
-        " " : {
-          "key" : " at ",
-          "children" : { },
-          "endOfWord" : true
-        },
-        "a" : {
-          "key" : "ar",
-          "children" : {
-            "t" : {
-              "key" : "t",
-              "children" : {
-                "y" : {
-                  "key" : "yy",
-                  "children" : {
-                    "a" : {
-                      "key" : "a",
-                      "children" : { },
-                      "endOfWord" : true
-                    }
-                  },
-                  "endOfWord" : true
-                }
-              },
-              "endOfWord" : true
-            }
-          },
-          "endOfWord" : true
-        },
         "h" : {
           "key" : "hacune",
           "children" : { },
@@ -88,7 +55,7 @@
       "endOfWord" : false
     },
     "d" : {
-      "key" : "dog",
+      "key" : "d",
       "children" : {
         "a" : {
           "key" : "actylo",
@@ -124,7 +91,7 @@
           "endOfWord" : true
         }
       },
-      "endOfWord" : true
+      "endOfWord" : false
     },
     "e" : {
       "key" : "e",

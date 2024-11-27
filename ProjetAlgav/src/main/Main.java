@@ -1,5 +1,9 @@
 package main;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
 import PatriciaTrie.*;
 
 
@@ -21,18 +25,24 @@ public class Main {
 		        break;
 		    
 		    case "insererHybride":
-//		        System.out.println("Ajout en trieHybride");
-		        break;
+
+		    	break;
 		    
 		    case "suppressionPatricia":
-		    	
+		    	PatriciaTrieNode pat = PatriciaTrieNode.loadFromFile("pat.json");
+		    	pat=FonctionAvancer.supressionDuMotDufichier(pat, args[1]);
+		    	pat.saveToFile("pat.json");
 		    	break;
 		    	
 		    case "suppressionHybride":
 		    	
 		        break;
 		    case "fussionPatricia":
-
+		    	PatriciaTrieNode p1= PatriciaTrieNode.loadFromFile(args[1]);
+		    	PatriciaTrieNode p2= PatriciaTrieNode.loadFromFile(args[2]);
+		    	PatriciaTrieNode pf= FonctionAvancer.fusionner(p1, p2);
+		    	pf.saveToFile("pat.json");
+		    	
 		        break;
 		        
 		    case "fussionHybride":
@@ -40,7 +50,14 @@ public class Main {
 		        break;
 		    
 		    case "listeMotsPatricia":
-
+		    	PatriciaTrieNode pl=PatriciaTrieNode.loadFromFile(args[1]);
+		    	List<String> list=FonctionAvancer.listeMots(pl);
+		    	try (FileWriter file = new FileWriter("mot.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+					file.write(list+"");
+					file.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		        break;
 		        
 		    case "listeMotsHybride":
@@ -48,7 +65,15 @@ public class Main {
 		        break;
 		        
 		    case "profondeurMoyennePatricia":
-
+		    	PatriciaTrieNode pp=PatriciaTrieNode.loadFromFile(args[1]);
+		    	int p=FonctionAvancer.profondeurMoyenne(pp);
+		    	try (FileWriter file = new FileWriter("profondeur.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+					file.write(p+"");
+					file.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		    	
 		        break;
 		        
 		    case "profondeurMoyenneHybride":
@@ -56,10 +81,17 @@ public class Main {
 		        break;
 		        
 		    case "prefixePatricia":
-
+		    	
+		    	PatriciaTrieNode ppref=PatriciaTrieNode.loadFromFile(args[1]);
+		    	int pref=FonctionAvancer.prefixe(ppref, args[2]+"");
+		    	try (FileWriter file = new FileWriter("prefixe.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+					file.write(pref+"");
+					file.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		        break;
-		        
-		        
+		      
 		    case "prefixeHybride":
 
 		        break;

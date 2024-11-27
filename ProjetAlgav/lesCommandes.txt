@@ -1,0 +1,15 @@
+dos2unix script.sh
+
+bash script.sh inserer 0 mots.txt
+
+bash script.sh suppression 0 motsAsupprimer.txt
+
+bash script.sh fusion 0 trie1.json trie2.json
+
+bash script.sh fusion 0 trie1.json trie2.json
+
+bash script.sh listeMots 0 pat.json
+
+bash script.sh profondeurMoyenne 0 trie1.json
+
+bash script.sh prefixe 0 trie1.json car

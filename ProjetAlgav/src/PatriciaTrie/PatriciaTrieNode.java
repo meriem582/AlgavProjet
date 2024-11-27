@@ -1,13 +1,13 @@
 package PatriciaTrie;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-//import org.json.JSONObject;
-//import org.json.JSONException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PatriciaTrieNode {
 	String key;
@@ -19,8 +19,34 @@ public class PatriciaTrieNode {
 		this.isEndOfWord = false;
 		this.children = new HashMap<>();
 	}
+	public PatriciaTrieNode() {
+	    // Constructeur par défaut requis pour la désérialisation
+	}
 
-//	O(k) tq k est la longeur du mots
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public boolean isEndOfWord() {
+		return isEndOfWord;
+	}
+
+	public void setEndOfWord(boolean isEndOfWord) {
+		this.isEndOfWord = isEndOfWord;
+	}
+
+	public Map<Character, PatriciaTrieNode> getChildren() {
+		return children;
+	}
+
+	public void setChildren(Map<Character, PatriciaTrieNode> children) {
+		this.children = children;
+	}
+	// O(k) tq k est la longeur du mots
 	public void inserer(String mot) {
 		PatriciaTrieNode noeud = this; // l'arbre ou on va ajouter
 		int index = 0; // premiere lettre
@@ -102,28 +128,13 @@ public class PatriciaTrieNode {
 	// Conversion de PatriciaTrieNode en chaîne de caractère
 	// sa complexité est de O(n), tq n est le nombre de noeuds
 	public String toJson() {
-		String json = "{\n  \"label\": \"" + key + "\",\n  \"is_end_of_word\": " + (isEndOfWord) + ",\n";
-
-		// Vérification si `children` est vide
-		if (children.isEmpty()) {
-			json += "  \"children\": {}\n";
-		} else {
-			json += "  \"children\": {\n";
-			int nbr = 0;
-			for (Map.Entry<Character, PatriciaTrieNode> entry : children.entrySet()) { // on parcours les children et on
-																						// leurs applique le fonction
-																						// tojsonstring
-				json += "    \"" + entry.getKey() + "\": " + entry.getValue().toJson().replaceAll("(?m)^", "    ");
-				if (nbr < children.size() - 1) {
-					json += ",";
-				}
-				json += "\n";
-				nbr++;
-			}
-			json += "  }\n";
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{}"; // Retourne un JSON vide en cas d'erreur
 		}
-		json += "}";
-		return json;
 	}
 
 	// Méthode pour sauvegarder le Patricia Trie dans un fichier au format JSON
@@ -136,48 +147,14 @@ public class PatriciaTrieNode {
 			e.printStackTrace();
 		}
 	}
+	public static PatriciaTrieNode loadFromFile(String filename) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(new File(filename), PatriciaTrieNode.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Retourne null en cas d'erreur
+        }
+    }
 	
-//	public static PatriciaTrieNode fromJson(JSONObject jsonObject) {
-//	    try {
-//	        // Récupérer les propriétés de la racine
-//	        String label = jsonObject.getString("label");
-//	        boolean isEndOfWord = jsonObject.getBoolean("is_end_of_word");
-//
-//	        // Créer le noeud racine
-//	        PatriciaTrieNode node = new PatriciaTrieNode(label);
-//	        node.isEndOfWord=isEndOfWord;
-//
-//	        // Charger les enfants récursivement
-//	        JSONObject childrenObject = jsonObject.getJSONObject("children");
-//	        for (String key : childrenObject.keySet()) {
-//	            JSONObject childJson = childrenObject.getJSONObject(key);
-//	            PatriciaTrieNode childNode = fromJson(childJson);
-//	            node.children.put(key.charAt(0), childNode);
-//	        }
-//
-//	        return node;
-//
-//	    } catch (JSONException e) {
-//	        throw new RuntimeException("Erreur de parsing JSON: " + e.getMessage(), e);
-//	    }
-//	}
-//
-//	public static PatriciaTrieNode loadFromFile(String filename) {
-//	    StringBuilder jsonContent = new StringBuilder();
-//
-//	    // Lire le contenu du fichier JSON
-//	    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-//	        String line;
-//	        while ((line = reader.readLine()) != null) {
-//	            jsonContent.append(line);
-//	        }
-//	    } catch (IOException e) {
-//	        e.printStackTrace();
-//	        throw new RuntimeException("Erreur lors de la lecture du fichier: " + filename);
-//	    }
-//
-//	    // Convertir le JSON en objet PatriciaTrieNode
-//	    JSONObject jsonObject = new JSONObject(jsonContent.toString());
-//	    return fromJson(jsonObject);
-//	}
 }
