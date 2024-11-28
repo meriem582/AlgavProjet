@@ -96,7 +96,7 @@ public class FonctionAvancer {
 	public static int profondeurMoyenne(PatriciaTrieNode node) {
 		int[] result = new int[2]; // result[0] : somme des profondeurs, result[1] : nombre de feuilles
 		calculerProfondeurMoyenne(node, 0, result);
-		return (int) (result[1] == 0 ? 0 : (double) result[0] / result[1]);
+		return (int) Math.round(result[1] == 0 ? 0 : (double) result[0] / result[1]);
 	}
 
 	private static void calculerProfondeurMoyenne(PatriciaTrieNode node, int profondeurActuelle, int[] result) {

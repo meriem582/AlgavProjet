@@ -26,29 +26,65 @@
       "right" : null
     },
     "middle" : {
-      "char" : "a",
+      "char" : " ",
       "is_end_of_word" : false,
       "left" : null,
       "middle" : {
-        "char" : "r",
-        "is_end_of_word" : true,
+        "char" : "a",
+        "is_end_of_word" : false,
         "left" : null,
         "middle" : {
           "char" : "t",
-          "is_end_of_word" : true,
+          "is_end_of_word" : false,
           "left" : null,
-          "middle" : null,
+          "middle" : {
+            "char" : " ",
+            "is_end_of_word" : true,
+            "left" : null,
+            "middle" : null,
+            "right" : null
+          },
           "right" : null
         },
-        "right" : {
-          "char" : "t",
+        "right" : null
+      },
+      "right" : {
+        "char" : "a",
+        "is_end_of_word" : false,
+        "left" : null,
+        "middle" : {
+          "char" : "r",
           "is_end_of_word" : true,
           "left" : null,
-          "middle" : null,
+          "middle" : {
+            "char" : "t",
+            "is_end_of_word" : true,
+            "left" : null,
+            "middle" : {
+              "char" : "y",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "y",
+                "is_end_of_word" : true,
+                "left" : null,
+                "middle" : {
+                  "char" : "a",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : null
+          },
           "right" : null
-        }
-      },
-      "right" : null
+        },
+        "right" : null
+      }
     },
     "right" : {
       "char" : "d",

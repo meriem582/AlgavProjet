@@ -133,11 +133,11 @@ public class FonctionAvancerHybride {
      * @param trieHY Le nœud racine du trie hybride.
      * @return La profondeur moyenne.
      */
-    public static double profondeurMoyenne(TrieHybridesNode trieHY) {
+    public static int profondeurMoyenne(TrieHybridesNode trieHY) {
         int[] profondeurTotale = new int[1];
         int[] nombreDeMots = new int[1];
         calculProfondeur(trieHY, 0, profondeurTotale, nombreDeMots);
-        return nombreDeMots[0] == 0 ? 0 : (double) profondeurTotale[0] / nombreDeMots[0];
+        return (int) Math.round(nombreDeMots[0] == 0 ? 0 : (double) profondeurTotale[0] / nombreDeMots[0]);
     }
 
     /**

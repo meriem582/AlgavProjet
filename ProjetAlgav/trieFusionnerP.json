@@ -34,7 +34,7 @@
         },
         "a" : {
           "label" : "ar",
-          "is_end_of_word" : false,
+          "is_end_of_word" : true,
           "children" : {
             "t" : {
               "label" : "t",

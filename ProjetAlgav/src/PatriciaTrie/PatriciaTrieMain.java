@@ -48,10 +48,10 @@ public class PatriciaTrieMain {
 		
 		trie1.saveToFile("trie1P.json");
 
-		FonctionAvancer.suppression(trie1, "car");
-		System.out.println("Résultat de la recherche du mot car aprés la suppression : "+FonctionAvancer.Recherche(trie1, "car")); 
-		
-		trie1.saveToFile("trie1ApresSupP.json");
+//		FonctionAvancer.suppression(trie1, "car");
+//		System.out.println("Résultat de la recherche du mot car aprés la suppression : "+FonctionAvancer.Recherche(trie1, "car")); 
+//		
+//		trie1.saveToFile("trie1ApresSupP.json");
 
 		trie2.saveToFile("trie2P.json");
 		PatriciaTrieNode trieFusionne = FonctionAvancer.fusionner(trie1, trie2);

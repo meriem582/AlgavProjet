@@ -96,7 +96,7 @@ public class Main {
 		        
 		    case "profondeurMoyenneHybride":
 		    	TrieHybridesNode trieH6 = TrieHybridesNode.jsonToArbre(args[1]);
-				double ph1 = FonctionAvancerHybride.profondeurMoyenne(trieH6);
+				int ph1 = FonctionAvancerHybride.profondeurMoyenne(trieH6);
 				try (FileWriter file = new FileWriter("profondeurH.txt")) {
 					file.write(ph1+"");
 					file.flush();

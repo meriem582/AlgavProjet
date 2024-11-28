@@ -13,9 +13,9 @@ public class TrieHybrideMain {
         TrieHybridesNode trie2 = new TrieHybridesNode(' ');
 
         // Exemple de texte
-        String text1 = "car|cat|cart|dog|bat";
-        String text2 = "chat|chien|cheval|lapin|lion|l";
-
+        String text1 = "c at |cart|car|cartyy|cartyya|dog|bat";
+		String text2 = "|A|quel|genial|professeur|de|dactylographie|sommes|nous|redevables|de|la|superbe|phrase|ci|dessous|,|un|modele|du|genre|,|que|toute|dactylo|connait|par|coeur|puisque|elle|fait|appel|a|chacune|des|touches|du|clavier|de|la|machine|a|ecrire|?";
+		
         // on séparer les mots du texte
         String[] parts1 = text1.split("\\|");
         String[] parts2 = text2.split("\\|");
@@ -34,28 +34,28 @@ public class TrieHybrideMain {
         }
 
         // Afficher les résultats
-        System.out.println("Le nombre de mots dans trie 1: " + comptageMots(trie1) + "\n" + "Le nombre de mots dans trie2: " + comptageMots(trie1));
+        System.out.println("Le nombre de mots dans trie 1: " + comptageMots(trie1) + "\n" + "Le nombre de mots dans trie2: " + comptageMots(trie2));
         System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1) + "\n" + "Liste des mots dans l'ordre alphabétique dans trie2 : " + listeMots(trie2));
         System.out.println("Hauteur de l'arbre dans trie1 : " + hauteur(trie1) + "\n" + "Hauteur de l'arbre dans trie2: " + hauteur(trie2));
         System.out.println("Profondeur moyenne dans trie1 : " + profondeurMoyenne(trie1) + "\n" + "Profondeur moyenne dans trie2: " + profondeurMoyenne(trie2));
         System.out.println("Nombre de mots commençant par 'la' dans trie1 : " + prefixe(trie1, "la") + "\n" + "Nombre de mots commençant par 'la' dans trie2: " + prefixe(trie2, "la"));
-        System.out.println("Recherche de 'belle' dans trie1 : " + recherche(trie1, "belle") + "\n" + "Recherche de 'belle' dans trie2: " + recherche(trie2, "belle"));
-        System.out.println("Recherche de 'lion' dans trie1 : " + recherche(trie1, "lion") + "\n" + "Recherche de 'lion' dans trie2: " + recherche(trie2, "lion"));
+        System.out.println("Recherche de 'cart' dans trie1 : " + recherche(trie1, "cart") + "\n" + "Recherche de 'A' dans trie2: " + recherche(trie2, "A")); // true
+        System.out.println("Recherche de 'ca' dans trie1 : " + recherche(trie1, "ca") + "\n" + "Recherche de 'ca' dans trie2: " + recherche(trie2, "ca")); // false
 
         //on teste la suppression
 
 
-        System.out.println("Avant suppression :");
-        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
-        System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
-
-        // Suppression des mots
-        trie1 = supression(trie1, "belle");
-        trie2 = supression(trie2, "lion");
-
-        System.out.println("Après suppression :");
-        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
-        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1: " + listeMots(trie2));
+//        System.out.println("Avant suppression :");
+//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
+//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
+//
+//        // Suppression des mots
+//        trie1 = supression(trie1, "belle");
+//        trie2 = supression(trie2, "lion");
+//
+//        System.out.println("Après suppression :");
+//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
+//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1: " + listeMots(trie2));
         // Sauvegarder le trie en JSON
         trie1.saveToFile("trie1H.json");
         trie2.saveToFile("trie2H.json");
@@ -81,7 +81,7 @@ public class TrieHybrideMain {
 
         System.out.println("Mots après fusion : " + listeMots(trieFusionne));
 
-        System.out.printf("Trie fusionné : %d mots, hauteur %d, profondeur moyenne %.2f%n",
+        System.out.printf("Trie fusionné : %d mots, hauteur %d, profondeur moyenne %d%n",
                 comptageMots(trieFusionne), hauteur(trieFusionne), profondeurMoyenne(trieFusionne));
 
         TrieHybridesNode triecopy = TrieHybridesNode.jsonToArbre("trie1H.json");
