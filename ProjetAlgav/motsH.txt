@@ -1,0 +1,1 @@
+[bat, car, cart, cat, chat, cheval, chien, dog, l, lapin]

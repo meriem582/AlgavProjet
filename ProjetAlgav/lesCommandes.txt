@@ -1,15 +1,19 @@
 dos2unix script.sh
 
 bash script.sh inserer 0 mots.txt
+bash script.sh inserer 1 mots.txt
 
 bash script.sh suppression 0 motsAsupprimer.txt
+bash script.sh suppression 1 motsAsupprimer.txt
 
-bash script.sh fusion 0 trie1.json trie2.json
+bash script.sh fusion 0 trie1P.json trie2P.json
+bash script.sh fusion 1 trie1H.json trie2H.json
 
-bash script.sh fusion 0 trie1.json trie2.json
+bash script.sh listeMots 0 patP.json
+bash script.sh listeMots 1 patH.json
 
-bash script.sh listeMots 0 pat.json
+bash script.sh profondeurMoyenne 0 trie1P.json
+bash script.sh profondeurMoyenne 1 trie1H.json
 
-bash script.sh profondeurMoyenne 0 trie1.json
-
-bash script.sh prefixe 0 trie1.json car
+bash script.sh prefixe 0 trie1P.json car
+bash script.sh prefixe 1 trie1H.json car

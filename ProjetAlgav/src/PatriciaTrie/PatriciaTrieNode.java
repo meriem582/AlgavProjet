@@ -10,36 +10,36 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PatriciaTrieNode {
-	String key;
-	boolean isEndOfWord;
+	String label;
+	boolean is_end_of_word;
 	Map<Character, PatriciaTrieNode> children;
 
-	public PatriciaTrieNode(String key) {
-		this.key = key;
-		this.isEndOfWord = false;
+	public PatriciaTrieNode(String label) {
+		this.label = label;
+		this.is_end_of_word = false;
 		this.children = new HashMap<>();
 	}
 
 	public PatriciaTrieNode() {
-		// Constructeur par défaut requis pour la désérialisation
-		this.isEndOfWord = false;
+		this.label = "";
+		this.is_end_of_word = false;
 		this.children = new HashMap<>();
 	}
 
-	public String getKey() {
-		return key;
+	public String getLabel() {
+		return label;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public boolean isIs_end_of_word() {
+		return is_end_of_word;
 	}
 
-	public boolean isEndOfWord() {
-		return isEndOfWord;
+	public void setIs_end_of_word(boolean is_end_of_word) {
+		this.is_end_of_word = is_end_of_word;
 	}
 
-	public void setEndOfWord(boolean isEndOfWord) {
-		this.isEndOfWord = isEndOfWord;
+	public void setLabel(String key) {
+		this.label = key;
 	}
 
 	public Map<Character, PatriciaTrieNode> getChildren() {
@@ -50,7 +50,6 @@ public class PatriciaTrieNode {
 		this.children = children;
 	}
 
-	// O(k) tq k est la longeur du mots
 	public void inserer(String mot) {
 		PatriciaTrieNode noeud = this; // l'arbre ou on va ajouter
 		int index = 0; // premiere lettre
@@ -59,14 +58,14 @@ public class PatriciaTrieNode {
 			char ch = mot.charAt(index); // on recupere la premiere lettre ( du mot ou partie du mot)
 			if (noeud.children.containsKey(ch)) { // si on trouve la premiere lettre dans l'arbre de patricia
 				PatriciaTrieNode child = noeud.children.get(ch); // on recupere le noeud ou y a la premiere lettre
-				String prefixeCommun = getPrefixeCommun(mot.substring(index), child.key); // on récuper prefixe commun
+				String prefixeCommun = getPrefixeCommun(mot.substring(index), child.label); // on récuper prefixe commun
 																							// entre le mot et l'enfant
 
-				if (prefixeCommun.length() == child.key.length()) { // si le mot trouver et le meme que le prefixe
+				if (prefixeCommun.length() == child.label.length()) { // si le mot trouver et le meme que le prefixe
 					noeud = child;
 					index += prefixeCommun.length();
 				} else {
-					splitNode(noeud, child, prefixeCommun, mot.substring(index + prefixeCommun.length()));
+					arrangement(noeud, child, prefixeCommun, mot.substring(index + prefixeCommun.length()));
 					// sinon on decortique en qlq sort le noeud en deux fils ou on ajoute le suffixe
 					// du mot a ajouter et le reste de celui trouver dans l'arbre
 					return;
@@ -74,14 +73,13 @@ public class PatriciaTrieNode {
 
 			} else { // sinon on ajoute cette lettre et son mot
 				noeud.children.put(ch, new PatriciaTrieNode(mot.substring(index)));
-				noeud.children.get(ch).isEndOfWord = true;
+				noeud.children.get(ch).is_end_of_word = true;
 				return;
 			}
 		}
-		noeud.isEndOfWord = true; // à la fin on dit qu'on a finit d'inserer en disant que c'est la fin du mot
+		noeud.is_end_of_word = true; // à la fin on dit qu'on a finit d'inserer en disant que c'est la fin du mot
 	}
 
-//	O(n * k). tq n est le nombre de mots et k est la longueur moyenne des mots.
 	public void insertMotduFichier(String filename) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { // on crée un bufferReader qui lit
 																						// le fichier.txt
@@ -97,36 +95,34 @@ public class PatriciaTrieNode {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void insertMotsDuRepertoire(String repertoirePath) throws IOException {
-	    File repertoire = new File(repertoirePath);
+		File repertoire = new File(repertoirePath);
 
-	    if (!repertoire.exists() || !repertoire.isDirectory()) {
-	        System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
-	        return;
-	    }
+		if (!repertoire.exists() || !repertoire.isDirectory()) {
+			System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
+			return;
+		}
 
-	    File[] fichiers = repertoire.listFiles();
-	    if (fichiers == null) {
-	        System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
-	        return;
-	    }
+		File[] fichiers = repertoire.listFiles();
+		if (fichiers == null) {
+			System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
+			return;
+		}
 
-	    for (File fichier : fichiers) {
-	        if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
-	            try {
-	                this.insertMotduFichier(fichier.getAbsolutePath());
-	            } catch (NullPointerException e) {
-	                System.err.println("Erreur interne : Vérifiez que 'children' est bien initialisé.");
-	                e.printStackTrace();
-	            }
-	        }
-	    }
+		for (File fichier : fichiers) {
+			if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+				try {
+					this.insertMotduFichier(fichier.getAbsolutePath());
+				} catch (NullPointerException e) {
+					System.err.println("Erreur interne : Vérifiez que 'children' est bien initialisé.");
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
-
-//	O(k) tq k est la longeure de prefixe
-	private String getPrefixeCommun(String s1, String s2) {
+	public static String getPrefixeCommun(String s1, String s2) {
 		int l = Math.min(s1.length(), s2.length()); // on utilise la class Math pour utiliser la fonction min pour
 													// récupere la taille minimal des deux mots " car le prefixe ne
 													// depassera d'un des mots
@@ -138,28 +134,22 @@ public class PatriciaTrieNode {
 		return s1.substring(0, i); // a la fin on recupere d'un des mots le préfixe commun
 	}
 
-//	O(m + n), tq m est la longueur de prifixe commun et n est la longueur du suffixe
+	private void arrangement(PatriciaTrieNode parent, PatriciaTrieNode child, String prefixeCommun, String suffix) {
+		PatriciaTrieNode nvnoeud = new PatriciaTrieNode(prefixeCommun); // on crée un nouveau noeud qui aura le
+																		// prefixe commun comme clé
+		nvnoeud.children.put(child.label.charAt(prefixeCommun.length()), child);
+		nvnoeud.is_end_of_word = suffix.isEmpty(); // si ya pas de suffix donc le mot est terminer
 
-	private void splitNode(PatriciaTrieNode parent, PatriciaTrieNode child, String prefixeCommun, String suffix) {
-		PatriciaTrieNode splitNode = new PatriciaTrieNode(prefixeCommun); // on crée un nouveau noeud qui aura le
-																			// prefixe commun comme clé
-		splitNode.children.put(child.key.charAt(prefixeCommun.length()), child);
-		splitNode.isEndOfWord = suffix.isEmpty(); // si ya pas de suffix donc le mot est terminer
-
-		child.key = child.key.substring(prefixeCommun.length());
+		child.label = child.label.substring(prefixeCommun.length());
 		if (!suffix.isEmpty()) {
-			splitNode.children.put(suffix.charAt(0), new PatriciaTrieNode(suffix));
-			splitNode.children.get(suffix.charAt(0)).isEndOfWord = true;
+			nvnoeud.children.put(suffix.charAt(0), new PatriciaTrieNode(suffix));
+			nvnoeud.children.get(suffix.charAt(0)).is_end_of_word = true;
 		}
 
-		parent.children.put(prefixeCommun.charAt(0), splitNode);
+		parent.children.put(prefixeCommun.charAt(0), nvnoeud);
 	}
-//	La complexité totale de la fonction toJson est O(n * T)
 
-	// Conversion de PatriciaTrieNode en chaîne de caractère
-	// sa complexité est de O(n+S), tq n est le nombre de noeuds, S S est la taille
-	// totale des données sérialisées (nombre de caractères du JSON).
-	public String toJson() {
+	public String arbreToJson() {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
@@ -171,7 +161,7 @@ public class PatriciaTrieNode {
 
 	// Méthode pour sauvegarder le Patricia Trie dans un fichier au format JSON
 	public void saveToFile(String filename) {
-		String jsonCode = this.toJson();
+		String jsonCode = this.arbreToJson();
 		try (FileWriter file = new FileWriter(filename)) { // on crée un fichier et on mis le contenu du jsonCode dedans
 			file.write(jsonCode);
 			file.flush();
@@ -180,7 +170,7 @@ public class PatriciaTrieNode {
 		}
 	}
 
-	public static PatriciaTrieNode loadFromFile(String filename) {
+	public static PatriciaTrieNode jsonToArbre(String filename) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			return mapper.readValue(new File(filename), PatriciaTrieNode.class);

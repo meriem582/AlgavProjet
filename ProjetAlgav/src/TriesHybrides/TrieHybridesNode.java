@@ -1,162 +1,203 @@
 package TriesHybrides;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-/**
- * Cette classe represente un noeud du trie hybride
- * @version 1.0
- * @author ahmed
- */
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.*;
 
 public class TrieHybridesNode {
 
-    char caractere; // le caractere du noeud
-    int valeur; // la valeur du noeud
-    TrieHybridesNode inferieur; // le fils inferieur
-    TrieHybridesNode egal; // le fils egal
-    TrieHybridesNode superieur; // le fils superieur
+    @JsonProperty("char")
+    char caractere; // Le caractère du nœud
+    @JsonProperty("is_end_of_word")
+    boolean isEndOfWord; // Indique si le nœud marque la fin d'un mot
+    @JsonProperty("left")
+    TrieHybridesNode inferieur; // Sous-arbre gauche
+    @JsonProperty("middle")
+    TrieHybridesNode egal; // Sous-arbre central
+    @JsonProperty("right")
+    TrieHybridesNode superieur; // Sous-arbre droit
 
-
-    public TrieHybridesNode(char caractere, int valeur) {
+    // Constructeur principal pour désérialisation avec Jackson
+    @JsonCreator
+    public TrieHybridesNode(
+            @JsonProperty("char") char caractere,
+            @JsonProperty("is_end_of_word") boolean isEndOfWord,
+            @JsonProperty("left") TrieHybridesNode inferieur,
+            @JsonProperty("middle") TrieHybridesNode egal,
+            @JsonProperty("right") TrieHybridesNode superieur) {
         this.caractere = caractere;
-        this.valeur = valeur;
+        this.isEndOfWord = isEndOfWord;
+        this.inferieur = inferieur;
+        this.egal = egal;
+        this.superieur = superieur;
+    }
+
+    // Constructeur
+    public TrieHybridesNode(@JsonProperty("char") char caractere) {
+        this.caractere = caractere;
+        this.isEndOfWord = false;
         this.inferieur = null;
         this.egal = null;
         this.superieur = null;
     }
 
     //constructeur par defaut
-    public TrieHybridesNode(char caractere, int valeur, TrieHybridesNode inferieur, TrieHybridesNode egal, TrieHybridesNode superieur) {
+    public TrieHybridesNode() {
+        this.caractere = '\0';
+        this.isEndOfWord = false;
+        this.inferieur = null;
+        this.egal = null;
+        this.superieur = null;
+    }
+
+
+    public char getCaractere() {
+        return caractere;
+    }
+
+    public void setCaractere(char caractere) {
         this.caractere = caractere;
-        this.valeur = valeur;
+    }
+
+    public boolean isIs_end_of_word() {
+        return isEndOfWord;
+    }
+
+    public void setisIs_end_of_word(boolean endOfWord) {
+        isEndOfWord = endOfWord;
+    }
+
+    public TrieHybridesNode getInferieur() {
+        return inferieur;
+    }
+
+    public void setInferieur(TrieHybridesNode inferieur) {
         this.inferieur = inferieur;
+    }
+
+    public TrieHybridesNode getEgal() {
+        return egal;
+    }
+
+    public void setEgal(TrieHybridesNode egal) {
         this.egal = egal;
+    }
+
+    public TrieHybridesNode getSuperieur() {
+        return superieur;
+    }
+
+    public void setSuperieur(TrieHybridesNode superieur) {
         this.superieur = superieur;
     }
 
-    /**
-     * methode qui renvoir une valeur vide
-     * @return -1
-     */
-    public int valeurVide() {
-        return -1;
-    }
-
-    /**
-     * methode qui construit par ajout successifs le trie hybride
-     *
-     * @param trieH
-     * @param mot
-     * @param valeur
-     *
-     * @return
-     */
-    /**
-     * Insère un mot dans le trie hybride.
-     *
-     * @param trieH  Le nœud racine du trie hybride.
-     * @param mot    Le mot à insérer.
-     * @param valeur La valeur associée au mot.
-     * @return Le nœud mis à jour après insertion.
-     */
-    public TrieHybridesNode insert(TrieHybridesNode trieH, String mot, int valeur) {
-        // Si le mot est vide, on retourne le trie sans modification
-        if (mot.isEmpty()) {
+    // Insérer un mot dans le trie hybride
+    public TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
+        if (mot == null || mot.isEmpty()) {
             return trieH;
         }
 
-        // Si le trie est vide, on crée un nouveau nœud avec le premier caractère
         if (trieH == null) {
-            trieH = new TrieHybridesNode(mot.charAt(0), -1);
+            trieH = new TrieHybridesNode(mot.charAt(0));
         }
 
         char premierCaractere = mot.charAt(0);
 
-        // Comparaison du caractère actuel du mot avec celui du nœud courant
         if (premierCaractere < trieH.caractere) {
-            // Cas où le caractère est inférieur : insertion dans le sous-arbre inférieur
-            trieH.inferieur = insert(trieH.inferieur, mot, valeur);
+            trieH.inferieur = insert(trieH.inferieur, mot);
         } else if (premierCaractere > trieH.caractere) {
-            // Cas où le caractère est supérieur : insertion dans le sous-arbre supérieur
-            trieH.superieur = insert(trieH.superieur, mot, valeur);
+            trieH.superieur = insert(trieH.superieur, mot);
         } else {
-            // Cas où le caractère est égal
             if (mot.length() == 1) {
-                // Si on est au dernier caractère du mot, on affecte la valeur
-                trieH.valeur = valeur;
+                trieH.isEndOfWord = true;
             } else {
-                // Sinon, on continue l'insertion dans le sous-arbre égal
-                trieH.egal = insert(trieH.egal, mot.substring(1), valeur);
+                trieH.egal = insert(trieH.egal, mot.substring(1));
             }
         }
 
         return trieH;
     }
 
-    /**
-     * Méthode qui permet de convertir un trie hybride en format JSON.
-     *
-     * @return Une chaîne JSON représentant le trie hybride.
-     */
-    public String toJson() {
-        StringBuilder json = new StringBuilder();
-
-        json.append("{\n");
-        json.append("  \"caractere\": \"").append(caractere).append("\",\n");
-        json.append("  \"valeur\": ").append(valeur).append(",\n");
-
-        // Ajouter le sous-arbre inférieur
-        json.append("  \"inferieur\": ");
-        if (inferieur == null) {
-            json.append("{}");
-        } else {
-            json.append(inferieur.toJson().replaceAll("(?m)^", "    ")); // Indenter le JSON du sous-arbre
-        }
-        json.append(",\n");
-
-        // Ajouter le sous-arbre égal
-        json.append("  \"egal\": ");
-        if (egal == null) {
-            json.append("{}");
-        } else {
-            json.append(egal.toJson().replaceAll("(?m)^", "    "));
-        }
-        json.append(",\n");
-
-        // Ajouter le sous-arbre supérieur
-        json.append("  \"superieur\": ");
-        if (superieur == null) {
-            json.append("{}");
-        } else {
-            json.append(superieur.toJson().replaceAll("(?m)^", "    "));
-        }
-        json.append("\n");
-
-        json.append("}");
-        return json.toString();
-    }
-
-
-    /**
-     * methode qui permet de sauvegarder un trie hybride dans un fichier au format json
-     * @param filename
-     */
-    public void saveToFile(String filename) {
-        //on cree un fichier json
-        String json = toJson();
-        //on sauvegarde le trie hybride dans le fichier
-        try {
-            FileWriter file = new FileWriter(filename);
-            file.write(json);
-            file.close();
+    // Insérer des mots à partir d'un fichier texte
+    public void insertMotduFichier(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String mot;
+            while ((mot = reader.readLine()) != null) {
+                mot = mot.trim();
+                if (!mot.isEmpty()) {
+                    insert(this, mot);
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Insérer des mots à partir de plusieurs fichiers dans un répertoire
+    public void insertMotsDuRepertoire(String repertoirePath) {
+        File repertoire = new File(repertoirePath);
+
+        if (!repertoire.exists() || !repertoire.isDirectory()) {
+            System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
+            return;
         }
 
+        File[] fichiers = repertoire.listFiles();
+        if (fichiers == null) {
+            System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
+            return;
+        }
 
+        for (File fichier : fichiers) {
+            if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+                insertMotduFichier(fichier.getAbsolutePath());
+            }
+        }
+    }
 
+    // Conversion en JSON
+    public String arbretoJson() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "{}"; // Retourne un JSON vide en cas d'erreur
+        }
+    }
 
+    // Sauvegarder le trie dans un fichier au format JSON
+    public void saveToFile(String filename) {
+        String json = arbretoJson();
+        try (FileWriter file = new FileWriter(filename)) {
+            file.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    // Charger un trie hybride depuis un fichier JSON
+    public static TrieHybridesNode jsonToArbre(String filename) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(new File(filename), TrieHybridesNode.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Retourne null en cas d'erreur
+        }
+    }
+
+    // Fonction utilitaire pour tester le trie (exemple)
+    public static void printTrie(TrieHybridesNode node, String prefix) {
+        if (node == null) return;
+
+        if (node.isEndOfWord) {
+            System.out.println(prefix + node.caractere);
+        }
+
+        printTrie(node.inferieur, prefix);
+        printTrie(node.egal, prefix + node.caractere);
+        printTrie(node.superieur, prefix);
+    }
 }

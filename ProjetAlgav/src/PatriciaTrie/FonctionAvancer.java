@@ -10,8 +10,6 @@ import java.util.TreeMap;
 
 public class FonctionAvancer {
 
-//	 complexite est de O(m*p) tq : m est la longueur du mot à rechercher
-//	, p est la longueur du préfixe de chaque nœud dans le Patricia Trie (qui peut varier).
 	public static boolean Recherche(PatriciaTrieNode p, String mot) { // fonction qui retourne True si le mot est
 																		// retrouver dans l'arbre de patricia
 		PatriciaTrieNode pc = p; // on recupere l'arbre dans pc
@@ -25,20 +23,20 @@ public class FonctionAvancer {
 				return false;
 			}
 			PatriciaTrieNode child = pc.children.get(ch);
-			String prefix = child.key;
+			String prefix = child.label;
 			if (!mot.startsWith(prefix, index)) {
 				return false;
 			}
 			index += prefix.length();
 			pc = child;
 		}
-		return pc.isEndOfWord; // si à la fin on trouve que le mot figure dans l'arbre alors on retourne true
+		return pc.is_end_of_word; // si à la fin on trouve que le mot figure dans l'arbre alors on retourne true
 								// sinon false
 	}
-//	la  complexité est de O(n) " n par rapport au nombre de nœuds dans l'arbre" 
+
 	public static int comptageMots(PatriciaTrieNode node) { // on compte les fois où isEndOfWord est true
 		int nbr = 0;
-		if (node.isEndOfWord) {
+		if (node.is_end_of_word) {
 			nbr++;
 		}
 		for (PatriciaTrieNode child : node.children.values()) {
@@ -46,31 +44,28 @@ public class FonctionAvancer {
 		}
 		return nbr;
 	}
-//	est la complexité de listeMotsRec
+
 	public static List<String> listeMots(PatriciaTrieNode node) { //
 		List<String> mots = new ArrayList<>();
 		listeMotsRec(node, "", mots);
 		return mots;
 	}
-	
-//	la complexité est de O(n⋅k), tq : n est le nombre de nœuds dans l'arbre.
-//  k est la longueur moyenne des mots (ou des clés des nœuds dans le Patricia Trie).
+
 	private static void listeMotsRec(PatriciaTrieNode node, String prefix, List<String> mots) {
-		if (node.isEndOfWord) {
+		if (node.is_end_of_word) {
 			mots.add(prefix);
 		}
 		// Utilisation de TreeMap pour garantir un ordre alphabétique des enfants
 		Map<Character, PatriciaTrieNode> Children0 = new TreeMap<>(node.children);
 		for (Map.Entry<Character, PatriciaTrieNode> entry : Children0.entrySet()) {
-			listeMotsRec(entry.getValue(), prefix + entry.getValue().key, mots);
+			listeMotsRec(entry.getValue(), prefix + entry.getValue().label, mots);
 		}
 	}
-//	la même avec comptageNilRecursif
+
 	public static int comptageNil(PatriciaTrieNode node) {
 		return comptageNilRecursif(node);
 	}
-//	la complexité est de O(n) "n est le nombre total des noeuds"
-	
+
 	private static int comptageNilRecursif(PatriciaTrieNode node) {
 		int count = 0;
 		// Si le noeud a des enfants
@@ -86,7 +81,7 @@ public class FonctionAvancer {
 
 		return count;
 	}
-//	O(n)
+
 	public static int hauteur(PatriciaTrieNode node) {
 		if (node.children.isEmpty()) {
 			return 0;
@@ -97,13 +92,13 @@ public class FonctionAvancer {
 		}
 		return maxHeight + 1;
 	}
-//	O(n)
+
 	public static int profondeurMoyenne(PatriciaTrieNode node) {
 		int[] result = new int[2]; // result[0] : somme des profondeurs, result[1] : nombre de feuilles
 		calculerProfondeurMoyenne(node, 0, result);
 		return (int) (result[1] == 0 ? 0 : (double) result[0] / result[1]);
 	}
-//	O(n)
+
 	private static void calculerProfondeurMoyenne(PatriciaTrieNode node, int profondeurActuelle, int[] result) {
 		if (node.children.isEmpty()) { // Si le nœud est une feuille
 			result[0] += profondeurActuelle;
@@ -114,13 +109,10 @@ public class FonctionAvancer {
 			}
 		}
 	}
-//	la complexité est O(n+m) tq: m est la longueur du préfixe donné en paramètre.
-//	n est le nombre de nœuds descendants à partir du nœud correspondant au préfixe (inclus).
-	
+
 	public static int prefixe(PatriciaTrieNode p, String prefix) {
 		PatriciaTrieNode pc = p;
 		int index = 0;
-
 		// Parcourir l'arbre jusqu'à trouver le nœud correspondant au préfixe
 		while (index < prefix.length()) {
 			char ch = prefix.charAt(index);
@@ -129,7 +121,7 @@ public class FonctionAvancer {
 			}
 
 			PatriciaTrieNode child = pc.children.get(ch);
-			String childKey = child.key;
+			String childKey = child.label;
 
 			if (!prefix.startsWith(childKey, index)) {
 				return 0; // Le préfixe ne correspond pas à un mot dans l'arbre
@@ -142,22 +134,20 @@ public class FonctionAvancer {
 		// Une fois le préfixe trouvé, compter les mots descendants de ce nœud
 		return compterMotsDescendants(pc);
 	}
-	
-//	complexite O(n)
 
 	private static int compterMotsDescendants(PatriciaTrieNode node) {
-		int count = node.isEndOfWord ? 1 : 0; // Compter le nœud actuel s'il représente un mot
+		int count = node.is_end_of_word ? 1 : 0; // Compter le nœud actuel s'il représente un mot
 		for (PatriciaTrieNode child : node.children.values()) {
 			count += compterMotsDescendants(child); // Ajouter les mots dans les sous-arbres
 		}
 		return count;
 	}
-//	 le même avec suppression parceque c'est juste un appel à la fonction supression.
+
 	public static PatriciaTrieNode suppression(PatriciaTrieNode node, String mot) {
 		suppression(node, mot, 0);
 		return node;
 	}
-//	O(n⋅m) tq : n est le nombre de mots dans le fichier. m est la longueur moyenne des mots dans le fichier.
+
 	public static PatriciaTrieNode supressionDuMotDufichier(PatriciaTrieNode node, String filename) {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) { // on crée un bufferReader qui lit
 																						// le fichier.txt
@@ -174,14 +164,14 @@ public class FonctionAvancer {
 		}
 		return node;
 	}
-//	La complexité au pire cas de la fonction suppression est O(n), où n est la longueur du mot à supprimer.
+
 	private static boolean suppression(PatriciaTrieNode p, String mot, int index) {
 		if (index == mot.length()) {
 			// Nous avons atteint la fin du mot dans l'arbre
-			if (!p.isEndOfWord) {
+			if (!p.is_end_of_word) {
 				return false; // Le mot n'existe pas
 			}
-			p.isEndOfWord = false; // Marquer ce nœud comme n'étant plus la fin d'un mot
+			p.is_end_of_word = false; // Marquer ce nœud comme n'étant plus la fin d'un mot
 
 			// Retourner vrai si le nœud courant n'a pas d'enfants, indiquant qu'il peut
 			// être supprimé
@@ -195,7 +185,7 @@ public class FonctionAvancer {
 		}
 
 		// Récursion pour supprimer dans les enfants
-		boolean suppimer = suppression(child, mot, index + child.key.length());
+		boolean suppimer = suppression(child, mot, index + child.label.length());
 
 		// Supprimer le nœud enfant si nécessaire
 		if (suppimer) {
@@ -203,20 +193,11 @@ public class FonctionAvancer {
 
 			// Si le nœud actuel n'est plus la fin d'un mot et n'a pas d'autres enfants, il
 			// peut aussi être supprimé
-			return p.children.isEmpty() && !p.isEndOfWord;
+			return p.children.isEmpty() && !p.is_end_of_word;
 		}
 		return false;
 	}
-//	O(min(m,n)) tq: m est la longueur de la chaîne s1. n est la longueur de la chaîne s2.
-	private static String getPrefixeCommun(String s1, String s2) {
-		int l = Math.min(s1.length(), s2.length());
-		int i = 0;
-		while (i < l && s1.charAt(i) == s2.charAt(i)) {
-			i++;
-		}
-		return s1.substring(0, i);
-	}
-//	O((n+m)⋅k)
+
 	public static PatriciaTrieNode fusionner(PatriciaTrieNode trie1, PatriciaTrieNode trie2) {
 		PatriciaTrieNode resultat = new PatriciaTrieNode("");
 		fusionnerNoeuds(resultat, trie1);
@@ -224,9 +205,6 @@ public class FonctionAvancer {
 		return resultat;
 	}
 
-//	La complexité au pire cas de la fonction fusionnerNoeuds est O(n⋅k):
-//		n est le nombre d'enfants dans le nœud source.
-//		k est la longueur moyenne des clés des nœuds (en termes de préfixe).
 	private static void fusionnerNoeuds(PatriciaTrieNode cible, PatriciaTrieNode source) {
 		for (Map.Entry<Character, PatriciaTrieNode> entry : source.children.entrySet()) {
 			char charCle = entry.getKey();
@@ -235,9 +213,9 @@ public class FonctionAvancer {
 			if (cible.children.containsKey(charCle)) {
 				// Le nœud existe déjà, fusionner les enfants
 				PatriciaTrieNode noeudCible = cible.children.get(charCle);
-				String prefixCommun = getPrefixeCommun(noeudCible.key, noeudSource.key);
+				String prefixCommun = PatriciaTrieNode.getPrefixeCommun(noeudCible.label, noeudSource.label);
 
-				if (prefixCommun.equals(noeudSource.key)) {
+				if (prefixCommun.equals(noeudSource.label)) {
 					// Le préfixe source est identique au préfixe cible
 					fusionnerNoeuds(noeudCible, noeudSource);
 				} else {
@@ -246,15 +224,15 @@ public class FonctionAvancer {
 					cible.children.put(charCle, splitNode);
 
 					// Ajuster les enfants pour le nœud source et le nœud cible
-					noeudSource.key = noeudSource.key.substring(prefixCommun.length());
-					noeudCible.key = noeudCible.key.substring(prefixCommun.length());
+					noeudSource.label = noeudSource.label.substring(prefixCommun.length());
+					noeudCible.label = noeudCible.label.substring(prefixCommun.length());
 
 					// Vérifier que les clés ne sont pas vides avant d'accéder à charAt(0)
-					if (!noeudSource.key.isEmpty()) {
-						splitNode.children.put(noeudSource.key.charAt(0), noeudSource);
+					if (!noeudSource.label.isEmpty()) {
+						splitNode.children.put(noeudSource.label.charAt(0), noeudSource);
 					}
-					if (!noeudCible.key.isEmpty()) {
-						splitNode.children.put(noeudCible.key.charAt(0), noeudCible);
+					if (!noeudCible.label.isEmpty()) {
+						splitNode.children.put(noeudCible.label.charAt(0), noeudCible);
 					}
 				}
 			} else {

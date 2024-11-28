@@ -1,0 +1,103 @@
+{
+  "char" : " ",
+  "is_end_of_word" : false,
+  "left" : null,
+  "middle" : null,
+  "right" : {
+    "char" : "c",
+    "is_end_of_word" : false,
+    "left" : null,
+    "middle" : {
+      "char" : "h",
+      "is_end_of_word" : false,
+      "left" : null,
+      "middle" : {
+        "char" : "a",
+        "is_end_of_word" : false,
+        "left" : null,
+        "middle" : {
+          "char" : "t",
+          "is_end_of_word" : true,
+          "left" : null,
+          "middle" : null,
+          "right" : null
+        },
+        "right" : {
+          "char" : "i",
+          "is_end_of_word" : false,
+          "left" : {
+            "char" : "e",
+            "is_end_of_word" : false,
+            "left" : null,
+            "middle" : {
+              "char" : "v",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "a",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "l",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : null
+          },
+          "middle" : {
+            "char" : "e",
+            "is_end_of_word" : false,
+            "left" : null,
+            "middle" : {
+              "char" : "n",
+              "is_end_of_word" : true,
+              "left" : null,
+              "middle" : null,
+              "right" : null
+            },
+            "right" : null
+          },
+          "right" : null
+        }
+      },
+      "right" : null
+    },
+    "right" : {
+      "char" : "l",
+      "is_end_of_word" : true,
+      "left" : null,
+      "middle" : {
+        "char" : "a",
+        "is_end_of_word" : false,
+        "left" : null,
+        "middle" : {
+          "char" : "p",
+          "is_end_of_word" : false,
+          "left" : null,
+          "middle" : {
+            "char" : "i",
+            "is_end_of_word" : false,
+            "left" : null,
+            "middle" : {
+              "char" : "n",
+              "is_end_of_word" : true,
+              "left" : null,
+              "middle" : null,
+              "right" : null
+            },
+            "right" : null
+          },
+          "right" : null
+        },
+        "right" : null
+      },
+      "right" : null
+    }
+  }
+}
