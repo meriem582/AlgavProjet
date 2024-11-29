@@ -1,6 +1,5 @@
 package PatriciaTrie;
 
-import java.io.IOException;
 
 public class PatriciaTrieMain {
 
@@ -59,13 +58,5 @@ public class PatriciaTrieMain {
 
 		PatriciaTrieNode triecopy = PatriciaTrieNode.jsonToArbre("trie1P.json");
 		triecopy.saveToFile("trie1copyP.json");
-
-		PatriciaTrieNode shakspeare = new PatriciaTrieNode();
-		try {
-			shakspeare.insertMotsDuRepertoire("Shakespeare");
-			shakspeare.saveToFile("ShakespeareP.json");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

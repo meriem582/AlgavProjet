@@ -86,13 +86,5 @@ public class TrieHybrideMain {
 
         TrieHybridesNode triecopy = TrieHybridesNode.jsonToArbre("trie1H.json");
 		triecopy.saveToFile("trie1copyH.json");
-
-        TrieHybridesNode shakeSpeare = new TrieHybridesNode();
-        try {
-            shakeSpeare.insertMotsDuRepertoire("Shakespeare");
-            shakeSpeare.saveToFile("ShakespeareH.json");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
