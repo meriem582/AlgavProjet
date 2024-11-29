@@ -157,7 +157,7 @@ public class TrieHybridesNode {
     }
 
     // Conversion en JSON
-    public String arbretoJson() {
+    public String arbreToJson() {
         try {
             ObjectMapper mapper = new ObjectMapper();
             return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
@@ -169,19 +169,36 @@ public class TrieHybridesNode {
 
     // Sauvegarder le trie dans un fichier au format JSON
     public void saveToFile(String filename) {
-        String json = arbretoJson();
-        try (FileWriter file = new FileWriter(filename)) {
-            file.write(json);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	    String jsonCode = this.arbreToJson();
+	    // Définir le répertoire où le fichier sera enregistré
+	    String directoryPath = "Resultats";
+	    File directory = new File(directoryPath);
+
+	    // Vérifier si le répertoire existe, sinon le créer
+	    if (!directory.exists()) {
+	        if (!directory.mkdirs()) {
+	            System.err.println("Échec de la création du répertoire : " + directoryPath);
+	            return; // On sort si le répertoire ne peut pas être créé
+	        }
+	    }
+
+	    // Construire le chemin complet du fichier
+	    File filePath = new File(directory, filename);
+
+	    // Écrire le contenu dans le fichier
+	    try (FileWriter fileWriter = new FileWriter(filePath)) {
+	        fileWriter.write(jsonCode);
+	        fileWriter.flush();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 
     // Charger un trie hybride depuis un fichier JSON
     public static TrieHybridesNode jsonToArbre(String filename) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readValue(new File(filename), TrieHybridesNode.class);
+            return mapper.readValue(new File("Resultats",filename), TrieHybridesNode.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null; // Retourne null en cas d'erreur

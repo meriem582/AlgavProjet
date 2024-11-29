@@ -63,7 +63,7 @@ public class Main {
 		    case "listeMotsPatricia":
 		    	PatriciaTrieNode pl=PatriciaTrieNode.jsonToArbre(args[1]);
 		    	List<String> list=FonctionAvancer.listeMots(pl);
-		    	try (FileWriter file = new FileWriter("motsP.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+		    	try (FileWriter file = new FileWriter("Resultats/motsP.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
 					file.write(list+"");
 					file.flush();
 				} catch (IOException e) {
@@ -74,7 +74,7 @@ public class Main {
 		    case "listeMotsHybride":
 		    	TrieHybridesNode trieH5 = TrieHybridesNode.jsonToArbre(args[1]);
 				List<String> list1 = FonctionAvancerHybride.listeMots(trieH5);
-				try (FileWriter file = new FileWriter("motsH.txt")) {
+				try (FileWriter file = new FileWriter("Resultats/motsH.txt")) {
 					file.write(list1+"");
 					file.flush();
 				} catch (IOException e) {
@@ -85,7 +85,7 @@ public class Main {
 		    case "profondeurMoyennePatricia":
 		    	PatriciaTrieNode pp=PatriciaTrieNode.jsonToArbre(args[1]);
 		    	int p=FonctionAvancer.profondeurMoyenne(pp);
-		    	try (FileWriter file = new FileWriter("profondeurP.txt")) {
+		    	try (FileWriter file = new FileWriter("Resultats/profondeurP.txt")) {
 					file.write(p+"");
 					file.flush();
 				} catch (IOException e) {
@@ -97,7 +97,7 @@ public class Main {
 		    case "profondeurMoyenneHybride":
 		    	TrieHybridesNode trieH6 = TrieHybridesNode.jsonToArbre(args[1]);
 				int ph1 = FonctionAvancerHybride.profondeurMoyenne(trieH6);
-				try (FileWriter file = new FileWriter("profondeurH.txt")) {
+				try (FileWriter file = new FileWriter("Resultats/profondeurH.txt")) {
 					file.write(ph1+"");
 					file.flush();
 				} catch (IOException e) {
@@ -109,7 +109,7 @@ public class Main {
 		    	
 		    	PatriciaTrieNode ppref=PatriciaTrieNode.jsonToArbre(args[1]);
 		    	int pref=FonctionAvancer.prefixe(ppref, args[2]+"");
-		    	try (FileWriter file = new FileWriter("prefixeP.txt")) { 
+		    	try (FileWriter file = new FileWriter("Resultats/prefixeP.txt")) { 
 					file.write(pref+"");
 					file.flush();
 				} catch (IOException e) {
@@ -120,7 +120,7 @@ public class Main {
 		    case "prefixeHybride":
 		    	TrieHybridesNode trieH7 = TrieHybridesNode.jsonToArbre(args[1]);
 				int ph2 = FonctionAvancerHybride.prefixe(trieH7, args[2]+"");
-				try (FileWriter file = new FileWriter("prefixeH.txt")) {
+				try (FileWriter file = new FileWriter("Resultats/prefixeH.txt")) {
 					file.write(ph2+"");
 					file.flush();
 				} catch (IOException e) {
