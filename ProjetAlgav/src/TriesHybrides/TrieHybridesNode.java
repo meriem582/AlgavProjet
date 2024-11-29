@@ -17,6 +17,20 @@ public class TrieHybridesNode {
     TrieHybridesNode egal; // Sous-arbre central
     @JsonProperty("right")
     TrieHybridesNode superieur; // Sous-arbre droit
+    
+	private static int compteurComparaisons = 0; // Compteur statique pour mesurer les comparaisons
+	
+	public static void resetCompteur() {
+		compteurComparaisons = 0; // Réinitialiser le compteur
+	}
+
+	public static int getCompteur() {
+		return compteurComparaisons; // Récupérer le nombre de comparaisons
+	}
+
+	public static void incrementCompteur() {
+		compteurComparaisons++; // Incrémenter le compteur
+	}
 
     // Constructeur principal pour désérialisation avec Jackson
     @JsonCreator
@@ -95,23 +109,29 @@ public class TrieHybridesNode {
     // Insérer un mot dans le trie hybride
     public TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
         if (mot == null || mot.isEmpty()) {
+        	incrementCompteur();
             return trieH;
         }
 
         if (trieH == null) {
+        	incrementCompteur();
             trieH = new TrieHybridesNode(mot.charAt(0));
         }
 
         char premierCaractere = mot.charAt(0);
 
         if (premierCaractere < trieH.caractere) {
+        	incrementCompteur();
             trieH.inferieur = insert(trieH.inferieur, mot);
         } else if (premierCaractere > trieH.caractere) {
             trieH.superieur = insert(trieH.superieur, mot);
         } else {
+        	incrementCompteur();
             if (mot.length() == 1) {
+            	incrementCompteur();
                 trieH.isEndOfWord = true;
             } else {
+            	incrementCompteur();
                 trieH.egal = insert(trieH.egal, mot.substring(1));
             }
         }
@@ -124,8 +144,10 @@ public class TrieHybridesNode {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String mot;
             while ((mot = reader.readLine()) != null) {
+            	incrementCompteur();
                 mot = mot.trim();
                 if (!mot.isEmpty()) {
+                	incrementCompteur();
                     insert(this, mot);
                 }
             }
@@ -139,18 +161,21 @@ public class TrieHybridesNode {
         File repertoire = new File(repertoirePath);
 
         if (!repertoire.exists() || !repertoire.isDirectory()) {
+        	incrementCompteur();
             System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
             return;
         }
 
         File[] fichiers = repertoire.listFiles();
         if (fichiers == null) {
+        	incrementCompteur();
             System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
             return;
         }
 
         for (File fichier : fichiers) {
             if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+            	incrementCompteur();
                 insertMotduFichier(fichier.getAbsolutePath());
             }
         }
@@ -176,7 +201,9 @@ public class TrieHybridesNode {
 
 	    // Vérifier si le répertoire existe, sinon le créer
 	    if (!directory.exists()) {
+	    	incrementCompteur();
 	        if (!directory.mkdirs()) {
+	        	incrementCompteur();
 	            System.err.println("Échec de la création du répertoire : " + directoryPath);
 	            return; // On sort si le répertoire ne peut pas être créé
 	        }
@@ -207,9 +234,13 @@ public class TrieHybridesNode {
 
     // Fonction utilitaire pour tester le trie (exemple)
     public static void printTrie(TrieHybridesNode node, String prefix) {
-        if (node == null) return;
+        if (node == null) {
+        	incrementCompteur();
+        	return;
+        }
 
         if (node.isEndOfWord) {
+        	incrementCompteur();
             System.out.println(prefix + node.caractere);
         }
 

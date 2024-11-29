@@ -16,13 +16,16 @@ public class Experimentation {
 		// Comparaison en temps de construction
 		System.out.println("*****************Temps de construction*****************");
 		PatriciaTrieNode shakespearePatricia = new PatriciaTrieNode();
+		PatriciaTrieNode.resetCompteur(); // Réinitialiser le compteur
+		TrieHybridesNode.resetCompteur();
+
 		try {
 			long startTimePatricia = System.nanoTime();
 			shakespearePatricia.insertMotsDuRepertoire("Shakespeare");
 			shakespearePatricia.saveToFile("ShakespeareP.json");
 			long endTimePatricia = System.nanoTime();
-			System.out
-					.println("Patricia-Trie: " + (endTimePatricia - startTimePatricia) + " ns");
+			System.out.println("Patricia-Trie: " + (endTimePatricia - startTimePatricia) + " ns");
+			System.out.println("Nombre total de comparaisons pour Patricia-Trie: " + PatriciaTrieNode.getCompteur());
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -34,23 +37,27 @@ public class Experimentation {
 			shakespeareHybrid.saveToFile("ShakespeareH.json");
 			long endTimeHybrid = System.nanoTime();
 			System.out.println("Trie Hybride: " + (endTimeHybrid - startTimeHybrid) + " ns");
+			System.out.println("Nombre total de comparaisons pour Trie Hybride: " + TrieHybridesNode.getCompteur());
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		// Comparaison en temps d'insertion de nouveau mot
 		System.out.println("*****************Temps d'insertion*********************");
+		PatriciaTrieNode.resetCompteur();
+		TrieHybridesNode.resetCompteur();
 		long startTimeAddPatricia = System.nanoTime();
 		shakespearePatricia.inserer("nouveaumot");
 		long endTimeAddPatricia = System.nanoTime();
-		System.out.println(
-				"Patricia-Trie: " + (endTimeAddPatricia - startTimeAddPatricia) + " ns");
+		System.out.println("Patricia-Trie: " + (endTimeAddPatricia - startTimeAddPatricia) + " ns");
+		System.out.println("Nombre total de comparaisons pour Patricia-Trie: " + PatriciaTrieNode.getCompteur());
 
 		long startTimeAddHybrid = System.nanoTime();
 		shakespeareHybrid.insert(shakespeareHybrid, "nouveaumot");
 		long endTimeAddHybrid = System.nanoTime();
-		System.out.println(
-				"Trie Hybride: " + (endTimeAddHybrid - startTimeAddHybrid) + " ns");
+		System.out.println("Trie Hybride: " + (endTimeAddHybrid - startTimeAddHybrid) + " ns");
+		System.out.println("Nombre total de comparaisons pour Trie Hybride: " + TrieHybridesNode.getCompteur());
 
 		// Comparaison en temps de suppression d'un ensemble de mots
 		System.out.println("*****************Temps de suppresion*******************");
@@ -61,8 +68,7 @@ public class Experimentation {
 			FonctionAvancer.suppression(shakespearePatricia, mot);
 		}
 		long endRemovePatricia = System.nanoTime();
-		System.out.println(
-				"Patricia-Trie: " + (endRemovePatricia - startRemovePatricia) + " ns");
+		System.out.println("Patricia-Trie: " + (endRemovePatricia - startRemovePatricia) + " ns");
 
 		long startRemoveHybrid = System.nanoTime();
 		for (String mot : motsASupprimer) {
@@ -97,27 +103,24 @@ public class Experimentation {
 		long startSearchePatricia = System.nanoTime();
 		FonctionAvancer.Recherche(shakespearePatricia, "mot");
 		long endSearchePatricia = System.nanoTime();
-		System.out.println(
-				"Patricia-Trie " + (endSearchePatricia - startSearchePatricia) + " ns");
+		System.out.println("Patricia-Trie " + (endSearchePatricia - startSearchePatricia) + " ns");
 
 		long startSearcheHybride = System.nanoTime();
 		FonctionAvancerHybride.recherche(shakespeareHybrid, "mot");
 		long endSearcheHybride = System.nanoTime();
 		System.out.println("Trie Hybride " + (endSearcheHybride - startSearcheHybride) + " ns");
-		
-		// Comparaison en temps de de fusion 
+
+		// Comparaison en temps de de fusion
 		System.out.println("*****************Temps de fusion***********************");
 		long startFusionPatricia = System.nanoTime();
 		FonctionAvancer.Recherche(shakespearePatricia, "mot");
 		long endFusionPatricia = System.nanoTime();
-		System.out.println(
-				"Patricia-Trie " + (endFusionPatricia - startFusionPatricia) + " ns");
+		System.out.println("Patricia-Trie " + (endFusionPatricia - startFusionPatricia) + " ns");
 
 		long startFusionHybride = System.nanoTime();
 		FonctionAvancerHybride.recherche(shakespeareHybrid, "mot");
 		long endFusionHybride = System.nanoTime();
 		System.out.println("Trie Hybride " + (endFusionHybride - startFusionHybride) + " ns");
-		
-		
+
 	}
 }
