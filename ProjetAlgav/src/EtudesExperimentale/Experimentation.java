@@ -92,8 +92,8 @@ public class Experimentation {
 		// Comparaison en taille de fichier
 		System.out.println("*****************Taille du fichier*********************");
 
-		File patriciaFile = new File("ShakespeareP.json");
-		File hybridFile = new File("ShakespeareH.json");
+		File patriciaFile = new File("Resultats/ShakespeareP.json");
+		File hybridFile = new File("Resultats/ShakespeareH.json");
 
 		System.out.println("Patricia-Trie: " + patriciaFile.length() + " octets");
 		System.out.println("Trie Hybride: " + hybridFile.length() + " octets");
