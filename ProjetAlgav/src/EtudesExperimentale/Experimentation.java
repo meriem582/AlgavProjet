@@ -60,7 +60,7 @@ public class Experimentation {
 		System.out.println("Nombre total de comparaisons pour Trie Hybride: " + TrieHybridesNode.getCompteur());
 
 		// Comparaison en temps de suppression d'un ensemble de mots
-		System.out.println("*****************Temps de suppresion*******************");
+		System.out.println("*****************Temps de suppression*******************");
 
 		List<String> motsASupprimer = Arrays.asList("word1", "word2", "word3");
 		long startRemovePatricia = System.nanoTime();
