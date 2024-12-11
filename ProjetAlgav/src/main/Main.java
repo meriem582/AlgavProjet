@@ -23,32 +23,32 @@ public class Main {
 		    	PatriciaTrieNode trie = new PatriciaTrieNode("");
 		        // Lire les mots et les insérer
 				trie.insertMotduFichier(args[1]); 
-				trie.saveToFile("patP.json");
+				trie.saveToFile("pat.json");
 		        break;
 		    
 		    case "insererHybride":
 		    	TrieHybridesNode trieH = new TrieHybridesNode(' ');
 				trieH.insertMotduFichier(args[1]);
-				trieH.saveToFile("patH.json");
+				trieH.saveToFile("trie.json");
 		    	break;
 		    
 		    case "suppressionPatricia":
-		    	PatriciaTrieNode pat = PatriciaTrieNode.jsonToArbre("patP.json");
+		    	PatriciaTrieNode pat = PatriciaTrieNode.jsonToArbre("pat.json");
 		    	pat=FonctionAvancer.supressionDuMotDufichier(pat, args[1]);
-		    	pat.saveToFile("patP.json");
+		    	pat.saveToFile("pat.json");
 		    	break;
 		    	
 		    case "suppressionHybride":
-		    	TrieHybridesNode trieH1 = TrieHybridesNode.jsonToArbre("patH.json");
+		    	TrieHybridesNode trieH1 = TrieHybridesNode.jsonToArbre("trie.json");
 				trieH1=FonctionAvancerHybride.supressionMotDuFichier(trieH1, args[1]);
-				trieH1.saveToFile("patH.json");
+				trieH1.saveToFile("trie.json");
 		    	
 		        break;
 		    case "fussionPatricia":
 		    	PatriciaTrieNode p1= PatriciaTrieNode.jsonToArbre(args[1]);
 		    	PatriciaTrieNode p2= PatriciaTrieNode.jsonToArbre(args[2]);
 		    	PatriciaTrieNode pf= FonctionAvancer.fusionner(p1, p2);
-		    	pf.saveToFile("patP.json");
+		    	pf.saveToFile("pat.json");
 		    	
 		        break;
 		        
@@ -56,14 +56,14 @@ public class Main {
 		    	TrieHybridesNode trieH2 = TrieHybridesNode.jsonToArbre(args[1]);
 				TrieHybridesNode trieH3 = TrieHybridesNode.jsonToArbre(args[2]);
 				TrieHybridesNode trieH4 = FonctionAvancerHybride.fusionner(trieH2, trieH3);
-				trieH4.saveToFile("patH.json");
+				trieH4.saveToFile("trie.json");
 
 		        break;
 		    
 		    case "listeMotsPatricia":
 		    	PatriciaTrieNode pl=PatriciaTrieNode.jsonToArbre(args[1]);
 		    	List<String> list=FonctionAvancer.listeMots(pl);
-		    	try (FileWriter file = new FileWriter("Resultats/motsP.txt")) { // on crée un fichier et on mis le contenu du jsonCode dedans
+		    	try (FileWriter file = new FileWriter("Resultats/motsP.txt")) { 
 					file.write(list+"");
 					file.flush();
 				} catch (IOException e) {

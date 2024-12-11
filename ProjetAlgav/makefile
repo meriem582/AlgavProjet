@@ -1,7 +1,9 @@
-# Makefile pour un projet Java
 SRC_DIR=src
 OUT_DIR=Classes
-JFLAGS=-d $(OUT_DIR) -cp $(SRC_DIR)
+LIB_DIR=libs
+CLASSPATH=$(SRC_DIR):$(LIB_DIR)/*
+
+JFLAGS=-d $(OUT_DIR) -cp $(CLASSPATH)
 JC=javac
 
 .PHONY: all clean

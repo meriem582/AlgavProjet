@@ -22,10 +22,10 @@ public class Experimentation {
 		try {
 			long startTimePatricia = System.nanoTime();
 			shakespearePatricia.insertMotsDuRepertoire("Shakespeare");
-			shakespearePatricia.saveToFile("ShakespeareP.json");
 			long endTimePatricia = System.nanoTime();
 			System.out.println("Patricia-Trie: " + (endTimePatricia - startTimePatricia) + " ns");
 			System.out.println("Nombre total de comparaisons pour Patricia-Trie: " + PatriciaTrieNode.getCompteur());
+			shakespearePatricia.saveToFile("ShakespeareP.json");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -34,15 +34,29 @@ public class Experimentation {
 		try {
 			long startTimeHybrid = System.nanoTime();
 			shakespeareHybrid.insertMotsDuRepertoire("Shakespeare");
-			shakespeareHybrid.saveToFile("ShakespeareH.json");
 			long endTimeHybrid = System.nanoTime();
 			System.out.println("Trie Hybride: " + (endTimeHybrid - startTimeHybrid) + " ns");
 			System.out.println("Nombre total de comparaisons pour Trie Hybride: " + TrieHybridesNode.getCompteur());
-
+			shakespeareHybrid.saveToFile("ShakespeareH.json");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// Comparaison en temps d'insertion d'un fichier:
+		System.out.println("*****************Temps d'insertion d'un fichier********");
+		PatriciaTrieNode henryPatricia= new PatriciaTrieNode();
+		long startTimePatriciahenry=System.nanoTime();
+		henryPatricia.insertMotduFichier("Shakespeare\\1henryiv.txt");
+		long endTimePatriciahenry=System.nanoTime();
+		System.out.println("Patricia-Trie: " + (endTimePatriciahenry - startTimePatriciahenry) + " ns");
+		
+		TrieHybridesNode henryHybride= new TrieHybridesNode();
+		long startTimeHybridehenry=System.nanoTime();
+		henryHybride.insertMotduFichier("Shakespeare\\1henryiv.txt");
+		long endTimeHybridehenry=System.nanoTime();
+		System.out.println("Trie Hybride: " + (endTimeHybridehenry - startTimeHybridehenry) + " ns");
+		
 		// Comparaison en temps d'insertion de nouveau mot
 		System.out.println("*****************Temps d'insertion*********************");
 		PatriciaTrieNode.resetCompteur();
@@ -86,8 +100,8 @@ public class Experimentation {
 		// Comparaison selon la hauteur de l'arbre
 		System.out.println("*****************Hauteur*******************************");
 
-		System.out.println("Patricia-Trie: " + FonctionAvancer.profondeurMoyenne(shakespearePatricia));
-		System.out.println("Hybride Trie: " + FonctionAvancerHybride.profondeurMoyenne(shakespeareHybrid));
+		System.out.println("Patricia-Trie: " + FonctionAvancer.hauteur(shakespearePatricia));
+		System.out.println("Hybride Trie: " + FonctionAvancerHybride.hauteur(shakespeareHybrid));
 
 		// Comparaison en taille de fichier
 		System.out.println("*****************Taille du fichier*********************");
@@ -111,16 +125,17 @@ public class Experimentation {
 		System.out.println("Trie Hybride " + (endSearcheHybride - startSearcheHybride) + " ns");
 
 		// Comparaison en temps de de fusion
-		System.out.println("*****************Temps de fusion***********************");
+		System.out.println("*****************Temps de suppression***********************");
 		long startFusionPatricia = System.nanoTime();
-		FonctionAvancer.Recherche(shakespearePatricia, "mot");
+		FonctionAvancer.suppression(shakespearePatricia, "mot");
 		long endFusionPatricia = System.nanoTime();
 		System.out.println("Patricia-Trie " + (endFusionPatricia - startFusionPatricia) + " ns");
 
 		long startFusionHybride = System.nanoTime();
-		FonctionAvancerHybride.recherche(shakespeareHybrid, "mot");
+		FonctionAvancerHybride.supression(shakespeareHybrid, "mot");
 		long endFusionHybride = System.nanoTime();
 		System.out.println("Trie Hybride " + (endFusionHybride - startFusionHybride) + " ns");
 
+		
 	}
 }

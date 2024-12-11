@@ -159,7 +159,7 @@ public class FonctionAvancerHybride {
         }
 
         calculProfondeur(trieHY.inferieur, profondeurActuelle + 1, profondeurTotale, nombreDeMots);
-        calculProfondeur(trieHY.egal, profondeurActuelle, profondeurTotale, nombreDeMots);
+        calculProfondeur(trieHY.egal, profondeurActuelle + 1, profondeurTotale, nombreDeMots);
         calculProfondeur(trieHY.superieur, profondeurActuelle + 1, profondeurTotale, nombreDeMots);
     }
 
@@ -290,27 +290,33 @@ public class FonctionAvancerHybride {
      * @param trie2 Le deuxième trie hybride.
      * @return Le trie hybride fusionné.
      */
-    public static TrieHybridesNode fusionner(TrieHybridesNode trie1, TrieHybridesNode trie2) {
-        if (trie1 == null) {
-            return trie2;
-        }
-        if (trie2 == null) {
-            return trie1;
-        }
-
-        if (trie1.caractere < trie2.caractere) {
-            trie1.superieur = fusionner(trie1.superieur, trie2);
-            return trie1;
-        } else if (trie1.caractere > trie2.caractere) {
-            trie2.inferieur = fusionner(trie1, trie2.inferieur);
-            return trie2;
-        } else {
-            trie1.isEndOfWord |= trie2.isEndOfWord; // Combiner les mots finaux
-            trie1.inferieur = fusionner(trie1.inferieur, trie2.inferieur);
-            trie1.egal = fusionner(trie1.egal, trie2.egal);
-            trie1.superieur = fusionner(trie1.superieur, trie2.superieur);
-            return trie1;
-        }
-    }
+    public static TrieHybridesNode fusionner(TrieHybridesNode arbre1,TrieHybridesNode arbre2) {
+		TrieHybridesNode arbre=new TrieHybridesNode();
+		if(arbre1==null) {
+			return arbre2;
+		}else if(arbre2==null) {
+			return arbre1;
+		}else {
+			List<String> mots1=listeMots(arbre1);
+			int mots_arbre1=mots1.size();
+			List<String> mots2=listeMots(arbre2);
+			int mots_arbre2=mots2.size();
+			if(mots_arbre1<=mots_arbre2) {
+				for (String part1 : mots1) {
+		            //afficher les mots
+					arbre=arbre2.insert(arbre2, part1);
+		        }
+				
+			}else {
+				for (String part1 : mots2) {
+		            //afficher les mots
+					arbre=arbre2.insert(arbre1, part1);
+		        }
+			}
+			
+			return arbre;
+		}
+		
+	}
 
 }

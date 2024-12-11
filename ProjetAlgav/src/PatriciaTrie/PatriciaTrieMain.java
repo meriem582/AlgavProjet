@@ -5,7 +5,7 @@ public class PatriciaTrieMain {
 
 	public static void main(String[] args) {
 		PatriciaTrieNode trie = new PatriciaTrieNode("");
-		trie.insertMotduFichier("mots.txt"); // Remplacez "mots.txt" par le nom de votre fichier
+		trie.insertMotduFichier("mots.txt"); 
 		trie.saveToFile("trieP.json");
 		PatriciaTrieNode trie1 = new PatriciaTrieNode("");
 		PatriciaTrieNode trie2 = new PatriciaTrieNode("");
@@ -47,10 +47,12 @@ public class PatriciaTrieMain {
 		
 		trie1.saveToFile("trie1P.json");
 
-//		FonctionAvancer.suppression(trie1, "car");
-//		System.out.println("Résultat de la recherche du mot car aprés la suppression : "+FonctionAvancer.Recherche(trie1, "car")); 
-//		
-//		trie1.saveToFile("trie1ApresSupP.json");
+		FonctionAvancer.suppression(trie1, "dog");
+		System.out.println("Résultat de la recherche du mot dog aprés la suppression : "+FonctionAvancer.Recherche(trie1, "dog")); 
+		System.out.println("Le nombre des mots ou dog est prefixe est : " + FonctionAvancer.prefixe(trie1, "dog"));
+
+		
+		trie1.saveToFile("trie1ApresSupP.json");
 
 		trie2.saveToFile("trie2P.json");
 		PatriciaTrieNode trieFusionne = FonctionAvancer.fusionner(trie1, trie2);
