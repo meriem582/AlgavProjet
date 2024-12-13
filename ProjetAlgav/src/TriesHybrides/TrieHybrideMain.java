@@ -45,20 +45,24 @@ public class TrieHybrideMain {
         //on teste la suppression
 
 
-//        System.out.println("Avant suppression :");
-//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
-//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
-//
-//        // Suppression des mots
-//        trie1 = supression(trie1, "belle");
-//        trie2 = supression(trie2, "lion");
-//
-//        System.out.println("Après suppression :");
-//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
-//        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1: " + listeMots(trie2));
+
         // Sauvegarder le trie en JSON
         trie1.saveToFile("trie1H.json");
         trie2.saveToFile("trie2H.json");
+        
+      System.out.println("Avant suppression :");
+      System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
+      System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
+
+      // Suppression des mots
+      trie1 = supression(trie1, "dog");
+      trie2 = supression(trie2, "lion");
+
+      System.out.println("Après suppression :");
+      System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
+      System.out.println("Liste des mots dans l'ordre alphabétique dans trie1: " + listeMots(trie2));
+      
+      trie1.saveToFile("nvfichier.json");
 
         TrieHybridesNode trieF1 = new TrieHybridesNode(' ');
         TrieHybridesNode trieF2 = new TrieHybridesNode(' ');
@@ -66,25 +70,60 @@ public class TrieHybrideMain {
         // Ajouter des mots au premier trie
         trieF1 = trieF1.insert(trieF1, "chat");
         trieF1 = trieF1.insert(trieF1, "chien");
+        for (String part1 : parts1) {
+            //afficher les mots
+            trieF1 = trieF1.insert(trieF1, part1);
+        }
 
         // Ajouter des mots au deuxième trie
         trieF2 = trieF2.insert(trieF2, "chaton");
         trieF2 = trieF2.insert(trieF2, "chien");
+        for (String part2 : parts2) {
+            trieF2 = trieF2.insert(trieF2, part2);
+        }
 
         System.out.println("Mots dans le premier trie : " + listeMots(trieF1));
         System.out.println("Mots dans le deuxième trie : " + listeMots(trieF2));
 
 
-        // Fusion des deux tries
-        TrieHybridesNode trieFusionne = fusionner(trie1, trie2);
-        trieFusionne.saveToFile("trieFusionnerH.json");
 
-        System.out.println("Mots après fusion : " + listeMots(trieFusionne));
 
-        System.out.printf("Trie fusionné : %d mots, hauteur %d, profondeur moyenne %d%n",
-                comptageMots(trieFusionne), hauteur(trieFusionne), profondeurMoyenne(trieFusionne));
+
+        System.out.println("Mots dans le premier trie : " + listeMots(trie1));
+        System.out.println("Mots dans le deuxième trie : " + listeMots(trie2));
+
 
         TrieHybridesNode triecopy = TrieHybridesNode.jsonToArbre("trie1H.json");
 		triecopy.saveToFile("trie1copyH.json");
+
+        TrieHybridesNode trieI = new TrieHybridesNode();
+        trieI = trieI.insert(trieI, "car");
+        trieI = trieI.insert(trieI, "est");
+        trieI = trieI.insert(trieI, "dog");
+
+        //sauvegarder le trie
+        trieI.saveToFile("trieIH.json");
+        //afficher les mots
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trieI : \n" + listeMots(trieI));
+        //calculer la hauteur
+        System.out.println("Hauteur de l'arbre dans trieI : " + hauteur(trieI));
+        //calculer la profondeur moyenne
+        System.out.println("Profondeur moyenne dans trieI : " + profondeurMoyenne(trieI));
+        //calculer le nombre de mots commençant par 'ch'
+        System.out.println("Nombre de mots commençant par 'ch' dans trieI : " + prefixe(trieI, "ch"));
+
+        //test d'insertion et equilibrage
+
+        TrieHybridesNode trieE = new TrieHybridesNode(' ');
+        trieE = trieE.insertEtReequilibrer(trieE, "car");
+        trieE = trieE.insertEtReequilibrer(trieE, "est");
+        trieE = trieE.insertEtReequilibrer(trieE, "dog");
+
+        //sauvegarder le trie
+        trieE.saveToFile("trieEH.json");
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trieE: \n" + listeMots(trieE));
+        System.out.println("Hauteur de l'arbre dans trieE : " + hauteur(trieE));
+        System.out.println("Profondeur moyenne dans trieE : " + profondeurMoyenne(trieE));
+        System.out.println("Nombre de mots commençant par 'ch' dans trieE : " + prefixe(trieE, "ch"));
     }
 }

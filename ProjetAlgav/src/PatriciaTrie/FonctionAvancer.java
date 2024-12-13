@@ -31,7 +31,7 @@ public class FonctionAvancer {
 			pc = child;
 		}
 		return pc.is_end_of_word; // si à la fin on trouve que le mot figure dans l'arbre alors on retourne true
-								// sinon false
+									// sinon false
 	}
 
 	public static int comptageMots(PatriciaTrieNode node) { // on compte les fois où isEndOfWord est true
@@ -172,9 +172,22 @@ public class FonctionAvancer {
 				return false; // Le mot n'existe pas
 			}
 			p.is_end_of_word = false; // Marquer ce nœud comme n'étant plus la fin d'un mot
+			// Si le parent a maintenant un seul enfant, fusionner avec cet enfant
+			if (p.children.size() == 1 && !p.is_end_of_word) {
+				System.out.println("cas de car");
+				// Obtenir l'unique enfant restant
+				Map.Entry<Character, PatriciaTrieNode> uniqueChild = p.children.entrySet().iterator().next();
 
-			// Retourner vrai si le nœud courant n'a pas d'enfants, indiquant qu'il peut
-			// être supprimé
+				// Fusionner le label de l'enfant avec celui du parent
+				p.label += uniqueChild.getValue().label;
+
+				// Mettre à jour les enfants du parent avec ceux de l'enfant
+				p.children = uniqueChild.getValue().children;
+
+				// Mettre à jour le flag de fin de mot
+				p.is_end_of_word = uniqueChild.getValue().is_end_of_word;
+			}
+			// Si le nœud n'a pas d'enfants, il peut être supprimé
 			return p.children.isEmpty();
 		}
 
@@ -185,16 +198,15 @@ public class FonctionAvancer {
 		}
 
 		// Récursion pour supprimer dans les enfants
-		boolean suppimer = suppression(child, mot, index + child.label.length());
+		boolean supprimer = suppression(child, mot, index + child.label.length());
 
 		// Supprimer le nœud enfant si nécessaire
-		if (suppimer) {
+		if (supprimer == true && child.getChildren().size()==0) {
 			p.children.remove(ch);
-
-			// Si le nœud actuel n'est plus la fin d'un mot et n'a pas d'autres enfants, il
-			// peut aussi être supprimé
+			// Retourner vrai si le nœud actuel peut aussi être supprimé
 			return p.children.isEmpty() && !p.is_end_of_word;
 		}
+
 		return false;
 	}
 

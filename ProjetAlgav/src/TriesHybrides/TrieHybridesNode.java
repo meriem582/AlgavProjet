@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.*;
+import static TriesHybrides.FonctionAvancerHybride.hauteur;
+
 
 public class TrieHybridesNode {
 
@@ -248,4 +250,100 @@ public class TrieHybridesNode {
         printTrie(node.egal, prefix + node.caractere);
         printTrie(node.superieur, prefix);
     }
+    /**
+     * Effectue une rotation à gauche.
+     *
+     * @param arbre Le nœud à rééquilibrer.
+     * @return Le nœud après rotation.
+     */
+    // Rotation gauche
+    public static TrieHybridesNode rotationGauche(TrieHybridesNode arbre) {
+        TrieHybridesNode newNoeud = arbre.superieur;
+        arbre.superieur = newNoeud.inferieur;
+        newNoeud.inferieur = arbre;
+        return newNoeud;
+    }
+
+
+    /**
+     * Effectue une rotation à droite.
+     *
+     * @param arbre Le nœud à rééquilibrer.
+     * @return Le nœud après rotation.
+     */
+    public static TrieHybridesNode rotationDroite(TrieHybridesNode arbre) {
+        TrieHybridesNode nouveauRacine = arbre.inferieur;
+        arbre.inferieur = nouveauRacine.superieur;
+        nouveauRacine.superieur = arbre;
+        return nouveauRacine;
+    }
+
+    /**
+     * Rééquilibre un nœud du trie hybride.
+     *
+     * @param arbre Le nœud à rééquilibrer.
+     * @return Le nœud après rééquilibrage.
+     */
+    // Rééquilibre le trie hybride
+    public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
+        if (arbre == null) return null;
+
+        int hauteurGauche = hauteur(arbre.inferieur);
+        //afficher la hauteur de l'arbre gauche
+        System.out.println("hauteur de l'arbre gauche : " + hauteurGauche);
+        int hauteurDroite = hauteur(arbre.superieur);
+        //afficher la hauteur de l'arbre droit
+        System.out.println("hauteur de l'arbre droit : " + hauteurDroite);
+
+        //si la hauteur de l'arbre gauche est supérieure à celle de l'arbre droit apartir de 2
+        if (hauteurGauche - hauteurDroite >= 2) {
+            //si la hauteur de l'arbre gauche est supérieure à celle de l'arbre droit apartir de 2
+            if (hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
+                arbre.inferieur = rotationGauche(arbre.inferieur);
+            }
+            return rotationDroite(arbre);
+        } else if (hauteurDroite - hauteurGauche >= 2) {
+            if (hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
+                arbre.superieur = rotationDroite(arbre.superieur);
+            }
+            return rotationGauche(arbre);
+        }
+
+        return arbre;
+    }
+
+
+    /**
+     * Insère un mot dans le trie hybride et rééquilibre l'arbre si nécessaire.
+     *
+     * @param arbre Le nœud racine du trie hybride.
+     * @param mot   Le mot à insérer.
+     * @return Le nœud racine après insertion et rééquilibrage.
+     */
+    public static TrieHybridesNode insertEtReequilibrer(TrieHybridesNode arbre, String mot) {
+        if (mot == null || mot.isEmpty()) {
+            return arbre;
+        }
+
+        if (arbre == null || arbre.caractere == ' ') {
+            arbre = new TrieHybridesNode(mot.charAt(0));
+        }
+
+        char FirstCaractere = mot.charAt(0);
+
+        if (FirstCaractere < arbre.caractere) {
+            arbre.inferieur = insertEtReequilibrer(arbre.inferieur, mot);
+        } else if (FirstCaractere > arbre.caractere) {
+            arbre.superieur = insertEtReequilibrer(arbre.superieur, mot);
+        } else {
+            if (mot.length() == 1) {
+                arbre.isEndOfWord = true;
+            } else {
+                arbre.egal = insertEtReequilibrer(arbre.egal, mot.substring(1));
+            }
+        }
+
+        return equilibrer(arbre);
+    }
+    
 }
