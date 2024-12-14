@@ -7,15 +7,15 @@ import static TriesHybrides.TrieHybridesNode.insertEtReequilibrer;
 public class TrieHybrideMain {
 
     public static void main(String[] args) {
-        TrieHybridesNode trie = new TrieHybridesNode(' ');
+        TrieHybridesNode trie = new TrieHybridesNode();
         trie.insertMotduFichier("mots.txt"); // Remplacez "mots.txt" par le nom de votre fichier
         trie.saveToFile("trieH.json");
-        TrieHybridesNode trie1 = new TrieHybridesNode(' ');
-        TrieHybridesNode trie2 = new TrieHybridesNode(' ');
+        TrieHybridesNode trie1 = new TrieHybridesNode();
+        TrieHybridesNode trie2 = new TrieHybridesNode();
 
         // Exemple de texte
-        String text1 = "c at |cart|car|cartyy|cartyya|dog|bat";
-        String text2 = "|A|quel|genial|professeur|de|dactylographie|sommes|nous|redevables|de|la|superbe|phrase|ci|dessous|,|un|modele|du|genre|,|que|toute|dactylo|connait|par|coeur|puisque|elle|fait|appel|a|chacune|des|touches|du|clavier|de|la|machine|a|ecrire|?";
+        String text2 = "c at |cart|car|cartyy|cartyya|dog|bat";
+        String text1 = "|A|quel|genial|professeur|de|dactylographie|sommes|nous|redevables|de|la|superbe|phrase|ci|dessous|,|un|modele|du|genre|,|que|toute|dactylo|connait|par|coeur|puisque|elle|fait|appel|a|chacune|des|touches|du|clavier|de|la|machine|a|ecrire|?";
 
         // on séparer les mots du texte
         String[] parts1 = text1.split("\\|");
@@ -34,8 +34,9 @@ public class TrieHybrideMain {
             trie2 = trie2.insert(trie2, part2);
         }
 
-        TrieHybridesNode trie3 = new TrieHybridesNode(' ');
-        TrieHybridesNode trie4 = new TrieHybridesNode(' ');
+        TrieHybridesNode trie3 = new TrieHybridesNode();
+        TrieHybridesNode trie4 = new TrieHybridesNode();
+        
 
         for(String part1 : parts1) {
             trie3 = insertEtReequilibrer(trie3, part1);
@@ -70,7 +71,7 @@ public class TrieHybrideMain {
         // Sauvegarder le trie en JSON
         trie1.saveToFile("trie1H.json");
         trie2.saveToFile("trie2H.json");
-
+        
         System.out.println("Avant suppression :");
         System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
         System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
@@ -85,8 +86,8 @@ public class TrieHybrideMain {
 
         trie1.saveToFile("nvfichier.json");
 
-        TrieHybridesNode trieF1 = new TrieHybridesNode(' ');
-        TrieHybridesNode trieF2 = new TrieHybridesNode(' ');
+        TrieHybridesNode trieF1 = new TrieHybridesNode();
+        TrieHybridesNode trieF2 = new TrieHybridesNode();
 
         // Ajouter des mots au premier trie
         trieF1 = trieF1.insert(trieF1, "chat");
@@ -135,7 +136,7 @@ public class TrieHybrideMain {
 
         //test d'insertion et equilibrage
 
-        TrieHybridesNode trieE = new TrieHybridesNode(' ');
+        TrieHybridesNode trieE = new TrieHybridesNode();
         trieE = insertEtReequilibrer(trieE, "car");
         trieE = insertEtReequilibrer(trieE, "est");
         trieE = insertEtReequilibrer(trieE, "dog");
@@ -146,5 +147,13 @@ public class TrieHybrideMain {
         System.out.println("Hauteur de l'arbre dans trieE : " + hauteur(trieE));
         System.out.println("Profondeur moyenne dans trieE : " + profondeurMoyenne(trieE));
         System.out.println("Nombre de mots commençant par 'ch' dans trieE : " + prefixe(trieE, "ch"));
+        
+        TrieHybridesNode trief=new TrieHybridesNode();
+        trief=FonctionAvancerHybride.fusionner(trie1,trie2);
+        trief.saveToFile("trieFusionnerH.json");
+        
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trief apres fussion : " + listeMots(trief));
+
+
     }
 }
