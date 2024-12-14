@@ -19,20 +19,20 @@ public class TrieHybridesNode {
     TrieHybridesNode egal; // Sous-arbre central
     @JsonProperty("right")
     TrieHybridesNode superieur; // Sous-arbre droit
-    
-	private static int compteurComparaisons = 0; // Compteur statique pour mesurer les comparaisons
-	
-	public static void resetCompteur() {
-		compteurComparaisons = 0; // Réinitialiser le compteur
-	}
 
-	public static int getCompteur() {
-		return compteurComparaisons; // Récupérer le nombre de comparaisons
-	}
+    private static int compteurComparaisons = 0; // Compteur statique pour mesurer les comparaisons
 
-	public static void incrementCompteur() {
-		compteurComparaisons++; // Incrémenter le compteur
-	}
+    public static void resetCompteur() {
+        compteurComparaisons = 0; // Réinitialiser le compteur
+    }
+
+    public static int getCompteur() {
+        return compteurComparaisons; // Récupérer le nombre de comparaisons
+    }
+
+    public static void incrementCompteur() {
+        compteurComparaisons++; // Incrémenter le compteur
+    }
 
     // Constructeur principal pour désérialisation avec Jackson
     @JsonCreator
@@ -111,29 +111,34 @@ public class TrieHybridesNode {
     // Insérer un mot dans le trie hybride
     public TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
         if (mot == null || mot.isEmpty()) {
-        	incrementCompteur();
+            incrementCompteur();
             return trieH;
         }
 
         if (trieH == null) {
-        	incrementCompteur();
+            incrementCompteur();
             trieH = new TrieHybridesNode(mot.charAt(0));
         }
 
         char premierCaractere = mot.charAt(0);
-
+        //si le le caractere est vide on le remplace par le premier caractere du mot
+        if (trieH.caractere == '\0') {
+            incrementCompteur();
+            trieH.caractere = premierCaractere;
+        }
         if (premierCaractere < trieH.caractere) {
-        	incrementCompteur();
+            incrementCompteur();
             trieH.inferieur = insert(trieH.inferieur, mot);
         } else if (premierCaractere > trieH.caractere) {
+            incrementCompteur();
             trieH.superieur = insert(trieH.superieur, mot);
         } else {
-        	incrementCompteur();
+            incrementCompteur();
             if (mot.length() == 1) {
-            	incrementCompteur();
+                incrementCompteur();
                 trieH.isEndOfWord = true;
             } else {
-            	incrementCompteur();
+                incrementCompteur();
                 trieH.egal = insert(trieH.egal, mot.substring(1));
             }
         }
@@ -146,10 +151,10 @@ public class TrieHybridesNode {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String mot;
             while ((mot = reader.readLine()) != null) {
-            	incrementCompteur();
+                incrementCompteur();
                 mot = mot.trim();
                 if (!mot.isEmpty()) {
-                	incrementCompteur();
+                    incrementCompteur();
                     insert(this, mot);
                 }
             }
@@ -163,21 +168,21 @@ public class TrieHybridesNode {
         File repertoire = new File(repertoirePath);
 
         if (!repertoire.exists() || !repertoire.isDirectory()) {
-        	incrementCompteur();
+            incrementCompteur();
             System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
             return;
         }
 
         File[] fichiers = repertoire.listFiles();
         if (fichiers == null) {
-        	incrementCompteur();
+            incrementCompteur();
             System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
             return;
         }
 
         for (File fichier : fichiers) {
             if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
-            	incrementCompteur();
+                incrementCompteur();
                 insertMotduFichier(fichier.getAbsolutePath());
             }
         }
@@ -196,32 +201,32 @@ public class TrieHybridesNode {
 
     // Sauvegarder le trie dans un fichier au format JSON
     public void saveToFile(String filename) {
-	    String jsonCode = this.arbreToJson();
-	    // Définir le répertoire où le fichier sera enregistré
-	    String directoryPath = "Resultats";
-	    File directory = new File(directoryPath);
+        String jsonCode = this.arbreToJson();
+        // Définir le répertoire où le fichier sera enregistré
+        String directoryPath = "Resultats";
+        File directory = new File(directoryPath);
 
-	    // Vérifier si le répertoire existe, sinon le créer
-	    if (!directory.exists()) {
-	    	incrementCompteur();
-	        if (!directory.mkdirs()) {
-	        	incrementCompteur();
-	            System.err.println("Échec de la création du répertoire : " + directoryPath);
-	            return; // On sort si le répertoire ne peut pas être créé
-	        }
-	    }
+        // Vérifier si le répertoire existe, sinon le créer
+        if (!directory.exists()) {
+            incrementCompteur();
+            if (!directory.mkdirs()) {
+                incrementCompteur();
+                System.err.println("Échec de la création du répertoire : " + directoryPath);
+                return; // On sort si le répertoire ne peut pas être créé
+            }
+        }
 
-	    // Construire le chemin complet du fichier
-	    File filePath = new File(directory, filename);
+        // Construire le chemin complet du fichier
+        File filePath = new File(directory, filename);
 
-	    // Écrire le contenu dans le fichier
-	    try (FileWriter fileWriter = new FileWriter(filePath)) {
-	        fileWriter.write(jsonCode);
-	        fileWriter.flush();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-	}
+        // Écrire le contenu dans le fichier
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            fileWriter.write(jsonCode);
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Charger un trie hybride depuis un fichier JSON
     public static TrieHybridesNode jsonToArbre(String filename) {
@@ -237,12 +242,12 @@ public class TrieHybridesNode {
     // Fonction utilitaire pour tester le trie (exemple)
     public static void printTrie(TrieHybridesNode node, String prefix) {
         if (node == null) {
-        	incrementCompteur();
-        	return;
+            incrementCompteur();
+            return;
         }
 
         if (node.isEndOfWord) {
-        	incrementCompteur();
+            incrementCompteur();
             System.out.println(prefix + node.caractere);
         }
 
@@ -285,32 +290,36 @@ public class TrieHybridesNode {
      * @return Le nœud après rééquilibrage.
      */
     // Rééquilibre le trie hybride
-    public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
-        if (arbre == null) return null;
-
-        int hauteurGauche = hauteur(arbre.inferieur);
-        //afficher la hauteur de l'arbre gauche
-        System.out.println("hauteur de l'arbre gauche : " + hauteurGauche);
-        int hauteurDroite = hauteur(arbre.superieur);
-        //afficher la hauteur de l'arbre droit
-        System.out.println("hauteur de l'arbre droit : " + hauteurDroite);
-
-        //si la hauteur de l'arbre gauche est supérieure à celle de l'arbre droit apartir de 2
-        if (hauteurGauche - hauteurDroite >= 2) {
-            //si la hauteur de l'arbre gauche est supérieure à celle de l'arbre droit apartir de 2
-            if (hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
-                arbre.inferieur = rotationGauche(arbre.inferieur);
-            }
-            return rotationDroite(arbre);
-        } else if (hauteurDroite - hauteurGauche >= 2) {
-            if (hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
-                arbre.superieur = rotationDroite(arbre.superieur);
-            }
-            return rotationGauche(arbre);
-        }
-
-        return arbre;
+public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
+    if (arbre == null) {
+        incrementCompteur();
+        return null;
     }
+
+    int hauteurGauche = hauteur(arbre.inferieur);
+    int hauteurDroite = hauteur(arbre.superieur);
+    incrementCompteur(); // Comparaison des hauteurs
+
+    if (hauteurGauche - hauteurDroite >= 2) {
+        incrementCompteur(); // Comparaison des hauteurs
+
+        if (hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
+            incrementCompteur(); // Comparaison des hauteurs
+            arbre.inferieur = rotationGauche(arbre.inferieur);
+        }
+        return rotationDroite(arbre);
+    } else if (hauteurDroite - hauteurGauche >= 2) {
+        incrementCompteur(); // Comparaison des hauteurs
+
+        if (hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
+            incrementCompteur(); // Comparaison des hauteurs
+            arbre.superieur = rotationDroite(arbre.superieur);
+        }
+        return rotationGauche(arbre);
+    }
+
+    return arbre;
+}
 
 
     /**
@@ -321,29 +330,81 @@ public class TrieHybridesNode {
      * @return Le nœud racine après insertion et rééquilibrage.
      */
     public static TrieHybridesNode insertEtReequilibrer(TrieHybridesNode arbre, String mot) {
-        if (mot == null || mot.isEmpty()) {
-            return arbre;
-        }
+    if (mot == null || mot.isEmpty()) {
+        incrementCompteur();
+        return arbre;
+    }
 
-        if (arbre == null || arbre.caractere == ' ') {
-            arbre = new TrieHybridesNode(mot.charAt(0));
-        }
+    if (arbre == null || arbre.caractere == ' ') {
+        incrementCompteur();
+        arbre = new TrieHybridesNode(mot.charAt(0));
+    }
 
-        char FirstCaractere = mot.charAt(0);
+    char FirstCaractere = mot.charAt(0);
 
-        if (FirstCaractere < arbre.caractere) {
-            arbre.inferieur = insertEtReequilibrer(arbre.inferieur, mot);
-        } else if (FirstCaractere > arbre.caractere) {
-            arbre.superieur = insertEtReequilibrer(arbre.superieur, mot);
+    if (FirstCaractere < arbre.caractere) {
+        incrementCompteur(); // Comparaison des caractères
+        arbre.inferieur = insertEtReequilibrer(arbre.inferieur, mot);
+    } else if (FirstCaractere > arbre.caractere) {
+        incrementCompteur(); // Comparaison des caractères
+        arbre.superieur = insertEtReequilibrer(arbre.superieur, mot);
+    } else {
+        incrementCompteur(); // Comparaison des caractères
+        if (mot.length() == 1) {
+            incrementCompteur(); // Comparaison de la longueur du mot
+            arbre.isEndOfWord = true;
         } else {
-            if (mot.length() == 1) {
-                arbre.isEndOfWord = true;
-            } else {
-                arbre.egal = insertEtReequilibrer(arbre.egal, mot.substring(1));
+            incrementCompteur(); // Comparaison de la longueur du mot
+            arbre.egal = insertEtReequilibrer(arbre.egal, mot.substring(1));
+        }
+    }
+
+    return equilibrer(arbre);
+}
+
+    /**
+     * Fonction qui permet d'inserer avec reequilibrage les mots du fichier
+     *
+     * @param filename
+     */
+    public void insertEtReequilibrerMotsDuFichier(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String mot;
+            while ((mot = reader.readLine()) != null) {
+                mot = mot.trim();
+                if (!mot.isEmpty()) {
+                    insertEtReequilibrer(this, mot);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Fonction qui permet d'inserer avec reequilibrage des mots du repertoires
+     *
+     * @param repertoirePath
+     */
+    public void insertEtReequilibrerMotsDuRepertoire(String repertoirePath) {
+        File repertoire = new File(repertoirePath);
+
+        if (!repertoire.exists() || !repertoire.isDirectory()) {
+            System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
+            return;
+        }
+
+        File[] fichiers = repertoire.listFiles();
+        if (fichiers == null) {
+            System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
+            return;
+        }
+
+        for (File fichier : fichiers) {
+            if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+                insertEtReequilibrerMotsDuFichier(fichier.getAbsolutePath());
             }
         }
-
-        return equilibrer(arbre);
     }
-    
+
 }

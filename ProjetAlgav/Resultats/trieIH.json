@@ -1,53 +1,33 @@
 {
-  "char" : "\u0000",
+  "char" : "c",
   "is_end_of_word" : false,
   "left" : null,
-  "middle" : null,
-  "right" : {
-    "char" : "c",
+  "middle" : {
+    "char" : "a",
     "is_end_of_word" : false,
     "left" : null,
     "middle" : {
-      "char" : "a",
+      "char" : "r",
+      "is_end_of_word" : true,
+      "left" : null,
+      "middle" : null,
+      "right" : null
+    },
+    "right" : null
+  },
+  "right" : {
+    "char" : "e",
+    "is_end_of_word" : false,
+    "left" : {
+      "char" : "d",
       "is_end_of_word" : false,
       "left" : null,
       "middle" : {
-        "char" : "r",
-        "is_end_of_word" : true,
-        "left" : null,
-        "middle" : null,
-        "right" : null
-      },
-      "right" : null
-    },
-    "right" : {
-      "char" : "e",
-      "is_end_of_word" : false,
-      "left" : {
-        "char" : "d",
+        "char" : "o",
         "is_end_of_word" : false,
         "left" : null,
         "middle" : {
-          "char" : "o",
-          "is_end_of_word" : false,
-          "left" : null,
-          "middle" : {
-            "char" : "g",
-            "is_end_of_word" : true,
-            "left" : null,
-            "middle" : null,
-            "right" : null
-          },
-          "right" : null
-        },
-        "right" : null
-      },
-      "middle" : {
-        "char" : "s",
-        "is_end_of_word" : false,
-        "left" : null,
-        "middle" : {
-          "char" : "t",
+          "char" : "g",
           "is_end_of_word" : true,
           "left" : null,
           "middle" : null,
@@ -56,6 +36,20 @@
         "right" : null
       },
       "right" : null
-    }
+    },
+    "middle" : {
+      "char" : "s",
+      "is_end_of_word" : false,
+      "left" : null,
+      "middle" : {
+        "char" : "t",
+        "is_end_of_word" : true,
+        "left" : null,
+        "middle" : null,
+        "right" : null
+      },
+      "right" : null
+    },
+    "right" : null
   }
 }

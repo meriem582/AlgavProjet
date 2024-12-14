@@ -1,21 +1,22 @@
 package TriesHybrides;
 
 import static TriesHybrides.FonctionAvancerHybride.*;
+import static TriesHybrides.TrieHybridesNode.insertEtReequilibrer;
 
 
 public class TrieHybrideMain {
 
     public static void main(String[] args) {
-    	TrieHybridesNode trie = new TrieHybridesNode(' ');
-		trie.insertMotduFichier("mots.txt"); // Remplacez "mots.txt" par le nom de votre fichier
-		trie.saveToFile("trieH.json");
+        TrieHybridesNode trie = new TrieHybridesNode(' ');
+        trie.insertMotduFichier("mots.txt"); // Remplacez "mots.txt" par le nom de votre fichier
+        trie.saveToFile("trieH.json");
         TrieHybridesNode trie1 = new TrieHybridesNode(' ');
         TrieHybridesNode trie2 = new TrieHybridesNode(' ');
 
         // Exemple de texte
         String text1 = "c at |cart|car|cartyy|cartyya|dog|bat";
-		String text2 = "|A|quel|genial|professeur|de|dactylographie|sommes|nous|redevables|de|la|superbe|phrase|ci|dessous|,|un|modele|du|genre|,|que|toute|dactylo|connait|par|coeur|puisque|elle|fait|appel|a|chacune|des|touches|du|clavier|de|la|machine|a|ecrire|?";
-		
+        String text2 = "|A|quel|genial|professeur|de|dactylographie|sommes|nous|redevables|de|la|superbe|phrase|ci|dessous|,|un|modele|du|genre|,|que|toute|dactylo|connait|par|coeur|puisque|elle|fait|appel|a|chacune|des|touches|du|clavier|de|la|machine|a|ecrire|?";
+
         // on séparer les mots du texte
         String[] parts1 = text1.split("\\|");
         String[] parts2 = text2.split("\\|");
@@ -33,6 +34,26 @@ public class TrieHybrideMain {
             trie2 = trie2.insert(trie2, part2);
         }
 
+        TrieHybridesNode trie3 = new TrieHybridesNode(' ');
+        TrieHybridesNode trie4 = new TrieHybridesNode(' ');
+
+        for(String part1 : parts1) {
+            trie3 = insertEtReequilibrer(trie3, part1);
+        }
+
+        for(String part2 : parts2) {
+            trie4 = insertEtReequilibrer(trie4, part2);
+        }
+
+        System.out.println("Le nombre de mots dans trie 1: " + comptageMots(trie3) + "\n" + "Le nombre de mots dans trie2: " + comptageMots(trie4));
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie3) + "\n" + "Liste des mots dans l'ordre alphabétique dans trie2 : " + listeMots(trie4));
+        System.out.println("Hauteur de l'arbre dans trie1 : " + hauteur(trie3) + "\n" + "Hauteur de l'arbre dans trie2: " + hauteur(trie4));
+        System.out.println("Profondeur moyenne dans trie1 : " + profondeurMoyenne(trie3) + "\n" + "Profondeur moyenne dans trie2: " + profondeurMoyenne(trie4));
+        System.out.println("Nombre de mots commençant par 'la' dans trie1 : " + prefixe(trie3, "la") + "\n" + "Nombre de mots commençant par 'la' dans trie2: " + prefixe(trie4, "la"));
+        System.out.println("Recherche de 'cart' dans trie1 : " + recherche(trie3, "cart") + "\n" + "Recherche de 'A' dans trie2: " + recherche(trie4, "A")); // true
+        System.out.println("Recherche de 'ca' dans trie1 : " + recherche(trie3, "ca") + "\n" + "Recherche de 'ca' dans trie2: " + recherche(trie4, "ca")); // false
+
+
         // Afficher les résultats
         System.out.println("Le nombre de mots dans trie 1: " + comptageMots(trie1) + "\n" + "Le nombre de mots dans trie2: " + comptageMots(trie2));
         System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1) + "\n" + "Liste des mots dans l'ordre alphabétique dans trie2 : " + listeMots(trie2));
@@ -49,20 +70,20 @@ public class TrieHybrideMain {
         // Sauvegarder le trie en JSON
         trie1.saveToFile("trie1H.json");
         trie2.saveToFile("trie2H.json");
-        
-      System.out.println("Avant suppression :");
-      System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
-      System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
 
-      // Suppression des mots
-      trie1 = supression(trie1, "dog");
-      trie2 = supression(trie2, "lion");
+        System.out.println("Avant suppression :");
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
 
-      System.out.println("Après suppression :");
-      System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
-      System.out.println("Liste des mots dans l'ordre alphabétique dans trie1: " + listeMots(trie2));
-      
-      trie1.saveToFile("nvfichier.json");
+        // Suppression des mots
+        trie1 = supression(trie1, "dog");
+        trie2 = supression(trie2, "lion");
+
+        System.out.println("Après suppression :");
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
+        System.out.println("Liste des mots dans l'ordre alphabétique dans trie1: " + listeMots(trie2));
+
+        trie1.saveToFile("nvfichier.json");
 
         TrieHybridesNode trieF1 = new TrieHybridesNode(' ');
         TrieHybridesNode trieF2 = new TrieHybridesNode(' ');
@@ -94,7 +115,7 @@ public class TrieHybrideMain {
 
 
         TrieHybridesNode triecopy = TrieHybridesNode.jsonToArbre("trie1H.json");
-		triecopy.saveToFile("trie1copyH.json");
+        triecopy.saveToFile("trie1copyH.json");
 
         TrieHybridesNode trieI = new TrieHybridesNode();
         trieI = trieI.insert(trieI, "car");
@@ -115,9 +136,9 @@ public class TrieHybrideMain {
         //test d'insertion et equilibrage
 
         TrieHybridesNode trieE = new TrieHybridesNode(' ');
-        trieE = trieE.insertEtReequilibrer(trieE, "car");
-        trieE = trieE.insertEtReequilibrer(trieE, "est");
-        trieE = trieE.insertEtReequilibrer(trieE, "dog");
+        trieE = insertEtReequilibrer(trieE, "car");
+        trieE = insertEtReequilibrer(trieE, "est");
+        trieE = insertEtReequilibrer(trieE, "dog");
 
         //sauvegarder le trie
         trieE.saveToFile("trieEH.json");
