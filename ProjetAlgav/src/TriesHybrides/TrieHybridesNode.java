@@ -109,7 +109,7 @@ public class TrieHybridesNode {
     }
 
     // Insérer un mot dans le trie hybride
-    public TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
+    public static TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
         if (mot == null || mot.isEmpty()) {
             incrementCompteur();
             return trieH;
@@ -263,12 +263,14 @@ public class TrieHybridesNode {
      */
     // Rotation gauche
     public static TrieHybridesNode rotationGauche(TrieHybridesNode arbre) {
+        if (arbre == null || arbre.superieur == null) {
+            return arbre;
+        }
         TrieHybridesNode newNoeud = arbre.superieur;
         arbre.superieur = newNoeud.inferieur;
         newNoeud.inferieur = arbre;
         return newNoeud;
     }
-
 
     /**
      * Effectue une rotation à droite.
@@ -277,6 +279,9 @@ public class TrieHybridesNode {
      * @return Le nœud après rotation.
      */
     public static TrieHybridesNode rotationDroite(TrieHybridesNode arbre) {
+        if (arbre == null || arbre.inferieur == null) {
+            return arbre;
+        }
         TrieHybridesNode nouveauRacine = arbre.inferieur;
         arbre.inferieur = nouveauRacine.superieur;
         nouveauRacine.superieur = arbre;
@@ -290,36 +295,33 @@ public class TrieHybridesNode {
      * @return Le nœud après rééquilibrage.
      */
     // Rééquilibre le trie hybride
-public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
-    if (arbre == null) {
-        incrementCompteur();
-        return null;
+    public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
+        if (arbre == null) {
+            incrementCompteur();
+            return null;
+        }
+
+        int hauteurGauche = hauteur(arbre.inferieur);
+        int hauteurDroite = hauteur(arbre.superieur);
+
+        if (hauteurGauche - hauteurDroite >= 2) {
+            incrementCompteur();
+            if (arbre.inferieur != null && hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
+                incrementCompteur();
+                arbre.inferieur = rotationGauche(arbre.inferieur);
+            }
+            return rotationDroite(arbre);
+        } else if (hauteurDroite - hauteurGauche >= 2) {
+            incrementCompteur();
+            if (arbre.superieur != null && hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
+                incrementCompteur();
+                arbre.superieur = rotationDroite(arbre.superieur);
+            }
+            return rotationGauche(arbre);
+        }
+        return arbre;
     }
 
-    int hauteurGauche = hauteur(arbre.inferieur);
-    int hauteurDroite = hauteur(arbre.superieur);
-    incrementCompteur(); // Comparaison des hauteurs
-
-    if (hauteurGauche - hauteurDroite >= 2) {
-        incrementCompteur(); // Comparaison des hauteurs
-
-        if (hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
-            incrementCompteur(); // Comparaison des hauteurs
-            arbre.inferieur = rotationGauche(arbre.inferieur);
-        }
-        return rotationDroite(arbre);
-    } else if (hauteurDroite - hauteurGauche >= 2) {
-        incrementCompteur(); // Comparaison des hauteurs
-
-        if (hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
-            incrementCompteur(); // Comparaison des hauteurs
-            arbre.superieur = rotationDroite(arbre.superieur);
-        }
-        return rotationGauche(arbre);
-    }
-
-    return arbre;
-}
 
 
     /**
@@ -335,32 +337,10 @@ public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
         return arbre;
     }
 
-    if (arbre == null || arbre.caractere == ' ') {
-        incrementCompteur();
-        arbre = new TrieHybridesNode(mot.charAt(0));
-    }
-
-    char FirstCaractere = mot.charAt(0);
-
-    if (FirstCaractere < arbre.caractere) {
-        incrementCompteur(); // Comparaison des caractères
-        arbre.inferieur = insertEtReequilibrer(arbre.inferieur, mot);
-    } else if (FirstCaractere > arbre.caractere) {
-        incrementCompteur(); // Comparaison des caractères
-        arbre.superieur = insertEtReequilibrer(arbre.superieur, mot);
-    } else {
-        incrementCompteur(); // Comparaison des caractères
-        if (mot.length() == 1) {
-            incrementCompteur(); // Comparaison de la longueur du mot
-            arbre.isEndOfWord = true;
-        } else {
-            incrementCompteur(); // Comparaison de la longueur du mot
-            arbre.egal = insertEtReequilibrer(arbre.egal, mot.substring(1));
-        }
-    }
-
+    arbre = insert(arbre, mot);
     return equilibrer(arbre);
 }
+
 
     /**
      * Fonction qui permet d'inserer avec reequilibrage les mots du fichier
@@ -381,27 +361,26 @@ public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
         }
     }
 
-    /**
-     * Fonction qui permet d'inserer avec reequilibrage des mots du repertoires
-     *
-     * @param repertoirePath
-     */
-    public void insertEtReequilibrerMotsDuRepertoire(String repertoirePath) {
+    // Insérer des mots à partir de plusieurs fichiers dans un répertoire
+    public void insertMotsEquilibrerDuRepertoire(String repertoirePath) {
         File repertoire = new File(repertoirePath);
 
         if (!repertoire.exists() || !repertoire.isDirectory()) {
+            incrementCompteur();
             System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
             return;
         }
 
         File[] fichiers = repertoire.listFiles();
         if (fichiers == null) {
+            incrementCompteur();
             System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
             return;
         }
 
         for (File fichier : fichiers) {
             if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+                incrementCompteur();
                 insertEtReequilibrerMotsDuFichier(fichier.getAbsolutePath());
             }
         }

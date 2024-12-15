@@ -1,5 +1,13 @@
 package TriesHybrides;
 
+import PatriciaTrie.FonctionAvancer;
+import PatriciaTrie.PatriciaTrieNode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 import static TriesHybrides.FonctionAvancerHybride.*;
 import static TriesHybrides.TrieHybridesNode.insertEtReequilibrer;
 
@@ -36,7 +44,7 @@ public class TrieHybrideMain {
 
         TrieHybridesNode trie3 = new TrieHybridesNode();
         TrieHybridesNode trie4 = new TrieHybridesNode();
-        
+
 
         for(String part1 : parts1) {
             trie3 = insertEtReequilibrer(trie3, part1);
@@ -71,7 +79,7 @@ public class TrieHybrideMain {
         // Sauvegarder le trie en JSON
         trie1.saveToFile("trie1H.json");
         trie2.saveToFile("trie2H.json");
-        
+
         System.out.println("Avant suppression :");
         System.out.println("Liste des mots dans l'ordre alphabétique dans trie1 : " + listeMots(trie1));
         System.out.println("Liste des mots dans l'ordre alphabétique dans trie2: " + listeMots(trie2));
@@ -147,13 +155,68 @@ public class TrieHybrideMain {
         System.out.println("Hauteur de l'arbre dans trieE : " + hauteur(trieE));
         System.out.println("Profondeur moyenne dans trieE : " + profondeurMoyenne(trieE));
         System.out.println("Nombre de mots commençant par 'ch' dans trieE : " + prefixe(trieE, "ch"));
-        
+
         TrieHybridesNode trief=new TrieHybridesNode();
         trief=FonctionAvancerHybride.fusionner(trie1,trie2);
         trief.saveToFile("trieFusionnerH.json");
-        
+
         System.out.println("Liste des mots dans l'ordre alphabétique dans trief apres fussion : " + listeMots(trief));
 
 
+
+        List<String> mots = genererMotsAleatoire(2000);
+
+        // Initialisation des arbres
+        PatriciaTrieNode patriciaTrie = new PatriciaTrieNode();
+        TrieHybridesNode hybrideTrie = new TrieHybridesNode();
+        TrieHybridesNode hybrideTrieEquilibre = new TrieHybridesNode();
+
+        // Insertion des mots
+        System.out.println("*** Insertion des mots ***");
+        for (String mot : mots) {
+            patriciaTrie.inserer(mot);
+            hybrideTrie.insert(hybrideTrie, mot);
+            hybrideTrieEquilibre = TrieHybridesNode.insertEtReequilibrer(hybrideTrieEquilibre, mot);
+        }
+
+        // Comptage des mots
+        System.out.println("\n*** Comptage des mots ***");
+        System.out.println("Nombre de mots dans Patricia-Trie: " + FonctionAvancer.comptageMots(patriciaTrie));
+        System.out.println("Nombre de mots dans Trie Hybride: " + FonctionAvancerHybride.comptageMots(hybrideTrie));
+        System.out.println("Nombre de mots dans Trie Hybride Équilibré: " + FonctionAvancerHybride.comptageMots(hybrideTrieEquilibre));
+
+        // Hauteur des arbres
+        System.out.println("\n*** Hauteur des arbres ***");
+        System.out.println("Hauteur de Patricia-Trie: " + FonctionAvancer.hauteur(patriciaTrie));
+        System.out.println("Hauteur de Trie Hybride: " + FonctionAvancerHybride.hauteur(hybrideTrie));
+        System.out.println("Hauteur de Trie Hybride Équilibré: " + FonctionAvancerHybride.hauteur(hybrideTrieEquilibre));
+
+        // Recherche de mots
+        System.out.println("\n*** Recherche de mots ***");
+        String motRecherche = "loup";
+        System.out.println("Recherche de '" + motRecherche + "' dans Patricia-Trie: " + FonctionAvancer.Recherche(patriciaTrie, motRecherche));
+        System.out.println("Recherche de '" + motRecherche + "' dans Trie Hybride: " + FonctionAvancerHybride.recherche(hybrideTrie, motRecherche));
+        System.out.println("Recherche de '" + motRecherche + "' dans Trie Hybride Équilibré: " + FonctionAvancerHybride.recherche(hybrideTrieEquilibre, motRecherche));
+
+        // Liste des mots dans l'ordre alphabétique
+        System.out.println("\n*** Liste des mots dans chaque arbre ***");
+        System.out.println("Patricia-Trie: " + FonctionAvancer.listeMots(patriciaTrie));
+        System.out.println("Trie Hybride: " + FonctionAvancerHybride.listeMots(hybrideTrie));
+        System.out.println("Trie Hybride Équilibré: " + FonctionAvancerHybride.listeMots(hybrideTrieEquilibre));
     }
+
+    private static List<String> genererMotsAleatoire(int nombreMots) {
+        List<String> words = new ArrayList<>();
+        Random random = new Random();
+        for (int i = 0; i < nombreMots; i++) {
+            char[] mot = new char[random.nextInt(10) + 1];
+            for (int j = 0; j < mot.length; j++) {
+                mot[j] = (char) (random.nextInt(26) + 'a');
+            }
+            words.add(new String(mot));
+        }
+        return words;
+    }
+
+
 }
