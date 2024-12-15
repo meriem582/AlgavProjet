@@ -72,7 +72,7 @@ fichiers_hauteur = [
 labels = ["Shakespeare", "Henry IV", "Mots Aléatoires"]
 
 # Tracer les histogrammes groupés
-tracer_histogramme_combine(fichiers_insertion, labels, "Comparaison des Temps d'Insertion", "Temps (ns)")
-tracer_histogramme_combine(fichiers_recherche, labels, "Comparaison des Temps de Recherche", "Temps (ns)")
-tracer_histogramme_combine(fichiers_suppression, labels, "Comparaison des Temps de Suppression", "Temps (ns)")
-tracer_histogramme_combine(fichiers_hauteur, labels, "Comparaison des Hauteurs des Arbres", "Hauteur")
+tracer_histogramme_combine(fichiers_insertion, labels, "Comparaison_des_temps_insertion", "Temps (ns)")
+tracer_histogramme_combine(fichiers_recherche, labels, "Comparaison_des_temps_de_recherche", "Temps (ns)")
+tracer_histogramme_combine(fichiers_suppression, labels, "Comparaison_des_emps_de_suppression", "Temps (ns)")
+tracer_histogramme_combine(fichiers_hauteur, labels, "Comparaison_des_hauteurs_des_arbres", "Hauteur")

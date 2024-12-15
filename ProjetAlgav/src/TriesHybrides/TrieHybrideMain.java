@@ -4,7 +4,6 @@ import PatriciaTrie.FonctionAvancer;
 import PatriciaTrie.PatriciaTrieNode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -194,7 +193,7 @@ public class TrieHybrideMain {
         // Recherche de mots
         System.out.println("\n*** Recherche de mots ***");
         String motRecherche = "loup";
-        System.out.println("Recherche de '" + motRecherche + "' dans Patricia-Trie: " + FonctionAvancer.Recherche(patriciaTrie, motRecherche));
+        System.out.println("Recherche de '" + motRecherche + "' dans Patricia-Trie: " + FonctionAvancer.recherche(patriciaTrie, motRecherche));
         System.out.println("Recherche de '" + motRecherche + "' dans Trie Hybride: " + FonctionAvancerHybride.recherche(hybrideTrie, motRecherche));
         System.out.println("Recherche de '" + motRecherche + "' dans Trie Hybride Équilibré: " + FonctionAvancerHybride.recherche(hybrideTrieEquilibre, motRecherche));
 

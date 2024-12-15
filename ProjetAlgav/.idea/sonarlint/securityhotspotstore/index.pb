@@ -42,3 +42,9 @@ J
 ,Mots_générés_aléatoirement_Insertion.csv,a/1/a1e187e4bdd1cf7de3825f318c73935ac5f26cfa
 J
 1HenryIV.txt_Insertion.csv,d/2/d2d8c453650887fee317ab9a465e4aea4812d70f
+G
+resultats_insertion.csv,a/5/a51899f9cf2380ab06e8ec62ada08554ca2c5b23
+D
+results_equilibre.py,4/e/4ebe8e802623cac0f683c5180d3e71648deffc92
+U
+%src/PatriciaTrie/FonctionAvancer.java,6/3/630538cf41a52781b88b918f493a659e0a50b8ff

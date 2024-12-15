@@ -11,31 +11,29 @@ import java.util.List;
  */
 public class FonctionAvancerHybride {
 
-	private static int compteurComparaisons = 0;
+	private static int compteurNoeud = 0;
 
-	// Réinitialiser le compteur
-	public static void resetCompteur() {
-		compteurComparaisons = 0;
+	// Reinitaliser le compteurNoeud
+	public static void resetCompteurNoeud() {
+		compteurNoeud = 0;
 	}
 
-	// Récupérer le compteur
-	public static int getCompteur() {
-		return compteurComparaisons;
+	// Récupérer le compteurNoeud
+	public static int getCompteurNoeud() {
+		return compteurNoeud;
 	}
 
-	// Incrémenter le compteur
-	public static void incrementCompteur() {
-		compteurComparaisons++;
+	// Incrémenter le compteurNoeud
+	public static void incrementCompteurNoeud() {
+		compteurNoeud++;
 	}
 
 	// constructeur
-
 	public FonctionAvancerHybride() {
 	}
 
 	/**
 	 * Recherche un mot dans le trie hybride.
-	 *
 	 * @param trieHY Le nœud racine du trie hybride.
 	 * @param mot    Le mot à rechercher.
 	 * @return True si le mot existe, False sinon.
@@ -44,18 +42,17 @@ public class FonctionAvancerHybride {
 		if (trieHY == null || mot == null || mot.isEmpty()) {
 			return false;
 		}
-		incrementCompteur();
+		//incrémentation du compteur du nombre de noeud visité
+		incrementCompteurNoeud();
 		char c = mot.charAt(0);
 
 		if (c < trieHY.caractere) {
-			incrementCompteur();
+
 			return recherche(trieHY.inferieur, mot);
 		} else if (c > trieHY.caractere) {
-			incrementCompteur();
 			return recherche(trieHY.superieur, mot);
 		} else {
 			if (mot.length() == 1) {
-				incrementCompteur();
 				return trieHY.isEndOfWord;
 			}
 			return recherche(trieHY.egal, mot.substring(1));
@@ -70,7 +67,6 @@ public class FonctionAvancerHybride {
 	 */
 	public static int comptageMots(TrieHybridesNode trieHY) {
 		if (trieHY == null) {
-			incrementCompteur();
 			return 0;
 		}
 
@@ -124,7 +120,7 @@ public class FonctionAvancerHybride {
 	 */
 	public static int comptageNil(TrieHybridesNode trieHY) {
 		if (trieHY == null) {
-			incrementCompteur();
+
 			return 1;
 		}
 
@@ -144,10 +140,10 @@ public class FonctionAvancerHybride {
 	 */
 	public static int hauteur(TrieHybridesNode trieHY) {
 		if (trieHY == null) {
-			incrementCompteur();
 			return 0;
 		}
-
+		//incrémentation du compteur du nombre de noeud visité
+		incrementCompteurNoeud();
 		int hauteurInferieur = hauteur(trieHY.inferieur);
 		int hauteurEgal = hauteur(trieHY.egal);
 		int hauteurSuperieur = hauteur(trieHY.superieur);
@@ -162,6 +158,8 @@ public class FonctionAvancerHybride {
 	 * @return La profondeur moyenne.
 	 */
 	public static int profondeurMoyenne(TrieHybridesNode trieHY) {
+		//incrémentation du compteur du nombre de noeud visité
+		incrementCompteurNoeud();
 		int[] profondeurTotale = new int[1];
 		int[] nombreDeMots = new int[1];
 		calculProfondeur(trieHY, 0, profondeurTotale, nombreDeMots);
@@ -176,15 +174,12 @@ public class FonctionAvancerHybride {
 	 * @param profondeurTotale   Tableau pour stocker la profondeur totale.
 	 * @param nombreDeMots       Tableau pour stocker le nombre total de mots.
 	 */
-	private static void calculProfondeur(TrieHybridesNode trieHY, int profondeurActuelle, int[] profondeurTotale,
-			int[] nombreDeMots) {
+	private static void calculProfondeur(TrieHybridesNode trieHY, int profondeurActuelle, int[] profondeurTotale, int[] nombreDeMots) {
 		if (trieHY == null) {
-			incrementCompteur();
 			return;
 		}
 
 		if (trieHY.isEndOfWord) {
-			incrementCompteur();
 			profondeurTotale[0] += profondeurActuelle;
 			nombreDeMots[0]++;
 		}
@@ -204,7 +199,6 @@ public class FonctionAvancerHybride {
 	public static int prefixe(TrieHybridesNode trieHY, String prefix) {
 		TrieHybridesNode noeud = trouverNoeudPrefixe(trieHY, prefix);
 		if (noeud == null) {
-			incrementCompteur();
 			return 0;
 		}
 		return comptageMots(noeud);
@@ -219,23 +213,17 @@ public class FonctionAvancerHybride {
 	 */
 	private static TrieHybridesNode trouverNoeudPrefixe(TrieHybridesNode trieHY, String prefix) {
 		if (trieHY == null || prefix.isEmpty()) {
-			incrementCompteur();
 			return null;
 		}
 
-		incrementCompteur();
 		char c = prefix.charAt(0);
 
 		if (c < trieHY.caractere) {
-			incrementCompteur();
 			return trouverNoeudPrefixe(trieHY.inferieur, prefix);
 		} else if (c > trieHY.caractere) {
-			incrementCompteur();
 			return trouverNoeudPrefixe(trieHY.superieur, prefix);
 		} else {
-			incrementCompteur();
 			if (prefix.length() == 1) {
-				incrementCompteur();
 				return trieHY;
 			}
 			return trouverNoeudPrefixe(trieHY.egal, prefix.substring(1));
@@ -251,11 +239,9 @@ public class FonctionAvancerHybride {
 	 */
 	public static TrieHybridesNode supression(TrieHybridesNode trieHY, String mot) {
 		if (trieHY == null || mot == null || mot.isEmpty()) {
-			incrementCompteur();
 			System.out.println("Mot non trouvé ou invalide.");
 			return trieHY;
 		}
-
 		// Trouver et supprimer le mot
 		trieHY = supprimer(trieHY, mot, 0);
 
@@ -272,11 +258,11 @@ public class FonctionAvancerHybride {
 	 */
 	private static TrieHybridesNode supprimer(TrieHybridesNode node, String mot, int index) {
 		if (node == null) {
-			incrementCompteur();
 			return null;
 		}
 
-		incrementCompteur();
+		//incrémentation du compteur du nombre de noeud visité
+		incrementCompteurNoeud();
 		char c = mot.charAt(index);
 
 		if (c < node.caractere) {
@@ -307,10 +293,8 @@ public class FonctionAvancerHybride {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String mot;
 			while ((mot = reader.readLine()) != null) {
-				incrementCompteur();
 				mot = mot.trim(); // nettoie le mot en supprimant les espaces superflus
 				if (!mot.isEmpty()) {
-					incrementCompteur();
 					node = supression(node, mot); // on supprimer chaque mot du fichier
 				}
 			}
@@ -330,26 +314,21 @@ public class FonctionAvancerHybride {
 	public static TrieHybridesNode fusionner(TrieHybridesNode arbre1, TrieHybridesNode arbre2) {
 		TrieHybridesNode arbre = new TrieHybridesNode();
 		if (arbre1 == null) {
-			incrementCompteur();
 			return arbre2;
 		} else if (arbre2 == null) {
-			incrementCompteur();
 			return arbre1;
 		} else {
-			incrementCompteur();
 			List<String> mots1 = listeMots(arbre1);
 			int mots_arbre1 = mots1.size();
 			List<String> mots2 = listeMots(arbre2);
 			int mots_arbre2 = mots2.size();
 			if (mots_arbre1 <= mots_arbre2) {
-				incrementCompteur();
 				for (String part1 : mots1) {
 					// afficher les mots
 					arbre = arbre2.insert(arbre2, part1);
 				}
 
 			} else {
-				incrementCompteur();
 				for (String part1 : mots2) {
 					// afficher les mots
 					arbre = arbre1.insert(arbre1, part1);

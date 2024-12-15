@@ -33,9 +33,9 @@ public class PatriciaTrieMain {
 		}
 		System.out.println("Application des fonctions sur l'arbre trie1");
 
-		System.out.println("Résultat de la recherche du mot car : "+FonctionAvancer.Recherche(trie1, "car")); //true
-		System.out.println("Résultat de la recherche du mot cart : "+FonctionAvancer.Recherche(trie1, "cart")); //true
-		System.out.println("Résultat de la recherche du mot cat : "+FonctionAvancer.Recherche(trie1, "cat")); //false
+		System.out.println("Résultat de la recherche du mot car : "+FonctionAvancer.recherche(trie1, "car")); //true
+		System.out.println("Résultat de la recherche du mot cart : "+FonctionAvancer.recherche(trie1, "cart")); //true
+		System.out.println("Résultat de la recherche du mot cat : "+FonctionAvancer.recherche(trie1, "cat")); //false
 		
 		System.out.println("Le nombre des mots est : " + FonctionAvancer.comptageMots(trie1));
 
@@ -48,7 +48,7 @@ public class PatriciaTrieMain {
 		trie1.saveToFile("trie1P.json");
 
 		FonctionAvancer.suppression(trie1, "dog");
-		System.out.println("Résultat de la recherche du mot dog aprés la suppression : "+FonctionAvancer.Recherche(trie1, "dog")); 
+		System.out.println("Résultat de la recherche du mot dog aprés la suppression : "+FonctionAvancer.recherche(trie1, "dog"));
 		System.out.println("Le nombre des mots ou dog est prefixe est : " + FonctionAvancer.prefixe(trie1, "dog"));
 
 		
