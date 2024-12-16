@@ -172,10 +172,12 @@ public class FonctionAvancer {
 				return false; // Le mot n'existe pas
 			}
 			p.is_end_of_word = false; // Marquer ce nœud comme n'étant plus la fin d'un mot
+
 			// Retourner vrai si le nœud courant n'a pas d'enfants, indiquant qu'il peut
 			// être supprimé
 			return p.children.isEmpty();
 		}
+
 		char ch = mot.charAt(index);
 		PatriciaTrieNode child = p.children.get(ch);
 		if (child == null) {
@@ -184,9 +186,11 @@ public class FonctionAvancer {
 
 		// Récursion pour supprimer dans les enfants
 		boolean suppimer = suppression(child, mot, index + child.label.length());
+
 		// Supprimer le nœud enfant si nécessaire
 		if (suppimer) {
 			p.children.remove(ch);
+
 			// Si le nœud actuel n'est plus la fin d'un mot et n'a pas d'autres enfants, il
 			// peut aussi être supprimé
 			return p.children.isEmpty() && !p.is_end_of_word;

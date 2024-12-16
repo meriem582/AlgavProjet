@@ -2,11 +2,6 @@
   "label" : "",
   "is_end_of_word" : false,
   "children" : {
-    "A" : {
-      "label" : "A",
-      "is_end_of_word" : true,
-      "children" : { }
-    },
     "a" : {
       "label" : "a",
       "is_end_of_word" : true,
@@ -18,14 +13,42 @@
         }
       }
     },
+    "b" : {
+      "label" : "bat",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
     "c" : {
       "label" : "c",
       "is_end_of_word" : false,
       "children" : {
-        "h" : {
-          "label" : "hacune",
+        " " : {
+          "label" : " at ",
           "is_end_of_word" : true,
           "children" : { }
+        },
+        "a" : {
+          "label" : "ar",
+          "is_end_of_word" : true,
+          "children" : {
+            "t" : {
+              "label" : "t",
+              "is_end_of_word" : true,
+              "children" : {
+                "y" : {
+                  "label" : "yy",
+                  "is_end_of_word" : true,
+                  "children" : {
+                    "a" : {
+                      "label" : "a",
+                      "is_end_of_word" : true,
+                      "children" : { }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         "i" : {
           "label" : "i",
@@ -56,8 +79,8 @@
       }
     },
     "d" : {
-      "label" : "d",
-      "is_end_of_word" : false,
+      "label" : "dog",
+      "is_end_of_word" : true,
       "children" : {
         "a" : {
           "label" : "actylo",

@@ -1,101 +1,55 @@
 {
-  "char" : "A",
-  "is_end_of_word" : true,
-  "left" : {
-    "char" : ",",
+  "char" : " ",
+  "is_end_of_word" : false,
+  "left" : null,
+  "middle" : null,
+  "right" : {
+    "char" : "A",
     "is_end_of_word" : true,
-    "left" : null,
-    "middle" : null,
-    "right" : {
-      "char" : "?",
+    "left" : {
+      "char" : ",",
       "is_end_of_word" : true,
       "left" : null,
       "middle" : null,
-      "right" : null
-    }
-  },
-  "middle" : null,
-  "right" : {
-    "char" : "q",
-    "is_end_of_word" : false,
-    "left" : {
-      "char" : "g",
+      "right" : {
+        "char" : "?",
+        "is_end_of_word" : true,
+        "left" : null,
+        "middle" : null,
+        "right" : null
+      }
+    },
+    "middle" : null,
+    "right" : {
+      "char" : "q",
       "is_end_of_word" : false,
       "left" : {
-        "char" : "d",
+        "char" : "g",
         "is_end_of_word" : false,
         "left" : {
-          "char" : "c",
+          "char" : "d",
           "is_end_of_word" : false,
           "left" : {
-            "char" : "a",
-            "is_end_of_word" : true,
-            "left" : null,
-            "middle" : {
-              "char" : "p",
-              "is_end_of_word" : false,
+            "char" : "c",
+            "is_end_of_word" : false,
+            "left" : {
+              "char" : "a",
+              "is_end_of_word" : true,
               "left" : null,
               "middle" : {
                 "char" : "p",
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "e",
+                  "char" : "p",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "l",
-                    "is_end_of_word" : true,
-                    "left" : null,
-                    "middle" : null,
-                    "right" : null
-                  },
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : {
-              "char" : "b",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "a",
-                "is_end_of_word" : false,
-                "left" : null,
-                "middle" : {
-                  "char" : "t",
-                  "is_end_of_word" : true,
-                  "left" : null,
-                  "middle" : null,
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            }
-          },
-          "middle" : {
-            "char" : "i",
-            "is_end_of_word" : true,
-            "left" : {
-              "char" : "h",
-              "is_end_of_word" : false,
-              "left" : {
-                "char" : " ",
-                "is_end_of_word" : false,
-                "left" : null,
-                "middle" : {
-                  "char" : "a",
-                  "is_end_of_word" : false,
-                  "left" : null,
-                  "middle" : {
-                    "char" : "t",
+                    "char" : "e",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : " ",
+                      "char" : "l",
                       "is_end_of_word" : true,
                       "left" : null,
                       "middle" : null,
@@ -105,62 +59,30 @@
                   },
                   "right" : null
                 },
-                "right" : {
-                  "char" : "a",
-                  "is_end_of_word" : false,
-                  "left" : null,
-                  "middle" : {
-                    "char" : "r",
-                    "is_end_of_word" : true,
-                    "left" : null,
-                    "middle" : {
-                      "char" : "t",
-                      "is_end_of_word" : true,
-                      "left" : null,
-                      "middle" : {
-                        "char" : "y",
-                        "is_end_of_word" : false,
-                        "left" : null,
-                        "middle" : {
-                          "char" : "y",
-                          "is_end_of_word" : true,
-                          "left" : null,
-                          "middle" : {
-                            "char" : "a",
-                            "is_end_of_word" : true,
-                            "left" : null,
-                            "middle" : null,
-                            "right" : null
-                          },
-                          "right" : null
-                        },
-                        "right" : null
-                      },
-                      "right" : null
-                    },
-                    "right" : null
-                  },
-                  "right" : null
-                }
+                "right" : null
               },
-              "middle" : {
-                "char" : "a",
+              "right" : null
+            },
+            "middle" : {
+              "char" : "i",
+              "is_end_of_word" : true,
+              "left" : {
+                "char" : "h",
                 "is_end_of_word" : false,
-                "left" : null,
-                "middle" : {
-                  "char" : "c",
+                "left" : {
+                  "char" : " ",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "u",
+                    "char" : "a",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "n",
+                      "char" : "t",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
-                        "char" : "e",
+                        "char" : " ",
                         "is_end_of_word" : true,
                         "left" : null,
                         "middle" : null,
@@ -170,38 +92,62 @@
                     },
                     "right" : null
                   },
-                  "right" : null
+                  "right" : {
+                    "char" : "a",
+                    "is_end_of_word" : false,
+                    "left" : null,
+                    "middle" : {
+                      "char" : "r",
+                      "is_end_of_word" : true,
+                      "left" : null,
+                      "middle" : {
+                        "char" : "t",
+                        "is_end_of_word" : true,
+                        "left" : null,
+                        "middle" : {
+                          "char" : "y",
+                          "is_end_of_word" : false,
+                          "left" : null,
+                          "middle" : {
+                            "char" : "y",
+                            "is_end_of_word" : true,
+                            "left" : null,
+                            "middle" : {
+                              "char" : "a",
+                              "is_end_of_word" : true,
+                              "left" : null,
+                              "middle" : null,
+                              "right" : null
+                            },
+                            "right" : null
+                          },
+                          "right" : null
+                        },
+                        "right" : null
+                      },
+                      "right" : null
+                    },
+                    "right" : null
+                  }
                 },
-                "right" : null
-              },
-              "right" : null
-            },
-            "middle" : null,
-            "right" : {
-              "char" : "o",
-              "is_end_of_word" : false,
-              "left" : {
-                "char" : "l",
-                "is_end_of_word" : false,
-                "left" : null,
                 "middle" : {
                   "char" : "a",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "v",
+                    "char" : "c",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "i",
+                      "char" : "u",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
-                        "char" : "e",
+                        "char" : "n",
                         "is_end_of_word" : false,
                         "left" : null,
                         "middle" : {
-                          "char" : "r",
+                          "char" : "e",
                           "is_end_of_word" : true,
                           "left" : null,
                           "middle" : null,
@@ -217,22 +163,41 @@
                 },
                 "right" : null
               },
-              "middle" : {
-                "char" : "n",
+              "middle" : null,
+              "right" : {
+                "char" : "o",
                 "is_end_of_word" : false,
                 "left" : {
-                  "char" : "e",
+                  "char" : "l",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "u",
+                    "char" : "a",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "r",
-                      "is_end_of_word" : true,
+                      "char" : "v",
+                      "is_end_of_word" : false,
                       "left" : null,
-                      "middle" : null,
+                      "middle" : {
+                        "char" : "i",
+                        "is_end_of_word" : false,
+                        "left" : null,
+                        "middle" : {
+                          "char" : "e",
+                          "is_end_of_word" : false,
+                          "left" : null,
+                          "middle" : {
+                            "char" : "r",
+                            "is_end_of_word" : true,
+                            "left" : null,
+                            "middle" : null,
+                            "right" : null
+                          },
+                          "right" : null
+                        },
+                        "right" : null
+                      },
                       "right" : null
                     },
                     "right" : null
@@ -242,17 +207,16 @@
                 "middle" : {
                   "char" : "n",
                   "is_end_of_word" : false,
-                  "left" : null,
-                  "middle" : {
-                    "char" : "a",
+                  "left" : {
+                    "char" : "e",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "i",
+                      "char" : "u",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
-                        "char" : "t",
+                        "char" : "r",
                         "is_end_of_word" : true,
                         "left" : null,
                         "middle" : null,
@@ -262,71 +226,96 @@
                     },
                     "right" : null
                   },
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            }
-          },
-          "right" : null
-        },
-        "middle" : {
-          "char" : "e",
-          "is_end_of_word" : true,
-          "left" : {
-            "char" : "a",
-            "is_end_of_word" : false,
-            "left" : null,
-            "middle" : {
-              "char" : "c",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "t",
-                "is_end_of_word" : false,
-                "left" : null,
-                "middle" : {
-                  "char" : "y",
-                  "is_end_of_word" : false,
-                  "left" : null,
                   "middle" : {
-                    "char" : "l",
+                    "char" : "n",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "o",
-                      "is_end_of_word" : true,
+                      "char" : "a",
+                      "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
-                        "char" : "g",
+                        "char" : "i",
                         "is_end_of_word" : false,
                         "left" : null,
                         "middle" : {
-                          "char" : "r",
+                          "char" : "t",
+                          "is_end_of_word" : true,
+                          "left" : null,
+                          "middle" : null,
+                          "right" : null
+                        },
+                        "right" : null
+                      },
+                      "right" : null
+                    },
+                    "right" : null
+                  },
+                  "right" : null
+                },
+                "right" : null
+              }
+            },
+            "right" : null
+          },
+          "middle" : {
+            "char" : "e",
+            "is_end_of_word" : true,
+            "left" : {
+              "char" : "a",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "c",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "t",
+                  "is_end_of_word" : false,
+                  "left" : null,
+                  "middle" : {
+                    "char" : "y",
+                    "is_end_of_word" : false,
+                    "left" : null,
+                    "middle" : {
+                      "char" : "l",
+                      "is_end_of_word" : false,
+                      "left" : null,
+                      "middle" : {
+                        "char" : "o",
+                        "is_end_of_word" : true,
+                        "left" : null,
+                        "middle" : {
+                          "char" : "g",
                           "is_end_of_word" : false,
                           "left" : null,
                           "middle" : {
-                            "char" : "a",
+                            "char" : "r",
                             "is_end_of_word" : false,
                             "left" : null,
                             "middle" : {
-                              "char" : "p",
+                              "char" : "a",
                               "is_end_of_word" : false,
                               "left" : null,
                               "middle" : {
-                                "char" : "h",
+                                "char" : "p",
                                 "is_end_of_word" : false,
                                 "left" : null,
                                 "middle" : {
-                                  "char" : "i",
+                                  "char" : "h",
                                   "is_end_of_word" : false,
                                   "left" : null,
                                   "middle" : {
-                                    "char" : "e",
-                                    "is_end_of_word" : true,
+                                    "char" : "i",
+                                    "is_end_of_word" : false,
                                     "left" : null,
-                                    "middle" : null,
+                                    "middle" : {
+                                      "char" : "e",
+                                      "is_end_of_word" : true,
+                                      "left" : null,
+                                      "middle" : null,
+                                      "right" : null
+                                    },
                                     "right" : null
                                   },
                                   "right" : null
@@ -351,26 +340,124 @@
               },
               "right" : null
             },
-            "right" : null
-          },
-          "middle" : {
-            "char" : "s",
-            "is_end_of_word" : true,
-            "left" : null,
             "middle" : {
               "char" : "s",
-              "is_end_of_word" : false,
+              "is_end_of_word" : true,
               "left" : null,
               "middle" : {
+                "char" : "s",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "o",
+                  "is_end_of_word" : false,
+                  "left" : null,
+                  "middle" : {
+                    "char" : "u",
+                    "is_end_of_word" : false,
+                    "left" : null,
+                    "middle" : {
+                      "char" : "s",
+                      "is_end_of_word" : true,
+                      "left" : null,
+                      "middle" : null,
+                      "right" : null
+                    },
+                    "right" : null
+                  },
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : {
+              "char" : "u",
+              "is_end_of_word" : true,
+              "left" : {
                 "char" : "o",
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "u",
+                  "char" : "g",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "middle" : null,
+              "right" : null
+            }
+          },
+          "right" : {
+            "char" : "e",
+            "is_end_of_word" : false,
+            "left" : null,
+            "middle" : {
+              "char" : "l",
+              "is_end_of_word" : false,
+              "left" : {
+                "char" : "c",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "r",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "s",
+                    "char" : "i",
+                    "is_end_of_word" : false,
+                    "left" : null,
+                    "middle" : {
+                      "char" : "r",
+                      "is_end_of_word" : false,
+                      "left" : null,
+                      "middle" : {
+                        "char" : "e",
+                        "is_end_of_word" : true,
+                        "left" : null,
+                        "middle" : null,
+                        "right" : null
+                      },
+                      "right" : null
+                    },
+                    "right" : null
+                  },
+                  "right" : null
+                },
+                "right" : null
+              },
+              "middle" : {
+                "char" : "l",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "e",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : {
+              "char" : "f",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "a",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "i",
+                  "is_end_of_word" : false,
+                  "left" : null,
+                  "middle" : {
+                    "char" : "t",
                     "is_end_of_word" : true,
                     "left" : null,
                     "middle" : null,
@@ -381,50 +468,193 @@
                 "right" : null
               },
               "right" : null
-            },
-            "right" : null
-          },
-          "right" : {
-            "char" : "u",
-            "is_end_of_word" : true,
-            "left" : {
-              "char" : "o",
+            }
+          }
+        },
+        "middle" : {
+          "char" : "e",
+          "is_end_of_word" : false,
+          "left" : null,
+          "middle" : {
+            "char" : "n",
+            "is_end_of_word" : false,
+            "left" : null,
+            "middle" : {
+              "char" : "i",
               "is_end_of_word" : false,
               "left" : null,
               "middle" : {
-                "char" : "g",
+                "char" : "a",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "l",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : {
+                "char" : "r",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "e",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              }
+            },
+            "right" : null
+          },
+          "right" : null
+        },
+        "right" : {
+          "char" : "p",
+          "is_end_of_word" : false,
+          "left" : {
+            "char" : "n",
+            "is_end_of_word" : false,
+            "left" : {
+              "char" : "l",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "a",
                 "is_end_of_word" : true,
                 "left" : null,
                 "middle" : null,
                 "right" : null
               },
-              "right" : null
+              "right" : {
+                "char" : "m",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "o",
+                  "is_end_of_word" : false,
+                  "left" : {
+                    "char" : "a",
+                    "is_end_of_word" : false,
+                    "left" : null,
+                    "middle" : {
+                      "char" : "c",
+                      "is_end_of_word" : false,
+                      "left" : null,
+                      "middle" : {
+                        "char" : "h",
+                        "is_end_of_word" : false,
+                        "left" : null,
+                        "middle" : {
+                          "char" : "i",
+                          "is_end_of_word" : false,
+                          "left" : null,
+                          "middle" : {
+                            "char" : "n",
+                            "is_end_of_word" : false,
+                            "left" : null,
+                            "middle" : {
+                              "char" : "e",
+                              "is_end_of_word" : true,
+                              "left" : null,
+                              "middle" : null,
+                              "right" : null
+                            },
+                            "right" : null
+                          },
+                          "right" : null
+                        },
+                        "right" : null
+                      },
+                      "right" : null
+                    },
+                    "right" : null
+                  },
+                  "middle" : {
+                    "char" : "d",
+                    "is_end_of_word" : false,
+                    "left" : null,
+                    "middle" : {
+                      "char" : "e",
+                      "is_end_of_word" : false,
+                      "left" : null,
+                      "middle" : {
+                        "char" : "l",
+                        "is_end_of_word" : false,
+                        "left" : null,
+                        "middle" : {
+                          "char" : "e",
+                          "is_end_of_word" : true,
+                          "left" : null,
+                          "middle" : null,
+                          "right" : null
+                        },
+                        "right" : null
+                      },
+                      "right" : null
+                    },
+                    "right" : null
+                  },
+                  "right" : null
+                },
+                "right" : null
+              }
             },
-            "middle" : null,
-            "right" : null
-          }
-        },
-        "right" : {
-          "char" : "e",
-          "is_end_of_word" : false,
-          "left" : null,
-          "middle" : {
-            "char" : "l",
-            "is_end_of_word" : false,
-            "left" : {
-              "char" : "c",
+            "middle" : {
+              "char" : "o",
               "is_end_of_word" : false,
               "left" : null,
+              "middle" : {
+                "char" : "u",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "s",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : null
+          },
+          "middle" : {
+            "char" : "r",
+            "is_end_of_word" : false,
+            "left" : {
+              "char" : "h",
+              "is_end_of_word" : false,
+              "left" : {
+                "char" : "a",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "r",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
               "middle" : {
                 "char" : "r",
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "i",
+                  "char" : "a",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "r",
+                    "char" : "s",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
@@ -443,136 +673,35 @@
               "right" : null
             },
             "middle" : {
-              "char" : "l",
+              "char" : "o",
               "is_end_of_word" : false,
               "left" : null,
               "middle" : {
-                "char" : "e",
-                "is_end_of_word" : true,
-                "left" : null,
-                "middle" : null,
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : null
-          },
-          "right" : {
-            "char" : "f",
-            "is_end_of_word" : false,
-            "left" : null,
-            "middle" : {
-              "char" : "a",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "i",
+                "char" : "f",
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "t",
-                  "is_end_of_word" : true,
-                  "left" : null,
-                  "middle" : null,
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : null
-          }
-        }
-      },
-      "middle" : {
-        "char" : "e",
-        "is_end_of_word" : false,
-        "left" : null,
-        "middle" : {
-          "char" : "n",
-          "is_end_of_word" : false,
-          "left" : null,
-          "middle" : {
-            "char" : "i",
-            "is_end_of_word" : false,
-            "left" : null,
-            "middle" : {
-              "char" : "a",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "l",
-                "is_end_of_word" : true,
-                "left" : null,
-                "middle" : null,
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : {
-              "char" : "r",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "e",
-                "is_end_of_word" : true,
-                "left" : null,
-                "middle" : null,
-                "right" : null
-              },
-              "right" : null
-            }
-          },
-          "right" : null
-        },
-        "right" : null
-      },
-      "right" : {
-        "char" : "p",
-        "is_end_of_word" : false,
-        "left" : {
-          "char" : "n",
-          "is_end_of_word" : false,
-          "left" : {
-            "char" : "l",
-            "is_end_of_word" : false,
-            "left" : null,
-            "middle" : {
-              "char" : "a",
-              "is_end_of_word" : true,
-              "left" : null,
-              "middle" : null,
-              "right" : null
-            },
-            "right" : {
-              "char" : "m",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "o",
-                "is_end_of_word" : false,
-                "left" : {
-                  "char" : "a",
+                  "char" : "e",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "c",
+                    "char" : "s",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "h",
+                      "char" : "s",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
-                        "char" : "i",
+                        "char" : "e",
                         "is_end_of_word" : false,
                         "left" : null,
                         "middle" : {
-                          "char" : "n",
+                          "char" : "u",
                           "is_end_of_word" : false,
                           "left" : null,
                           "middle" : {
-                            "char" : "e",
+                            "char" : "r",
                             "is_end_of_word" : true,
                             "left" : null,
                             "middle" : null,
@@ -588,16 +717,28 @@
                   },
                   "right" : null
                 },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : {
+              "char" : "u",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "i",
+                "is_end_of_word" : false,
+                "left" : null,
                 "middle" : {
-                  "char" : "d",
+                  "char" : "s",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "e",
+                    "char" : "q",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "l",
+                      "char" : "u",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
@@ -618,79 +759,41 @@
               "right" : null
             }
           },
+          "right" : null
+        }
+      },
+      "middle" : {
+        "char" : "u",
+        "is_end_of_word" : false,
+        "left" : null,
+        "middle" : {
+          "char" : "e",
+          "is_end_of_word" : true,
+          "left" : null,
           "middle" : {
-            "char" : "o",
-            "is_end_of_word" : false,
+            "char" : "l",
+            "is_end_of_word" : true,
             "left" : null,
-            "middle" : {
-              "char" : "u",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "s",
-                "is_end_of_word" : true,
-                "left" : null,
-                "middle" : null,
-                "right" : null
-              },
-              "right" : null
-            },
+            "middle" : null,
             "right" : null
           },
           "right" : null
         },
-        "middle" : {
+        "right" : null
+      },
+      "right" : {
+        "char" : "s",
+        "is_end_of_word" : false,
+        "left" : {
           "char" : "r",
           "is_end_of_word" : false,
-          "left" : {
-            "char" : "h",
-            "is_end_of_word" : false,
-            "left" : {
-              "char" : "a",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "r",
-                "is_end_of_word" : true,
-                "left" : null,
-                "middle" : null,
-                "right" : null
-              },
-              "right" : null
-            },
-            "middle" : {
-              "char" : "r",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "a",
-                "is_end_of_word" : false,
-                "left" : null,
-                "middle" : {
-                  "char" : "s",
-                  "is_end_of_word" : false,
-                  "left" : null,
-                  "middle" : {
-                    "char" : "e",
-                    "is_end_of_word" : true,
-                    "left" : null,
-                    "middle" : null,
-                    "right" : null
-                  },
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : null
-          },
+          "left" : null,
           "middle" : {
-            "char" : "o",
+            "char" : "e",
             "is_end_of_word" : false,
             "left" : null,
             "middle" : {
-              "char" : "f",
+              "char" : "d",
               "is_end_of_word" : false,
               "left" : null,
               "middle" : {
@@ -698,26 +801,32 @@
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "s",
+                  "char" : "v",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "s",
+                    "char" : "a",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "e",
+                      "char" : "b",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
-                        "char" : "u",
+                        "char" : "l",
                         "is_end_of_word" : false,
                         "left" : null,
                         "middle" : {
-                          "char" : "r",
-                          "is_end_of_word" : true,
+                          "char" : "e",
+                          "is_end_of_word" : false,
                           "left" : null,
-                          "middle" : null,
+                          "middle" : {
+                            "char" : "s",
+                            "is_end_of_word" : true,
+                            "left" : null,
+                            "middle" : null,
+                            "right" : null
+                          },
                           "right" : null
                         },
                         "right" : null
@@ -734,24 +843,55 @@
             },
             "right" : null
           },
+          "right" : null
+        },
+        "middle" : {
+          "char" : "o",
+          "is_end_of_word" : false,
+          "left" : null,
+          "middle" : {
+            "char" : "m",
+            "is_end_of_word" : false,
+            "left" : null,
+            "middle" : {
+              "char" : "m",
+              "is_end_of_word" : false,
+              "left" : null,
+              "middle" : {
+                "char" : "e",
+                "is_end_of_word" : false,
+                "left" : null,
+                "middle" : {
+                  "char" : "s",
+                  "is_end_of_word" : true,
+                  "left" : null,
+                  "middle" : null,
+                  "right" : null
+                },
+                "right" : null
+              },
+              "right" : null
+            },
+            "right" : null
+          },
           "right" : {
             "char" : "u",
             "is_end_of_word" : false,
             "left" : null,
             "middle" : {
-              "char" : "i",
+              "char" : "p",
               "is_end_of_word" : false,
               "left" : null,
               "middle" : {
-                "char" : "s",
+                "char" : "e",
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "q",
+                  "char" : "r",
                   "is_end_of_word" : false,
                   "left" : null,
                   "middle" : {
-                    "char" : "u",
+                    "char" : "b",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
@@ -772,61 +912,30 @@
             "right" : null
           }
         },
-        "right" : null
-      }
-    },
-    "middle" : {
-      "char" : "u",
-      "is_end_of_word" : false,
-      "left" : null,
-      "middle" : {
-        "char" : "e",
-        "is_end_of_word" : true,
-        "left" : null,
-        "middle" : {
-          "char" : "l",
-          "is_end_of_word" : true,
-          "left" : null,
-          "middle" : null,
-          "right" : null
-        },
-        "right" : null
-      },
-      "right" : null
-    },
-    "right" : {
-      "char" : "s",
-      "is_end_of_word" : false,
-      "left" : {
-        "char" : "r",
-        "is_end_of_word" : false,
-        "left" : null,
-        "middle" : {
-          "char" : "e",
+        "right" : {
+          "char" : "u",
           "is_end_of_word" : false,
-          "left" : null,
-          "middle" : {
-            "char" : "d",
+          "left" : {
+            "char" : "t",
             "is_end_of_word" : false,
             "left" : null,
             "middle" : {
-              "char" : "e",
+              "char" : "o",
               "is_end_of_word" : false,
               "left" : null,
               "middle" : {
-                "char" : "v",
+                "char" : "u",
                 "is_end_of_word" : false,
                 "left" : null,
                 "middle" : {
-                  "char" : "a",
+                  "char" : "t",
                   "is_end_of_word" : false,
-                  "left" : null,
-                  "middle" : {
-                    "char" : "b",
+                  "left" : {
+                    "char" : "c",
                     "is_end_of_word" : false,
                     "left" : null,
                     "middle" : {
-                      "char" : "l",
+                      "char" : "h",
                       "is_end_of_word" : false,
                       "left" : null,
                       "middle" : {
@@ -846,67 +955,6 @@
                     },
                     "right" : null
                   },
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : null
-          },
-          "right" : null
-        },
-        "right" : null
-      },
-      "middle" : {
-        "char" : "o",
-        "is_end_of_word" : false,
-        "left" : null,
-        "middle" : {
-          "char" : "m",
-          "is_end_of_word" : false,
-          "left" : null,
-          "middle" : {
-            "char" : "m",
-            "is_end_of_word" : false,
-            "left" : null,
-            "middle" : {
-              "char" : "e",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "s",
-                "is_end_of_word" : true,
-                "left" : null,
-                "middle" : null,
-                "right" : null
-              },
-              "right" : null
-            },
-            "right" : null
-          },
-          "right" : null
-        },
-        "right" : {
-          "char" : "u",
-          "is_end_of_word" : false,
-          "left" : null,
-          "middle" : {
-            "char" : "p",
-            "is_end_of_word" : false,
-            "left" : null,
-            "middle" : {
-              "char" : "e",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "r",
-                "is_end_of_word" : false,
-                "left" : null,
-                "middle" : {
-                  "char" : "b",
-                  "is_end_of_word" : false,
-                  "left" : null,
                   "middle" : {
                     "char" : "e",
                     "is_end_of_word" : true,
@@ -922,75 +970,15 @@
             },
             "right" : null
           },
-          "right" : null
-        }
-      },
-      "right" : {
-        "char" : "u",
-        "is_end_of_word" : false,
-        "left" : {
-          "char" : "t",
-          "is_end_of_word" : false,
-          "left" : null,
           "middle" : {
-            "char" : "o",
-            "is_end_of_word" : false,
+            "char" : "n",
+            "is_end_of_word" : true,
             "left" : null,
-            "middle" : {
-              "char" : "u",
-              "is_end_of_word" : false,
-              "left" : null,
-              "middle" : {
-                "char" : "t",
-                "is_end_of_word" : false,
-                "left" : {
-                  "char" : "c",
-                  "is_end_of_word" : false,
-                  "left" : null,
-                  "middle" : {
-                    "char" : "h",
-                    "is_end_of_word" : false,
-                    "left" : null,
-                    "middle" : {
-                      "char" : "e",
-                      "is_end_of_word" : false,
-                      "left" : null,
-                      "middle" : {
-                        "char" : "s",
-                        "is_end_of_word" : true,
-                        "left" : null,
-                        "middle" : null,
-                        "right" : null
-                      },
-                      "right" : null
-                    },
-                    "right" : null
-                  },
-                  "right" : null
-                },
-                "middle" : {
-                  "char" : "e",
-                  "is_end_of_word" : true,
-                  "left" : null,
-                  "middle" : null,
-                  "right" : null
-                },
-                "right" : null
-              },
-              "right" : null
-            },
+            "middle" : null,
             "right" : null
           },
           "right" : null
-        },
-        "middle" : {
-          "char" : "n",
-          "is_end_of_word" : true,
-          "left" : null,
-          "middle" : null,
-          "right" : null
-        },
-        "right" : null
+        }
       }
     }
   }

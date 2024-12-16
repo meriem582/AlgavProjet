@@ -6,8 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/merie/git/AlgavProjet/ProjetAlgav/libs/jackson-annotations-2.15.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/merie/git/AlgavProjet/ProjetAlgav/libs/jackson-core-2.15.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/merie/git/AlgavProjet/ProjetAlgav/libs/jackson-databind-2.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/merie/Desktop/Nouveau dossier/AlgavProjet/ProjetAlgav/libs/jackson-annotations-2.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/merie/Desktop/Nouveau dossier/AlgavProjet/ProjetAlgav/libs/jackson-core-2.15.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/merie/Desktop/Nouveau dossier/AlgavProjet/ProjetAlgav/libs/jackson-databind-2.15.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
