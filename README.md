@@ -10,6 +10,7 @@ Ce projet consiste à représenter un dictionnaire de mots. Dans cette optique, 
 Environnement d'Exécution et Compilateur: 
 - Environnement d'exécution : Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240).
 - Compilateur : javac version 17.0.10.
+- Python 3.13.1 (pour les graphes).
 ### faires quelques instalations des utils pour le graphe:
 - python3 -m pip install pandas
 - python3 -m pip install matplotlib
