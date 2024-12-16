@@ -1,135 +1,63 @@
 
-l
-java:S11924"ODefine a constant instead of duplicating this literal " ns (TrouvÃ©: " 6 times.(Ã­ï­8®İ¡Ü¼2
-w
-java:S1192I"ZDefine a constant instead of duplicating this literal "resultats_suppression.csv" 3 times.(­Ã¢¥8¯İ¡Ü¼2
-u
-java:S1192;"XDefine a constant instead of duplicating this literal "resultats_recherche.csv" 3 times.(” ¾8¯İ¡Ü¼2
-q
-java:S1192%"ODefine a constant instead of duplicating this literal "_Patricia.json" 3 times.(·Şşÿÿÿÿÿ8¯İ¡Ü¼2
-i
-java:S1192Ò"FDefine a constant instead of duplicating this literal "apple" 3 times.(–ÿş¶ıÿÿÿÿ8Ø¨Ü¼2
-r
-java:S1192Q"UDefine a constant instead of duplicating this literal "Hauteur Trie Hybride" 4 times.(“ßĞ8¯İ¡Ü¼2
-q
-java:S1192."ODefine a constant instead of duplicating this literal "Patricia-Trie" 10 times.(‚’…¹ùÿÿÿÿ8¯İ¡Ü¼2
-w
-java:S1192O"ZDefine a constant instead of duplicating this literal "Hauteur de Trie Hybride: " 3 times.(ßâÙË8¯İ¡Ü¼2
-s
-java:S1192Q"VDefine a constant instead of duplicating this literal "resultats_hauteur.csv" 4 times.(“ßĞ8¯İ¡Ü¼2
-q
-java:S1192."ODefine a constant instead of duplicating this literal "_Insertion.csv" 3 times.(‚’…¹ùÿÿÿÿ8¯İ¡Ü¼2
-p
-java:S1192."NDefine a constant instead of duplicating this literal "Trie Hybride" 10 times.(‚’…¹ùÿÿÿÿ8¯İ¡Ü¼2
-r
-java:S1192$"PDefine a constant instead of duplicating this literal "Patricia-Trie: " 3 times.(³§Çıÿÿÿÿ8¯İ¡Ü¼2
-…
-java:S1192G"iDefine a constant instead of duplicating this literal "Temps de suppression dans Trie Hybride: " 3 times.(ùáål8¯İ¡Ü¼2
-|
-java:S1192"_Define a constant instead of duplicating this literal "
-********** ExpÃ©rimentation: " 3 times.(×Òø¶8¯İ¡Ü¼2
-j
-java:S1192"MDefine a constant instead of duplicating this literal " **********
-" 3 times.(×Òø¶8¯İ¡Ü¼2
-p
-java:S1192,"NDefine a constant instead of duplicating this literal "_Hybride.json" 3 times.(ê“ÿ‘ûÿÿÿÿ8¯İ¡Ü¼2
-s
-java:S1192Q"VDefine a constant instead of duplicating this literal "Hauteur Patricia-Trie" 4 times.(“ßĞ8¯İ¡Ü¼2
-‰
-java:S11929"gDefine a constant instead of duplicating this literal "Temps de recherche dans Trie Hybride: " 3 times.(©ÒÜùÿÿÿÿ8¯İ¡Ü¼2
+m
+java:S1192X"KDefine a constant instead of duplicating this literal "nouveaumot" 3 times.(—ıæÒÿÿÿÿÿ8¯ªÏ­¼2
+m
+java:S1192"PDefine a constant instead of duplicating this literal "Patricia-Trie: " 7 times.(ïıÓÅ8¯ªÏ­¼2
+n
+java:S1192"LDefine a constant instead of duplicating this literal "Shakespeare" 3 times.(ú¨Àòÿÿÿÿÿ8¯ªÏ­¼2
 }
-java:S1192N"[Define a constant instead of duplicating this literal "Hauteur de Patricia-Trie: " 3 times.(«ãœÎşÿÿÿÿ8¯İ¡Ü¼2
-…
-java:S11924"hDefine a constant instead of duplicating this literal "Temps de recherche dans Patricia-Trie: " 3 times.(Ã­ï­8¯İ¡Ü¼2
-Œ
-java:S1192B"jDefine a constant instead of duplicating this literal "Temps de suppression dans Patricia-Trie: " 3 times.(êÑ¬ùÿÿÿÿ8°İ¡Ü¼2
+java:S11925"`Define a constant instead of duplicating this literal "Trie Hybride avec equilibrage: " 5 times.(±Âº§8¯ªÏ­¼2
+{
+java:S1192A"YDefine a constant instead of duplicating this literal "Shakespeare/1henryiv.txt" 3 times.(£ĞŠŸûÿÿÿÿ8¯ªÏ­¼2
 l
-java:S1192+"ODefine a constant instead of duplicating this literal "Trie Hybride: " 3 times.(ÿãú…8°İ¡Ü¼2
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á¤íı8³İ¡Ü¼2
-G	java:S106"+Replace this use of System.out by a logger.(×Òø¶8âİ¡Ü¼2
-L	java:S106$"+Replace this use of System.out by a logger.(³§Çıÿÿÿÿ8ãİ¡Ü¼2
-G	java:S106+"+Replace this use of System.out by a logger.(ÿãú…8äİ¡Ü¼2
-G	java:S1064"+Replace this use of System.out by a logger.(Ã­ï­8äİ¡Ü¼2
-L	java:S1069"+Replace this use of System.out by a logger.(©ÒÜùÿÿÿÿ8åİ¡Ü¼2
-L	java:S106B"+Replace this use of System.out by a logger.(êÑ¬ùÿÿÿÿ8åİ¡Ü¼2
-F	java:S106G"+Replace this use of System.out by a logger.(ùáål8æİ¡Ü¼2
-L	java:S106N"+Replace this use of System.out by a logger.(«ãœÎşÿÿÿÿ8æİ¡Ü¼2
-G	java:S106O"+Replace this use of System.out by a logger.(ßâÙË8æİ¡Ü¼2
-G	java:S106U"+Replace this use of System.out by a logger.(×Òø¶8çİ¡Ü¼2
-L	java:S106]"+Replace this use of System.out by a logger.(³§Çıÿÿÿÿ8èİ¡Ü¼2
-G	java:S106c"+Replace this use of System.out by a logger.(ÿãú…8èİ¡Ü¼2
-G	java:S106m"+Replace this use of System.out by a logger.(Ã­ï­8éİ¡Ü¼2
-L	java:S106s"+Replace this use of System.out by a logger.(©ÒÜùÿÿÿÿ8éİ¡Ü¼2
-L	java:S106|"+Replace this use of System.out by a logger.(êÑ¬ùÿÿÿÿ8êİ¡Ü¼2
-G	java:S106‚"+Replace this use of System.out by a logger.(ùáål8êİ¡Ü¼2
-M	java:S106‰"+Replace this use of System.out by a logger.(«ãœÎşÿÿÿÿ8ëİ¡Ü¼2
-H	java:S106Š"+Replace this use of System.out by a logger.(ßâÙË8ëİ¡Ü¼2
-H	java:S106"+Replace this use of System.out by a logger.(×Òø¶8ìİ¡Ü¼2
-M	java:S106š"+Replace this use of System.out by a logger.(³§Çıÿÿÿÿ8ìİ¡Ü¼2
-S
-java:S2209Ÿ"5Change this instance-reference to a static reference.(²³¶ï8íİ¡Ü¼2
-H	java:S106¢"+Replace this use of System.out by a logger.(ÿãú…8íİ¡Ü¼2
-H	java:S106¬"+Replace this use of System.out by a logger.(Ã­ï­8îİ¡Ü¼2
-M	java:S106²"+Replace this use of System.out by a logger.(©ÒÜùÿÿÿÿ8îİ¡Ü¼2
-M	java:S106»"+Replace this use of System.out by a logger.(êÑ¬ùÿÿÿÿ8ïİ¡Ü¼2
-G	java:S106Á"+Replace this use of System.out by a logger.(ùáål8ïİ¡Ü¼2
-M	java:S106È"+Replace this use of System.out by a logger.(«ãœÎşÿÿÿÿ8ğİ¡Ü¼2
-H	java:S106É"+Replace this use of System.out by a logger.(ßâÙË8ğİ¡Ü¼2
-H	java:S106ğ"+Replace this use of System.out by a logger.(‘ğ’Ú8ıİ¡Ü¼2
-X
-java:S2209õ"5Change this instance-reference to a static reference.(““°òıÿÿÿÿ8şİ¡Ü¼2
-S
-java:S2209ö"5Change this instance-reference to a static reference.(ÇŒ¡™8¯ê¦Ü¼2
-S
-java:S2209÷"5Change this instance-reference to a static reference.(Ó“Í«8¯ê¦Ü¼2
-X
-java:S2209ø"5Change this instance-reference to a static reference.(™¡“Öøÿÿÿÿ8¯ê¦Ü¼2
-S
-java:S2209ù"5Change this instance-reference to a static reference.(…œ¹8°ê¦Ü¼2
-X
-java:S2209ú"5Change this instance-reference to a static reference.(¦šÜ×øÿÿÿÿ8°ê¦Ü¼2
-X
-java:S2209û"5Change this instance-reference to a static reference.(Òº›¤ıÿÿÿÿ8°ê¦Ü¼2
-X
-java:S2209ü"5Change this instance-reference to a static reference.(öÌœüşÿÿÿÿ8°ê¦Ü¼2
-S
-java:S2209ı"5Change this instance-reference to a static reference.(¯¾Ç8°ê¦Ü¼2
-X
-java:S2209ş"5Change this instance-reference to a static reference.(×öÄ£ûÿÿÿÿ8°ê¦Ü¼2
-S
-java:S2209ÿ"5Change this instance-reference to a static reference.(š¯¨ù8±ê¦Ü¼2
-S
-java:S2209€"5Change this instance-reference to a static reference.( Ü×ñ8±ê¦Ü¼2
-S
-java:S2209"5Change this instance-reference to a static reference.(†®Ì›8±ê¦Ü¼2
-X
-java:S2209‚"5Change this instance-reference to a static reference.(¹¶¸Íıÿÿÿÿ8±ê¦Ü¼2
-S
-java:S2209ƒ"5Change this instance-reference to a static reference.(‡âµğ8±ê¦Ü¼2
-X
-java:S2209„"5Change this instance-reference to a static reference.(¯ïµ şÿÿÿÿ8±ê¦Ü¼2
-R
-java:S2209…"5Change this instance-reference to a static reference.(ßØó8²ê¦Ü¼2
-R
-java:S2209†"5Change this instance-reference to a static reference.(û»°38²ê¦Ü¼2
-S
-java:S2209‡"5Change this instance-reference to a static reference.(ò­Åü8²ê¦Ü¼2
-X
-java:S2209ˆ"5Change this instance-reference to a static reference.(ÉáÌôşÿÿÿÿ8²ê¦Ü¼2
-X
-java:S2209‰"5Change this instance-reference to a static reference.(®“Óşÿÿÿÿ8²ê¦Ü¼2
-X
-java:S2209Š"5Change this instance-reference to a static reference.(ƒ½ŞØûÿÿÿÿ8²ê¦Ü¼2
-X
-java:S2209‹"5Change this instance-reference to a static reference.(ÕÑĞ÷ûÿÿÿÿ8³ê¦Ü¼2
-X
-java:S2209Œ"5Change this instance-reference to a static reference.(ï­êŞùÿÿÿÿ8³ê¦Ü¼2
-S
-java:S2209"5Change this instance-reference to a static reference.(úœÆô8³ê¦Ü¼2
-X
-java:S2209"5Change this instance-reference to a static reference.(È³÷Şüÿÿÿÿ8³ê¦Ü¼2
-H	java:S106“"+Replace this use of System.out by a logger.(ş²ƒ8şİ¡Ü¼2
-M	java:S106¶"+Replace this use of System.out by a logger.(ëÂÄÑøÿÿÿÿ8ÿİ¡Ü¼2
-M	java:S106Ä"+Replace this use of System.out by a logger.(ß¾šüüÿÿÿÿ8‚Ş¡Ü¼2
-;
-java:S2119Ì"Save and re-use this "Random".(¼İÅf8„Ş¡Ü¼2
+java:S1192&"ODefine a constant instead of duplicating this literal "Trie Hybride: " 5 times.(È”Èï8¯ªÏ­¼2
+k
+java:S1192Ÿ"HDefine a constant instead of duplicating this literal " octets" 3 times.(Ìáşÿÿÿÿ8¯ªÏ­¼2
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(á¤íı8±ªÏ­¼2
+G	java:S106"+Replace this use of System.out by a logger.(£‹¬É8ÑªÏ­¼2
+G	java:S106"+Replace this use of System.out by a logger.(ïıÓÅ8ÒªÏ­¼2
+G	java:S106"+Replace this use of System.out by a logger.(÷ŠæŞ8ÒªÏ­¼2
+G	java:S106&"+Replace this use of System.out by a logger.(È”Èï8ÓªÏ­¼2
+F	java:S106'"+Replace this use of System.out by a logger.(‹áz8ÓªÏ­¼2
+L	java:S106/"+Replace this use of System.out by a logger.(¯ÄóØıÿÿÿÿ8ÓªÏ­¼2
+G	java:S1065"+Replace this use of System.out by a logger.(±Âº§8ÔªÏ­¼2
+F	java:S1066"+Replace this use of System.out by a logger.(—’Ê	8ÔªÏ­¼2
+L	java:S106>"+Replace this use of System.out by a logger.(ŸÅ®üıÿÿÿÿ8ÔªÏ­¼2
+G	java:S106C"+Replace this use of System.out by a logger.(›òØô8ÔªÏ­¼2
+L	java:S106I"+Replace this use of System.out by a logger.(ÄÃë€ùÿÿÿÿ8ÕªÏ­¼2
+L	java:S106P"+Replace this use of System.out by a logger.(Ì÷ÿ‰ıÿÿÿÿ8ÕªÏ­¼2
+L	java:S106T"+Replace this use of System.out by a logger.(²ÊĞ—şÿÿÿÿ8ÕªÏ­¼2
+L	java:S106Z"+Replace this use of System.out by a logger.(œ–†‹úÿÿÿÿ8ÖªÏ­¼2
+G	java:S106["+Replace this use of System.out by a logger.(÷ŠæŞ8ÖªÏ­¼2
+L	java:S106`"+Replace this use of System.out by a logger.(ÙøôÍşÿÿÿÿ8ÖªÏ­¼2
+F	java:S106a"+Replace this use of System.out by a logger.(‹áz8ÖªÏ­¼2
+W
+java:S2209e"5Change this instance-reference to a static reference.(Œ’êûÿÿÿÿ8ÖªÏ­¼2
+F	java:S106g"+Replace this use of System.out by a logger.(Œÿ…!8×ªÏ­¼2
+F	java:S106h"+Replace this use of System.out by a logger.(—’Ê	8×ªÏ­¼2
+G	java:S106m"+Replace this use of System.out by a logger.(ıÆÓœ8×ªÏ­¼2
+L	java:S106u"+Replace this use of System.out by a logger.(çÉÛùÿÿÿÿ8×ªÏ­¼2
+G	java:S106|"+Replace this use of System.out by a logger.(Å–»Ò8ØªÏ­¼2
+H	java:S106„"+Replace this use of System.out by a logger.(˜­¡ƒ8ØªÏ­¼2
+H	java:S106ˆ"+Replace this use of System.out by a logger.(¢¡±Ä8ØªÏ­¼2
+M	java:S106Š"+Replace this use of System.out by a logger.(‹Å›èùÿÿÿÿ8ØªÏ­¼2
+H	java:S106‹"+Replace this use of System.out by a logger.(æ²’8ØªÏ­¼2
+G	java:S106Œ"+Replace this use of System.out by a logger.(ÇÇÊL8ØªÏ­¼2
+H	java:S106"+Replace this use of System.out by a logger.(Œ”‡“8ØªÏ­¼2
+M	java:S106‘"+Replace this use of System.out by a logger.(Ö¤Çıÿÿÿÿ8ØªÏ­¼2
+H	java:S106’"+Replace this use of System.out by a logger.( ¥ø8ÙªÏ­¼2
+M	java:S106“"+Replace this use of System.out by a logger.(ÄĞ„Âúÿÿÿÿ8ÙªÏ­¼2
+M	java:S106•"+Replace this use of System.out by a logger.(ÑĞëşÿÿÿÿ8ÙªÏ­¼2
+M	java:S106–"+Replace this use of System.out by a logger.(‚ú®ëúÿÿÿÿ8ÙªÏ­¼2
+H	java:S106™"+Replace this use of System.out by a logger.(Şã³²8ÙªÏ­¼2
+M	java:S106Ÿ"+Replace this use of System.out by a logger.(Ìáşÿÿÿÿ8ÛªÏ­¼2
+H	java:S106 "+Replace this use of System.out by a logger.(Ğ½í­8ÛªÏ­¼2
+H	java:S106¡"+Replace this use of System.out by a logger.(âÒ¯³8ÜªÏ­¼2
+M	java:S106¤"+Replace this use of System.out by a logger.(Å›·Ğøÿÿÿÿ8ÜªÏ­¼2
+G	java:S106¨"+Replace this use of System.out by a logger.(·Äá88ÜªÏ­¼2
+M	java:S106­"+Replace this use of System.out by a logger.(Ìšæãøÿÿÿÿ8ÜªÏ­¼2
+M	java:S106³"+Replace this use of System.out by a logger.(ÏÉÒåüÿÿÿÿ8İªÏ­¼2
+M	java:S106¶"+Replace this use of System.out by a logger.(îÊïüÿÿÿÿ8İªÏ­¼2
+H	java:S106º"+Replace this use of System.out by a logger.(ÏÎäô8İªÏ­¼2
+H	java:S106¿"+Replace this use of System.out by a logger.(‡óº8İªÏ­¼2
+G	java:S106Å"+Replace this use of System.out by a logger.(­»˜88ŞªÏ­¼2

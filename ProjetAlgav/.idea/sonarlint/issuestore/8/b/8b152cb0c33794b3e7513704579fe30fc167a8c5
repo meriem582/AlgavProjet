@@ -1,13 +1,7 @@
 
-s	java:S117Â"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉÚĞêÿÿÿÿÿ8äÖ¾İ¼2
-n	java:S117Ä"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ĞéğË8äÖ¾İ¼2
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Å¾›Î8æÖ¾İ¼2
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Å¾›Î
 
-java:S1186 "€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚šºş8×¾İ¼2
-:
-java:S1118 "Hide this public constructor.(‚šºş8×¾İ¼2
-M	java:S106ò"+Replace this use of System.out by a logger.(Ù¥·Ãùÿÿÿÿ8Ÿ×¾İ¼2
-X
-java:S2209È"5Change this instance-reference to a static reference.(Ïä÷Õúÿÿÿÿ8¨×¾İ¼2
-X
-java:S2209Î"5Change this instance-reference to a static reference.(±ûš¢ÿÿÿÿÿ8©×¾İ¼2
+java:S1186!"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚šºş8Œµ§¼2
+3
+java:S1118!"Hide this public constructor.(‚šºş
+M	java:S106€"+Replace this use of System.out by a logger.(Ù¥·Ãùÿÿÿÿ8ˆÉ³§¼2

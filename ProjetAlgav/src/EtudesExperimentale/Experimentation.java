@@ -46,7 +46,7 @@ public class Experimentation {
 		enregistrerDonneesCSV(description + "_Insertion.csv", new String[]{"Patricia-Trie", "Trie Hybride"}, new long[]{finPatricia - debutPatricia, finHybride - debutHybride});
 		//temps de recherche et suppression
 		long debutRecherchePatricia = System.nanoTime();
-		boolean trouvePatricia = FonctionAvancer.recherche(patriciaTrie, "king");
+		boolean trouvePatricia = FonctionAvancer.Recherche(patriciaTrie, "king");
 		long finRecherchePatricia = System.nanoTime();
 		long tempsRecherchePatricia = finRecherchePatricia - debutRecherchePatricia;
 		System.out.println("Temps de recherche dans Patricia-Trie: " + tempsRecherchePatricia + " ns (Trouvé: " + trouvePatricia + ")");
@@ -103,7 +103,7 @@ public class Experimentation {
 
 		//temps de recherche
 		long debutRecherchePatricia = System.nanoTime();
-		boolean trouvePatricia = FonctionAvancer.recherche(patriciaTrie, "king");
+		boolean trouvePatricia = FonctionAvancer.Recherche(patriciaTrie, "king");
 		long finRecherchePatricia = System.nanoTime();
 		long tempsRecherchePatricia = finRecherchePatricia - debutRecherchePatricia;
 		System.out.println("Temps de recherche dans Patricia-Trie: " + tempsRecherchePatricia + " ns (Trouvé: " + trouvePatricia + ")");
@@ -166,7 +166,7 @@ public class Experimentation {
 
 		//temps de recherche
 		long debutRecherchePatricia = System.nanoTime();
-		boolean trouvePatricia = FonctionAvancer.recherche(patriciaTrie, "king");
+		boolean trouvePatricia = FonctionAvancer.Recherche(patriciaTrie, "king");
 		long finRecherchePatricia = System.nanoTime();
 		long tempsRecherchePatricia = finRecherchePatricia - debutRecherchePatricia;
 		System.out.println("Temps de recherche dans Patricia-Trie: " + tempsRecherchePatricia + " ns (Trouvé: " + trouvePatricia + ")");

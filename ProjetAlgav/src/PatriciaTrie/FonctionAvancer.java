@@ -10,32 +10,12 @@ import java.util.TreeMap;
 
 public class FonctionAvancer {
 
-	private static int compteurNoeud = 0;
-
-	// Réinitialiser le compteur de nœuds
-	public static void resetCompteurNoeud() {
-		compteurNoeud = 0;
-	}
-
-	// Obtenir le compteur de nœuds
-	public static int getCompteurNoeud() {
-		return compteurNoeud;
-	}
-
-	// Incrémenter le compteur de nœuds
-	public static void incrementCompteurNoeud() {
-		compteurNoeud++;
-	}
-
-
-	public static boolean recherche(PatriciaTrieNode p, String mot) { // fonction qui retourne True si le mot est
+	public static boolean Recherche(PatriciaTrieNode p, String mot) { // fonction qui retourne True si le mot est
 																		// retrouver dans l'arbre de patricia
 		PatriciaTrieNode pc = p; // on recupere l'arbre dans pc
 		int index = 0;
 
 		while (index < mot.length()) { // on boucle tant que tout le mot n'est pas retrouver
-			//incrémentation du compteur du nombre de noeud visité
-			incrementCompteurNoeud();
 			char ch = mot.charAt(index); // on recuper la premiere lettre (du mot ou partie du mot qu'on est en cours de
 											// rechercher)
 			if (!pc.children.containsKey(ch)) { // si on trouve pas une lettre c'est directement false le mot n'est pas
@@ -59,8 +39,6 @@ public class FonctionAvancer {
 		if (node.is_end_of_word) {
 			nbr++;
 		}
-		//incrémentation du compteur du nombre de noeud visité
-		incrementCompteurNoeud();
 		for (PatriciaTrieNode child : node.children.values()) {
 			nbr += comptageMots(child);
 		}
@@ -108,11 +86,8 @@ public class FonctionAvancer {
 		if (node.children.isEmpty()) {
 			return 0;
 		}
-
 		int maxHeight = 0;
 		for (PatriciaTrieNode child : node.children.values()) {
-			//incrémentation du compteur du nombre de noeud visité
-			incrementCompteurNoeud();
 			maxHeight = Math.max(maxHeight, hauteur(child));
 		}
 		return maxHeight + 1;
@@ -126,14 +101,10 @@ public class FonctionAvancer {
 
 	private static void calculerProfondeurMoyenne(PatriciaTrieNode node, int profondeurActuelle, int[] result) {
 		if (node.children.isEmpty()) { // Si le nœud est une feuille
-			//incrémentation du compteur du nombre de noeud visité
-			incrementCompteurNoeud();
 			result[0] += profondeurActuelle;
 			result[1]++;
 		} else {
 			for (PatriciaTrieNode child : node.children.values()) {
-				//incrémentation du compteur du nombre de noeud visité
-				incrementCompteurNoeud();
 				calculerProfondeurMoyenne(child, profondeurActuelle + 1, result); // +1 car y a un fils
 			}
 		}
@@ -173,8 +144,6 @@ public class FonctionAvancer {
 	}
 
 	public static PatriciaTrieNode suppression(PatriciaTrieNode node, String mot) {
-		//incrémentation du compteur du nombre de noeud visité
-		incrementCompteurNoeud();
 		suppression(node, mot, 0);
 		return node;
 	}
@@ -207,8 +176,6 @@ public class FonctionAvancer {
 			// être supprimé
 			return p.children.isEmpty();
 		}
-		//incrémentation du compteur du nombre de noeud visité
-		incrementCompteurNoeud();
 		char ch = mot.charAt(index);
 		PatriciaTrieNode child = p.children.get(ch);
 		if (child == null) {
