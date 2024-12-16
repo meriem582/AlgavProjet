@@ -21,7 +21,7 @@ Supprime les fichiers générés précédemment (comme les fichiers objets .o, e
 Compile et génère les fichiers spécifiés dans le Makefile:
 ### make
 
-La commande dos2unix script.sh convertit un fichier texte (ici script.sh) de format Windows (avec des retours à la ligne \r\n) en format Unix (avec des retours à la ligne \n).
+La commande dos2unix script.sh convertit le fichier script.sh de format Windows (avec des retours à la ligne \r\n) en format Unix (avec des retours à la ligne \n).
 ### dos2unix script.sh
 
 Commande pour insérer:
