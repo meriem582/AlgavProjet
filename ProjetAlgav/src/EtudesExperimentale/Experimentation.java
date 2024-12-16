@@ -25,7 +25,7 @@ public class Experimentation {
 	}
 
 	private static void effectuerExperimentationFichier(String cheminFichier, String description) {
-		System.out.println("\n********** Expérimentation: " + description + " **********\n");
+		System.out.println("\n**** Expérimentation: " + description + " ****\n");
 
 		PatriciaTrieNode patriciaTrie = new PatriciaTrieNode();
 		TrieHybridesNode hybrideTrie = new TrieHybridesNode();
@@ -75,14 +75,31 @@ public class Experimentation {
 		//les hauteur des arbres
 		int hauteurPatricia = FonctionAvancer.hauteur(patriciaTrie);
 		int hauteurHybride = FonctionAvancerHybride.hauteur(hybrideTrie);
+		int pronfondeurPatricia = FonctionAvancer.profondeurMoyenne(patriciaTrie);
+		int profondeurHybride = FonctionAvancerHybride.profondeurMoyenne(hybrideTrie);
 		System.out.println("Hauteur de Patricia-Trie: " + hauteurPatricia);
 		System.out.println("Hauteur de Trie Hybride: " + hauteurHybride);
+		System.out.println("Pronfondeur de Patricia-Trie: " + pronfondeurPatricia);
+		System.out.println("Profondeur de Trie Hybride: " + profondeurHybride);
 		//sauvegarder les hauteurs dans un fichier csv
 		enregistrerDonneesCSV(description+"resultats_hauteur.csv", new String[]{"Hauteur Patricia-Trie", "Hauteur Trie Hybride"}, new long[]{hauteurPatricia, hauteurHybride});
+
+		//temps d'insertion d'un nouveau mot dans patriacia
+		long debutInsertionPatricia = System.nanoTime();
+		patriciaTrie.inserer("mot");
+		long finInsertionPatricia = System.nanoTime();
+		System.out.println("Temps d'insertion d'un nouveau mot dans Patricia-Trie: " + (finInsertionPatricia - debutInsertionPatricia) + " ns");
+		//temps d'insertion d'un nouveau mot dans hybride
+		long debutInsertionHybride = System.nanoTime();
+		hybrideTrie.insert(hybrideTrie, "mot");
+		long finInsertionHybride = System.nanoTime();
+		System.out.println("Temps d'insertion d'un nouveau mot dans Trie Hybride: " + (finInsertionHybride - debutInsertionHybride) + " ns");
+
+		enregistrerDonneesCSV(description + "_InsertionNouveauMot.csv", new String[]{"Patricia-Trie", "Trie Hybride"}, new long[]{finInsertionPatricia - debutInsertionPatricia , finInsertionHybride - debutInsertionHybride});
 	}
 
 	private static void effectuerExperimentationRepertoire(String cheminFichier, String description) throws IOException {
-		System.out.println("\n********** Expérimentation: " + description + " **********\n");
+		System.out.println("\n**** Expérimentation: " + description + " ****\n");
 
 		PatriciaTrieNode patriciaTrie = new PatriciaTrieNode();
 		TrieHybridesNode hybrideTrie = new TrieHybridesNode();
@@ -134,14 +151,31 @@ public class Experimentation {
 		//hauteur des arbres
 		int hauteurPatricia = FonctionAvancer.hauteur(patriciaTrie);
 		int hauteurHybride = FonctionAvancerHybride.hauteur(hybrideTrie);
+		int pronfondeurPatricia = FonctionAvancer.profondeurMoyenne(patriciaTrie);
+		int profondeurHybride = FonctionAvancerHybride.profondeurMoyenne(hybrideTrie);
 		System.out.println("Hauteur de Patricia-Trie: " + hauteurPatricia);
 		System.out.println("Hauteur de Trie Hybride: " + hauteurHybride);
+		System.out.println("Pronfondeur de Patricia-Trie: " + pronfondeurPatricia);
+		System.out.println("Profondeur de Trie Hybride: " + profondeurHybride);
 
 		enregistrerDonneesCSV(description+"resultats_hauteur.csv", new String[]{"Hauteur Patricia-Trie", "Hauteur Trie Hybride"}, new long[]{hauteurPatricia, hauteurHybride});
+
+		//temps d'insertion d'un nouveau mot dans patriacia
+		long debutInsertionPatricia = System.nanoTime();
+		patriciaTrie.inserer("mot");
+		long finInsertionPatricia = System.nanoTime();
+		System.out.println("Temps d'insertion d'un nouveau mot dans Patricia-Trie: " + (finInsertionPatricia - debutInsertionPatricia) + " ns");
+		//temps d'insertion d'un nouveau mot dans hybride
+		long debutInsertionHybride = System.nanoTime();
+		hybrideTrie.insert(hybrideTrie, "mot");
+		long finInsertionHybride = System.nanoTime();
+		System.out.println("Temps d'insertion d'un nouveau mot dans Trie Hybride: " + (finInsertionHybride - debutInsertionHybride) + " ns");
+
+		enregistrerDonneesCSV(description + "_InsertionNouveauMot.csv", new String[]{"Patricia-Trie", "Trie Hybride"}, new long[]{finInsertionPatricia - debutInsertionPatricia , finInsertionHybride - debutInsertionHybride});
 	}
 
 	private static void effectuerExperimentation(List<String> mots, String description) {
-		System.out.println("\n********** Expérimentation: " + description + " **********\n");
+		System.out.println("\n**** Expérimentation: " + description + " ****\n");
 
 		PatriciaTrieNode patriciaTrie = new PatriciaTrieNode();
 		TrieHybridesNode hybrideTrie = new TrieHybridesNode();
@@ -197,11 +231,29 @@ public class Experimentation {
 		//hauteur des arbres
 		int hauteurPatricia = FonctionAvancer.hauteur(patriciaTrie);
 		int hauteurHybride = FonctionAvancerHybride.hauteur(hybrideTrie);
+		int pronfondeurPatricia = FonctionAvancer.profondeurMoyenne(patriciaTrie);
+		int profondeurHybride = FonctionAvancerHybride.profondeurMoyenne(hybrideTrie);
 		System.out.println("Hauteur de Patricia-Trie: " + hauteurPatricia);
 		System.out.println("Hauteur de Trie Hybride: " + hauteurHybride);
+		System.out.println("Pronfondeur de Patricia-Trie: " + pronfondeurPatricia);
+		System.out.println("Profondeur de Trie Hybride: " + profondeurHybride);
 
 		enregistrerDonneesCSV(description+"resultats_hauteur.csv", new String[]{"Hauteur Patricia-Trie", "Hauteur Trie Hybride"}, new long[]{hauteurPatricia, hauteurHybride});
+
+		//temps d'insertion d'un nouveau mot dans patriacia
+		long debutInsertionPatricia = System.nanoTime();
+		patriciaTrie.inserer("mot");
+		long finInsertionPatricia = System.nanoTime();
+		System.out.println("Temps d'insertion d'un nouveau mot dans Patricia-Trie: " + (finInsertionPatricia - debutInsertionPatricia) + " ns");
+		//temps d'insertion d'un nouveau mot dans hybride
+		long debutInsertionHybride = System.nanoTime();
+		hybrideTrie.insert(hybrideTrie, "mot");
+		long finInsertionHybride = System.nanoTime();
+		System.out.println("Temps d'insertion d'un nouveau mot dans Trie Hybride: " + (finInsertionHybride - debutInsertionHybride) + " ns");
+
+		enregistrerDonneesCSV(description + "_InsertionNouveauMot.csv", new String[]{"Patricia-Trie", "Trie Hybride"}, new long[]{finInsertionPatricia - debutInsertionPatricia , finInsertionHybride - debutInsertionHybride});
 	}
+
 
 	private static void resultatExperimentationHybrideEquiliber() {
 		//pour patricia
