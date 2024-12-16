@@ -11,7 +11,7 @@ import java.util.TreeMap;
 public class FonctionAvancer {
 	
 	private static int compteurNoeud = 0;
-
+  
 	// Réinitialiser le compteur de nœuds
 	public static void resetCompteurNoeud() {
 		compteurNoeud = 0;
