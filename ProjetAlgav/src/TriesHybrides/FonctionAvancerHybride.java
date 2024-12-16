@@ -10,6 +10,23 @@ import java.util.List;
  * Classe contenant des fonctions avancées pour manipuler un trie hybride.
  */
 public class FonctionAvancerHybride {
+	
+	private static int compteurNoeud = 0;
+
+	// Reinitaliser le compteurNoeud
+	public static void resetCompteurNoeud() {
+		compteurNoeud = 0;
+	}
+
+	// Récupérer le compteurNoeud
+	public static int getCompteurNoeud() {
+		return compteurNoeud;
+	}
+
+	// Incrémenter le compteurNoeud
+	public static void incrementCompteurNoeud() {
+		compteurNoeud++;
+	}
 
     /**
      * Recherche un mot dans le trie hybride.
@@ -22,7 +39,7 @@ public class FonctionAvancerHybride {
         if (trieHY == null || mot == null || mot.isEmpty()) {
             return false;
         }
-
+        incrementCompteurNoeud();
         char c = mot.charAt(0);
 
         if (c < trieHY.caractere) {
@@ -44,6 +61,7 @@ public class FonctionAvancerHybride {
      * @return Le nombre total de mots.
      */
     public static int comptageMots(TrieHybridesNode trieHY) {
+    	incrementCompteurNoeud();
         if (trieHY == null) {
             return 0;
         }
@@ -76,7 +94,8 @@ public class FonctionAvancerHybride {
      * @param mots    La liste des mots collectés.
      */
     private static void listeMotsRec(TrieHybridesNode trieHY, String prefixe, List<String> mots) {
-        if (trieHY == null) {
+    	incrementCompteurNoeud();
+    	if (trieHY == null) {
             return;
         }
 
@@ -97,6 +116,7 @@ public class FonctionAvancerHybride {
      * @return Le nombre de pointeurs vers Nil.
      */
     public static int comptageNil(TrieHybridesNode trieHY) {
+    	incrementCompteurNoeud();
         if (trieHY == null) {
             return 1;
         }
@@ -119,6 +139,7 @@ public class FonctionAvancerHybride {
         if (trieHY == null) {
             return 0;
         }
+        incrementCompteurNoeud();
 
         int hauteurInferieur = hauteur(trieHY.inferieur);
         int hauteurEgal = hauteur(trieHY.egal);
@@ -149,7 +170,8 @@ public class FonctionAvancerHybride {
      * @param nombreDeMots       Tableau pour stocker le nombre total de mots.
      */
     private static void calculProfondeur(TrieHybridesNode trieHY, int profondeurActuelle, int[] profondeurTotale, int[] nombreDeMots) {
-        if (trieHY == null) {
+    	incrementCompteurNoeud();
+    	if (trieHY == null) {
             return;
         }
 
@@ -186,6 +208,7 @@ public class FonctionAvancerHybride {
      * @return Le nœud correspondant au dernier caractère du préfixe.
      */
     private static TrieHybridesNode trouverNoeudPrefixe(TrieHybridesNode trieHY, String prefix) {
+    	incrementCompteurNoeud();
         if (trieHY == null || prefix.isEmpty()) {
             return null;
         }
@@ -233,7 +256,8 @@ public class FonctionAvancerHybride {
      * @return Le nœud modifié après suppression.
      */
     private static TrieHybridesNode supprimer(TrieHybridesNode node, String mot, int index) {
-        if (node == null) {
+    	incrementCompteurNoeud();
+    	if (node == null) {
             return null;
         }
 
@@ -291,7 +315,7 @@ public class FonctionAvancerHybride {
      * @return Le trie hybride fusionné.
      */
     public static TrieHybridesNode fusionner(TrieHybridesNode arbre1,TrieHybridesNode arbre2) {
-		TrieHybridesNode arbre=new TrieHybridesNode();
+    	TrieHybridesNode arbre=new TrieHybridesNode();
 		if(arbre1==null) {
 			return arbre2;
 		}else if(arbre2==null) {
@@ -303,12 +327,14 @@ public class FonctionAvancerHybride {
 			int mots_arbre2=mots2.size();
 			if(mots_arbre1<=mots_arbre2) {
 				for (String part1 : mots1) {
+					incrementCompteurNoeud();
 		            //afficher les mots
 					arbre=arbre2.insert(arbre2, part1);
 		        }
 				
 			}else {
 				for (String part1 : mots2) {
+					incrementCompteurNoeud();
 		            //afficher les mots
 					arbre=arbre2.insert(arbre1, part1);
 		        }

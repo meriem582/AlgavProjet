@@ -47,9 +47,11 @@ public class PatriciaTrieMain {
 		
 		trie1.saveToFile("trie1P.json");
 
-		FonctionAvancer.suppression(trie1, "dog");
-		System.out.println("Résultat de la recherche du mot dog aprés la suppression : "+FonctionAvancer.Recherche(trie1, "dog")); 
-		System.out.println("Le nombre des mots ou dog est prefixe est : " + FonctionAvancer.prefixe(trie1, "dog"));
+		FonctionAvancer.suppression(trie1, "car");
+		System.out.println("Résultat de la recherche du mot car aprés la suppression : "+FonctionAvancer.Recherche(trie1, "car")); 
+		System.out.println("Le nombre des mots ou car est prefixe est : " + FonctionAvancer.prefixe(trie1, "car"));
+		System.out.println("Liste des mots dans l'ordre alphabétique : " + FonctionAvancer.listeMots(trie1));
+
 
 		
 		trie1.saveToFile("trie1ApresSupP.json");

@@ -34,7 +34,7 @@
         },
         "a" : {
           "label" : "ar",
-          "is_end_of_word" : true,
+          "is_end_of_word" : false,
           "children" : {
             "t" : {
               "label" : "t",
@@ -89,8 +89,8 @@
       }
     },
     "d" : {
-      "label" : "d",
-      "is_end_of_word" : false,
+      "label" : "dog",
+      "is_end_of_word" : true,
       "children" : {
         "a" : {
           "label" : "actylo",

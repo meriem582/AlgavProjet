@@ -9,6 +9,23 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class FonctionAvancer {
+	
+	private static int compteurNoeud = 0;
+
+	// Réinitialiser le compteur de nœuds
+	public static void resetCompteurNoeud() {
+		compteurNoeud = 0;
+	}
+
+	// Obtenir le compteur de nœuds
+	public static int getCompteurNoeud() {
+		return compteurNoeud;
+	}
+
+	// Incrémenter le compteur de nœuds
+	public static void incrementCompteurNoeud() {
+		compteurNoeud++;
+	}
 
 	public static boolean Recherche(PatriciaTrieNode p, String mot) { // fonction qui retourne True si le mot est
 																		// retrouver dans l'arbre de patricia
@@ -16,6 +33,7 @@ public class FonctionAvancer {
 		int index = 0;
 
 		while (index < mot.length()) { // on boucle tant que tout le mot n'est pas retrouver
+			incrementCompteurNoeud();
 			char ch = mot.charAt(index); // on recuper la premiere lettre (du mot ou partie du mot qu'on est en cours de
 											// rechercher)
 			if (!pc.children.containsKey(ch)) { // si on trouve pas une lettre c'est directement false le mot n'est pas
@@ -40,6 +58,7 @@ public class FonctionAvancer {
 			nbr++;
 		}
 		for (PatriciaTrieNode child : node.children.values()) {
+			incrementCompteurNoeud();
 			nbr += comptageMots(child);
 		}
 		return nbr;
@@ -58,6 +77,7 @@ public class FonctionAvancer {
 		// Utilisation de TreeMap pour garantir un ordre alphabétique des enfants
 		Map<Character, PatriciaTrieNode> Children0 = new TreeMap<>(node.children);
 		for (Map.Entry<Character, PatriciaTrieNode> entry : Children0.entrySet()) {
+			incrementCompteurNoeud();
 			listeMotsRec(entry.getValue(), prefix + entry.getValue().label, mots);
 		}
 	}
@@ -71,10 +91,12 @@ public class FonctionAvancer {
 		// Si le noeud a des enfants
 		if (node.children.isEmpty()) {
 			// Si le noeud n'a pas d'enfants, on considère que c'est un "Nil"
+			incrementCompteurNoeud();
 			count++;
 		} else {
 			// Sinon, on parcourt récursivement les enfants
 			for (PatriciaTrieNode child : node.children.values()) {
+				incrementCompteurNoeud();
 				count += comptageNilRecursif(child);
 			}
 		}
@@ -88,6 +110,7 @@ public class FonctionAvancer {
 		}
 		int maxHeight = 0;
 		for (PatriciaTrieNode child : node.children.values()) {
+			incrementCompteurNoeud();
 			maxHeight = Math.max(maxHeight, hauteur(child));
 		}
 		return maxHeight + 1;
@@ -101,10 +124,12 @@ public class FonctionAvancer {
 
 	private static void calculerProfondeurMoyenne(PatriciaTrieNode node, int profondeurActuelle, int[] result) {
 		if (node.children.isEmpty()) { // Si le nœud est une feuille
+			incrementCompteurNoeud();
 			result[0] += profondeurActuelle;
 			result[1]++;
 		} else {
 			for (PatriciaTrieNode child : node.children.values()) {
+				incrementCompteurNoeud();
 				calculerProfondeurMoyenne(child, profondeurActuelle + 1, result); // +1 car y a un fils
 			}
 		}
@@ -115,6 +140,7 @@ public class FonctionAvancer {
 		int index = 0;
 		// Parcourir l'arbre jusqu'à trouver le nœud correspondant au préfixe
 		while (index < prefix.length()) {
+			incrementCompteurNoeud();
 			char ch = prefix.charAt(index);
 			if (!pc.children.containsKey(ch)) {
 				return 0; // Si le préfixe n'est pas présent dans l'arbre
@@ -138,6 +164,7 @@ public class FonctionAvancer {
 	private static int compterMotsDescendants(PatriciaTrieNode node) {
 		int count = node.is_end_of_word ? 1 : 0; // Compter le nœud actuel s'il représente un mot
 		for (PatriciaTrieNode child : node.children.values()) {
+			incrementCompteurNoeud();
 			count += compterMotsDescendants(child); // Ajouter les mots dans les sous-arbres
 		}
 		return count;
@@ -154,6 +181,7 @@ public class FonctionAvancer {
 			String mot;
 			while ((mot = reader.readLine()) != null) { // la on recupere les mots qui sont dans le fichier un par un en
 														// les ajoutant dans l'arbre
+				incrementCompteurNoeud();
 				mot = mot.trim();// Nettoyer le mot en enlevant les espaces superflus
 				if (!mot.isEmpty()) { // on insere le mot si il n'est pas vide
 					suppression(node, mot); // Insérer le mot dans l'arbre Patricia
@@ -166,37 +194,50 @@ public class FonctionAvancer {
 	}
 
 	private static boolean suppression(PatriciaTrieNode p, String mot, int index) {
-		if (index == mot.length()) {
-			// Nous avons atteint la fin du mot dans l'arbre
-			if (!p.is_end_of_word) {
-				return false; // Le mot n'existe pas
-			}
-			p.is_end_of_word = false; // Marquer ce nœud comme n'étant plus la fin d'un mot
+	    incrementCompteurNoeud();
 
-			// Retourner vrai si le nœud courant n'a pas d'enfants, indiquant qu'il peut
-			// être supprimé
-			return p.children.isEmpty();
-		}
+	    // Vérification de la fin du mot
+	    if (index == mot.length()) {
+	        if (!p.is_end_of_word) {
+	            return false; // Le mot n'existe pas
+	        }
+	        p.is_end_of_word = false; // Marquer ce nœud comme n'étant plus la fin d'un mot
 
-		char ch = mot.charAt(index);
-		PatriciaTrieNode child = p.children.get(ch);
-		if (child == null) {
-			return false; // Le mot n'existe pas
-		}
+	        // Retourner vrai si ce nœud n'a pas d'enfants
+	        return p.children.isEmpty();
+	    }
 
-		// Récursion pour supprimer dans les enfants
-		boolean suppimer = suppression(child, mot, index + child.label.length());
+	    // Vérification de l'index
+	    if (index >= mot.length()) {
+	        return false; // Index invalide
+	    }
 
-		// Supprimer le nœud enfant si nécessaire
-		if (suppimer) {
-			p.children.remove(ch);
+	    char ch = mot.charAt(index);
+	    PatriciaTrieNode child = p.children.get(ch);
+	    if (child == null) {
+	        return false; // Le mot n'existe pas
+	    }
 
-			// Si le nœud actuel n'est plus la fin d'un mot et n'a pas d'autres enfants, il
-			// peut aussi être supprimé
-			return p.children.isEmpty() && !p.is_end_of_word;
-		}
-		return false;
+	    // Calculer le nouvel index et vérifier
+	    int nextIndex = index + child.label.length();
+	    if (nextIndex > mot.length()) {
+	        return false; // Index invalide
+	    }
+
+	    // Récursion pour supprimer dans les enfants
+	    boolean supprimer = suppression(child, mot, nextIndex);
+
+	    // Supprimer le nœud enfant si nécessaire
+	    if (supprimer) {
+	        p.children.remove(ch);
+
+	        // Supprimer ce nœud si plus d'enfants et pas la fin d'un mot
+	        return p.children.isEmpty() && !p.is_end_of_word;
+	    }
+
+	    return false;
 	}
+
 
 	public static PatriciaTrieNode fusionner(PatriciaTrieNode trie1, PatriciaTrieNode trie2) {
 		PatriciaTrieNode resultat = new PatriciaTrieNode("");
@@ -207,6 +248,7 @@ public class FonctionAvancer {
 
 	private static void fusionnerNoeuds(PatriciaTrieNode cible, PatriciaTrieNode source) {
 		for (Map.Entry<Character, PatriciaTrieNode> entry : source.children.entrySet()) {
+			incrementCompteurNoeud();
 			char charCle = entry.getKey();
 			PatriciaTrieNode noeudSource = entry.getValue();
 

@@ -109,7 +109,7 @@ public class TrieHybridesNode {
     }
 
     // Insérer un mot dans le trie hybride
-    public TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
+    public static TrieHybridesNode insert(TrieHybridesNode trieH, String mot) {
         if (mot == null || mot.isEmpty()) {
         	incrementCompteur();
             return trieH;
@@ -121,11 +121,16 @@ public class TrieHybridesNode {
         }
 
         char premierCaractere = mot.charAt(0);
-
+      //si le le caractere est vide on le remplace par le premier caractere du mot
+        if (trieH.caractere == '\0') {
+            incrementCompteur();
+            trieH.caractere = premierCaractere;
+        }
         if (premierCaractere < trieH.caractere) {
         	incrementCompteur();
             trieH.inferieur = insert(trieH.inferieur, mot);
         } else if (premierCaractere > trieH.caractere) {
+        	incrementCompteur();
             trieH.superieur = insert(trieH.superieur, mot);
         } else {
         	incrementCompteur();
@@ -258,12 +263,14 @@ public class TrieHybridesNode {
      */
     // Rotation gauche
     public static TrieHybridesNode rotationGauche(TrieHybridesNode arbre) {
+        if (arbre == null || arbre.superieur == null) {
+            return arbre;
+        }
         TrieHybridesNode newNoeud = arbre.superieur;
         arbre.superieur = newNoeud.inferieur;
         newNoeud.inferieur = arbre;
         return newNoeud;
     }
-
 
     /**
      * Effectue une rotation à droite.
@@ -272,6 +279,9 @@ public class TrieHybridesNode {
      * @return Le nœud après rotation.
      */
     public static TrieHybridesNode rotationDroite(TrieHybridesNode arbre) {
+        if (arbre == null || arbre.inferieur == null) {
+            return arbre;
+        }
         TrieHybridesNode nouveauRacine = arbre.inferieur;
         arbre.inferieur = nouveauRacine.superieur;
         nouveauRacine.superieur = arbre;
@@ -286,31 +296,32 @@ public class TrieHybridesNode {
      */
     // Rééquilibre le trie hybride
     public static TrieHybridesNode equilibrer(TrieHybridesNode arbre) {
-        if (arbre == null) return null;
+        if (arbre == null) {
+            incrementCompteur();
+            return null;
+        }
 
         int hauteurGauche = hauteur(arbre.inferieur);
-        //afficher la hauteur de l'arbre gauche
-        System.out.println("hauteur de l'arbre gauche : " + hauteurGauche);
         int hauteurDroite = hauteur(arbre.superieur);
-        //afficher la hauteur de l'arbre droit
-        System.out.println("hauteur de l'arbre droit : " + hauteurDroite);
 
-        //si la hauteur de l'arbre gauche est supérieure à celle de l'arbre droit apartir de 2
         if (hauteurGauche - hauteurDroite >= 2) {
-            //si la hauteur de l'arbre gauche est supérieure à celle de l'arbre droit apartir de 2
-            if (hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
+            incrementCompteur();
+            if (arbre.inferieur != null && hauteur(arbre.inferieur.superieur) > hauteur(arbre.inferieur.inferieur)) {
+                incrementCompteur();
                 arbre.inferieur = rotationGauche(arbre.inferieur);
             }
             return rotationDroite(arbre);
         } else if (hauteurDroite - hauteurGauche >= 2) {
-            if (hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
+            incrementCompteur();
+            if (arbre.superieur != null && hauteur(arbre.superieur.inferieur) > hauteur(arbre.superieur.superieur)) {
+                incrementCompteur();
                 arbre.superieur = rotationDroite(arbre.superieur);
             }
             return rotationGauche(arbre);
         }
-
         return arbre;
     }
+
 
 
     /**
@@ -321,29 +332,58 @@ public class TrieHybridesNode {
      * @return Le nœud racine après insertion et rééquilibrage.
      */
     public static TrieHybridesNode insertEtReequilibrer(TrieHybridesNode arbre, String mot) {
-        if (mot == null || mot.isEmpty()) {
-            return arbre;
+    if (mot == null || mot.isEmpty()) {
+        incrementCompteur();
+        return arbre;
+    }
+
+    arbre = insert(arbre, mot);
+    return equilibrer(arbre);
+}
+
+
+    /**
+     * Fonction qui permet d'inserer avec reequilibrage les mots du fichier
+     *
+     * @param filename
+     */
+    public void insertEtReequilibrerMotsDuFichier(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String mot;
+            while ((mot = reader.readLine()) != null) {
+                mot = mot.trim();
+                if (!mot.isEmpty()) {
+                    insertEtReequilibrer(this, mot);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Insérer des mots à partir de plusieurs fichiers dans un répertoire
+    public void insertMotsEquilibrerDuRepertoire(String repertoirePath) {
+        File repertoire = new File(repertoirePath);
+
+        if (!repertoire.exists() || !repertoire.isDirectory()) {
+            incrementCompteur();
+            System.err.println("Erreur : Le chemin spécifié n'est pas un répertoire valide.");
+            return;
         }
 
-        if (arbre == null || arbre.caractere == ' ') {
-            arbre = new TrieHybridesNode(mot.charAt(0));
+        File[] fichiers = repertoire.listFiles();
+        if (fichiers == null) {
+            incrementCompteur();
+            System.err.println("Erreur : Impossible de lire le contenu du répertoire.");
+            return;
         }
 
-        char FirstCaractere = mot.charAt(0);
-
-        if (FirstCaractere < arbre.caractere) {
-            arbre.inferieur = insertEtReequilibrer(arbre.inferieur, mot);
-        } else if (FirstCaractere > arbre.caractere) {
-            arbre.superieur = insertEtReequilibrer(arbre.superieur, mot);
-        } else {
-            if (mot.length() == 1) {
-                arbre.isEndOfWord = true;
-            } else {
-                arbre.egal = insertEtReequilibrer(arbre.egal, mot.substring(1));
+        for (File fichier : fichiers) {
+            if (fichier.isFile() && fichier.getName().endsWith(".txt")) {
+                incrementCompteur();
+                insertEtReequilibrerMotsDuFichier(fichier.getAbsolutePath());
             }
         }
-
-        return equilibrer(arbre);
     }
-    
+
 }

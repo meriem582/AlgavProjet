@@ -18,7 +18,7 @@
         },
         "a" : {
           "label" : "ar",
-          "is_end_of_word" : true,
+          "is_end_of_word" : false,
           "children" : {
             "t" : {
               "label" : "t",
@@ -40,6 +40,11 @@
           }
         }
       }
+    },
+    "d" : {
+      "label" : "dog",
+      "is_end_of_word" : true,
+      "children" : { }
     }
   }
 }

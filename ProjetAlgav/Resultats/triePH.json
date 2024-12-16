@@ -1,0 +1,136 @@
+{
+  "label" : "",
+  "is_end_of_word" : false,
+  "children" : {
+    "a" : {
+      "label" : "apple",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "b" : {
+      "label" : "ball",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "c" : {
+      "label" : "car",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "d" : {
+      "label" : "dog",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "e" : {
+      "label" : "est",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "f" : {
+      "label" : "fan",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "g" : {
+      "label" : "go",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "h" : {
+      "label" : "hat",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "i" : {
+      "label" : "ink",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "j" : {
+      "label" : "joke",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "k" : {
+      "label" : "kite",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "l" : {
+      "label" : "love",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "m" : {
+      "label" : "milk",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "n" : {
+      "label" : "nice",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "o" : {
+      "label" : "open",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "p" : {
+      "label" : "play",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "q" : {
+      "label" : "quit",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "r" : {
+      "label" : "run",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "s" : {
+      "label" : "sun",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "t" : {
+      "label" : "top",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "u" : {
+      "label" : "use",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "v" : {
+      "label" : "van",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "w" : {
+      "label" : "win",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "x" : {
+      "label" : "xray",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "y" : {
+      "label" : "yak",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
+    "z" : {
+      "label" : "zoo",
+      "is_end_of_word" : true,
+      "children" : { }
+    }
+  }
+}

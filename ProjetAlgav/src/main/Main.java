@@ -1,5 +1,6 @@
 package main;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -20,14 +21,30 @@ public class Main {
 
         switch (command) {
 		    case "insererPatricia":
-		    	PatriciaTrieNode trie = new PatriciaTrieNode("");
-		        // Lire les mots et les insérer
+		    	PatriciaTrieNode trie;
+		    	File f = new File("Resultats/pat.json");
+		        if (f.exists()) {
+		            // Charger l'arbre depuis le fichier JSON
+		            trie = PatriciaTrieNode.jsonToArbre("pat.json");
+		        } else {
+		            // Créer une nouvelle instance si le fichier n'existe pas
+		            trie = new PatriciaTrieNode("");
+		        }
 				trie.insertMotduFichier(args[1]); 
 				trie.saveToFile("pat.json");
 		        break;
 		    
 		    case "insererHybride":
-		    	TrieHybridesNode trieH = new TrieHybridesNode(' ');
+		    	TrieHybridesNode trieH;
+		    	File fh = new File("Resultats/trie.json");
+		        if (fh.exists()) {
+		            // Charger l'arbre depuis le fichier JSON
+		        	trieH = TrieHybridesNode.jsonToArbre("trie.json");
+		        } else {
+		            // Créer une nouvelle instance si le fichier n'existe pas
+		        	trieH = new TrieHybridesNode();
+		        }
+		        
 				trieH.insertMotduFichier(args[1]);
 				trieH.saveToFile("trie.json");
 		    	break;

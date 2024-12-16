@@ -2,6 +2,11 @@
   "label" : "",
   "is_end_of_word" : false,
   "children" : {
+    "A" : {
+      "label" : "A",
+      "is_end_of_word" : true,
+      "children" : { }
+    },
     "a" : {
       "label" : "a",
       "is_end_of_word" : true,
@@ -49,6 +54,11 @@
               }
             }
           }
+        },
+        "h" : {
+          "label" : "hacune",
+          "is_end_of_word" : true,
+          "children" : { }
         },
         "i" : {
           "label" : "i",
