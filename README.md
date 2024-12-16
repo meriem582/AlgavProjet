@@ -46,5 +46,5 @@ Environnement d'Exécution et Compilateur:
  bash script.sh profondeurMoyenne 1 trie.json
 
 ### Commande pour donner le nombre des préfixe d'un mot exemple car:
- bash script.sh prefixe 0 pat.json car
- bash script.sh prefixe 1 trie.json car
+- bash script.sh prefixe 0 pat.json car
+- bash script.sh prefixe 1 trie.json car
