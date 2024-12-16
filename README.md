@@ -10,6 +10,9 @@ Pour exécuter ce projet, vous aurez besoin de :
 Environnement d'Exécution et Compilateur: 
 - Environnement d'exécution : Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240).
 - Compilateur : javac version 17.0.10.
+### faires quelques instalations des utils pour le graphe:
+- python3 -m pip install pandas
+- python3 -m pip install matplotlib
 
 ## Les Commandes
 
@@ -48,3 +51,7 @@ Environnement d'Exécution et Compilateur:
 ### Commande pour donner le nombre des préfixe d'un mot exemple car:
 - bash script.sh prefixe 0 pat.json car
 - bash script.sh prefixe 1 trie.json car
+
+## Pour générer les graphes :
+- python3 results.py
+- python3 results_equilibre.py
