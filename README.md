@@ -21,6 +21,7 @@ Environnement d'Exécution et Compilateur:
  - Sélectionnez Properties.
  - Dans la fenêtre qui s'ouvre, allez dans Java Build Path (dans la section de gauche).
  - Cliquez sur l'onglet Libraries.
+ - Sélectionner les trois fichiers existant dans Classpath et faites remove
  - Sélectionner Classpath.
  - Cliquez sur Add External JARs...
  - Parcourez vos dossiers, sélectionnez le fichier Libs et séléctionner les trois jars qui se trouve dedans, puis cliquez sur OK.
