@@ -11,9 +11,20 @@ Environnement d'Exécution et Compilateur:
 - Environnement d'exécution : Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240).
 - Compilateur : javac version 17.0.10.
 - Python 3.13.1 (pour les graphes).
-### faires quelques instalations des utils pour le graphe:
+### Quelques instalations des utils pour le graphe:
 - python3 -m pip install pandas
 - python3 -m pip install matplotlib
+
+## Configurations
+ Quand vous ouvrirez le projet dans eclipse vous devez d'abord configurer les jars en suivant les étapes suivantes:
+ - Faites un clic droit sur le nom du projet dans l'explorateur de projets (Project Explorer).
+ - Sélectionnez Properties.
+ - Dans la fenêtre qui s'ouvre, allez dans Java Build Path (dans la section de gauche).
+ - Cliquez sur l'onglet Libraries.
+ - Sélectionner Classpath.
+ - Cliquez sur Add External JARs...
+ - Parcourez vos dossiers, sélectionnez le fichier Libs et séléctionner les trois jars qui se trouve dedans, puis cliquez sur OK.
+ - Cliquez sur Apply and Close pour sauvegarder les modifications.
 
 ## Les Commandes
 
@@ -53,6 +64,11 @@ Environnement d'Exécution et Compilateur:
 - bash script.sh prefixe 0 pat.json car
 - bash script.sh prefixe 1 trie.json car
 
+  Le resultat de ces commandes sera enregistrer dans le sous dossier Resultats
+
 ## Pour générer les graphes :
 - python3 results.py
 - python3 results_equilibre.py
+  Les fichiers seront enregistré au niveau du dossier ProjetAlgav
+
+  
